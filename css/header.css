@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(48, 63, 108);
+    margin: 0;
+    padding: 0;
+    font-family: Korolev, sans-serif;
+}
+
+.background-header {
+    height: 50px;
+    background-color: rgb(139, 125, 109);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 0;
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: yellow;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active {
+    /* Supprimer la bordure jaune */
+    border-bottom: none;
+}

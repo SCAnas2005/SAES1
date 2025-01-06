@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi des Stages - Deux Main</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #293358;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #ad947e;
+            color: #293358;
+        }
+
+        .container {
+            display: flex; /* Utilisation de Flexbox */
+            justify-content: space-between; /* Ajout d'un espace visible entre les éléments */
+            gap: 20px; /* Espace entre les deux éléments */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px; /* Largeur maximale du conteneur */
+        }
+
+        main {
+            flex: 1; /* Chaque main prend une part égale de l'espace */
+            background-color: #ffffff;
+            padding: 20px;
+            border: 2px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #293358;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Suivi des Stages</h1>
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Tableau de bord</a>
+            <a href="#">Mon espace</a>
+            <a href="#">Documents</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Premier main -->
+        <main>
+            <h2>Section 1</h2>
+            <p>Bienvenue sur la première section de la page. Ici, vous pouvez afficher du contenu spécifique à votre application.</p>
+        </main>
+
+        <!-- Deuxième main -->
+        <main>
+            <h2>Section 2</h2>
+            <p>Ceci est la deuxième section. Utilisez cet espace pour d'autres informations ou fonctionnalités.</p>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
+    </footer>
+</body>
+</html>
