@@ -1,3 +1,8 @@
+<?php 
+    // session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,9 +48,9 @@
         <section class="section">
             <h2>Actions rapides</h2>
             <ul>
-                <li><a href="voir_stages.html">Voir mes stages</a></li>
-                <li><a href="deposer_document.html">Déposer un document</a></li>
-                <li><a href="notifications.html">Voir mes notifications</a></li>
+                <li><a href="voir_stages.php">Voir mes stages</a></li>
+                <li><a href="Gestion_docs.php">Déposer un document</a></li>
+                <li><a href="notifications.php">Voir mes notifications</a></li>
             </ul>
         </section>
     </main>
