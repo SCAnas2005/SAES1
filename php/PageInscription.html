@@ -51,9 +51,10 @@
         }
 
         .main-content {
-            padding: 20px;
+            padding: 20px ;
             background-color: #ffffff;
             margin: 20px auto;
+            margin-bottom: 10%;
             max-width: 1200px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -80,6 +81,44 @@
             color: #293358;
             padding: 4px;
             border-radius: 55px;
+        }
+
+        .Inscription{
+            text-align: center;
+          }
+          
+	.Inscription input{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-left: 43.5%;
+    }
+    .Inscription button{
+        background-color: #ad947e;      
+        color: #293358;
+        padding: 0.4px;
+        border-radius: 5px;
+    }
+    .choix{
+        text-align: center;    
+    }
+
+    li.choix{      
+        color: #293358;
+        padding: 4px;
+        border-radius: 5px;
+    }
+
+        .Inscription h2 {
+            color: #ad947e;      
+            background-color: #293358;
+            padding: 4px;
+            border-radius: 55px;
+        }
+        .Inscription label {      
+            color: #293358;
+            padding: 0.4px;
+            border-radius: 5px;
         }
 
         .user-info {
@@ -130,6 +169,7 @@
         }
 
         form button {
+            
             padding: 10px;
             background-color: #ffcc00;
             border: none;
@@ -137,6 +177,21 @@
             cursor: pointer;
         }
 
+        div.button
+        {   
+            display: flex;
+            justify-content:center 
+        }
+        button {
+            padding: 20px;
+            font-size: 20px;
+            background-color: #ad947e; 
+            color:#002060 ;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
         form button:hover {
             background-color: #ff9900;
         }
@@ -149,49 +204,81 @@
         ul li {
             margin: 10px 0;
         }
+
     </style>
 </head>
 <body>
     <header>
         <h1>Suivi des Stages</h1>
-        <nav>
-            <a href="#">Accueil</a>
-            <a href="tableau_de_bord.html">Tableau de bord</a>
-            <a href="mon_espace.html">Mon espace</a>
-	   <a href="gestion_documents.html">Documents</a>
-        </nav>
-        <div class="user-info">
+        <section class="user-info">
             <div class="profile">
                 <img src="profile-placeholder.png" alt="Profil utilisateur">
-                <span>Nom Utilisateur</span>
             </div>
         </div>
         <!-- Logo de l'IUT -->
         <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
     </header>
-
-        <section class="connexion">
-            <h2>Connectez-vous</h2>
-            <form action="/SAES1-main/php/PageAccueil.php" method="post">
+    <main class="main-content">
+        <section class="Inscription">
+            <h2>Inscrivez vous</h2>
+            <form action="/SAES1-main/php/PageConnexion.html" method="post">
                 <ul>
                   <li>
                     <label for="name">Nom&nbsp;:</label>
                     <input type="text" id="name" name="user_name" />
                   </li>
                   <li>
+                    <label for="pname">Prénom&nbsp;:</label>
+                    <input type="text" id="pname" name="user_pname" />
+                  </li>
+                  <li>
+                    <label for="ename">entreprise&nbsp;:</label>
+                    <input type="text" id="ename" name="user_ename" />
+                  </li>
+                  <li>
+                    <label for="mail">E-mail&nbsp;:</label>
+                    <input type="email" id="mail" name="user_email" />
+                  </li>
+                  <li>
                     <label for="mdp">Mot de passe&nbsp;:</label>
-                    <input type="text" id="mdp" name="motdepasse" />
+                    <input type="password   " id="mdp" name="motdepasse" />
+                  </li>
+                  <li>
+                    <label for="cmdp">Confirmer Mot de passe&nbsp;:</label>
+                    <input type="password" id="cmdp" name="cmotdepasse" />
+                </li>
+                <h2>Qui êtes vous?</h2>
+                  </section>
+                  <section>
+                  <li style="list-style-type:none;" class="choix">
+                    <label for="role">tuteur pédagogique</label>
+                    <input type="radio" id="trole" name="roles" value="tuteurp" checked />
+                    <label for="role">tuteur entreprise</label>
+                    <input type="radio" id="terole" name="roles" value="tuteure" checked />
+                    <label for="role">etudiant</label>
+                    <input type="radio" id="erole" name="roles" value="etudiant" checked />
+                  </li>
+                  <li style="list-style-type:none;" class="choix">
+                      <label for="role">directeur d'étude</label>
+                      <input type="radio" id="drole" name="roles" value="directeur" checked />
+
+                      <label for="role">responsable stage</label>
+                      <input type="radio" id="rrole" name="roles" value="responsable" checked />
+
+                      <label for="role">Chef Département</label>
+                      <input type="radio" id="crole" name="roles" value="chef" checked />
                   </li>
                 </ul>
+            </section>
               <div class="button">
-                <button type="submit">Me connecter</button>
+                <button type="submit">M'inscrire</button>
               </div>
             </form>
         </section>
     </main>
-
     <footer>
         <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
     </footer>
+
 </body>
 </html>
