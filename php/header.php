@@ -1,11 +1,14 @@
 
+<?php 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
+?>
 <header>
     <h1>Suivi des Stages</h1>
     <nav>
-        <a href="PageAccueil.php">Accueil</a>
-        <a href="Tableau_Bord.php">Tableau de bord</a>
-        <a href="Espace_UsersV2.php">Mon espace</a>
-        <a href="Gestion_docs.php">Documents</a>
+        <a href=<?= L_HOME_FOLDER ?>>Accueil</a>
+        <a href=<?= L_DASHBOARD_FOLDER ?>>Tableau de bord</a>
+        <a href=<?= L_USERAREA_FOLDER ?>>Mon espace</a>
+        <a href=<?= L_DOCUMENTS_FOLDER ?>>Documents</a>
     </nav>
-    <img src="logo-iut.png" alt="Logo IUT" class="logo"> <!-- Logo IUT ajouté ici -->
+    <img src=<?= L_ASSETS_FOLDER."/iut_logo.png" ?> alt="Logo IUT" class="logo"> <!-- Logo IUT ajouté ici -->
 </header>
