@@ -1,30 +1,23 @@
+<?php 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
+    require_once ROOTPATH."/php/util.php";
+    init_php_session();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon espace - Suivi des Stages</title>
-    <link href="../css/style.css" rel="stylesheet">
+
+    <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
    
 </head>
 <body>
 
-    <header id="premier">
-        
-
-    </header>
-
-    
-    <header>
-        <h1>Suivi des Stages</h1>
-        <nav>
-            <a href="PageAccueil (1).html">Accueil</a>
-            <a href="Tableau_Bord.html">Tableau de bord</a>
-            <a href="Espace_UsersV2.html">Mon espace</a>
-	        <a href="Gestion_docs.html">Documents</a>
-        </nav>
-        <img src="logo-iut.png" alt="Logo IUT" class="logo"> <!-- Logo IUT ajouté ici -->
-    </header>
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <main class="main-content">
 
@@ -33,10 +26,11 @@
             <div class="menu">
                 <h2>Espace Utilisateur</h2>
                 <ul>
-                    <li ><a href="javascript:void(0)" onclick="showSection('info')" id="exemple" >Mes Informations</a></li>
-                    <li><a href="javascript:void(0)" onclick="showSection('stages')" id="exemplee">Mes Stages</a></li>
-                    <li><a href="javascript:void(0)" onclick="showSection('infotuteur')" id="tuteur">Mon Tuteur</a></li>
-                    <li><a href="javascript:void(0)" onclick="showSection('infoentreprise')" id="tuteur">Mon Entreprise</a></li>
+                    <li id="nav_info"><a href="javascript:void(0)" onclick="showSection('info')" id="exemple" >Mes Informations</a></li>
+                    <li id="nav_stages"><a href="javascript:void(0)" onclick="showSection('stages')" id="exemplee">Mes Stages</a></li>
+                    <li id="nav_infotuteur"><a href="javascript:void(0)" onclick="showSection('infotuteur')" id="tuteur">Mon Tuteur</a></li>
+                    <li id="nav_infoentreprise"><a href="javascript:void(0)" onclick="showSection('infoentreprise')" id="tuteur">Mon Entreprise</a></li>
+                </ul>
             </div>
         
             
@@ -104,36 +98,13 @@
 
 
     </main>
-    
+
+
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
     
     
  
-    <script>
-        
-        function showSection(sectionId) {
-            
-            
-            var sections = document.querySelectorAll('.infoperso, .infostage, .infotuteur, .infoentreprise');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-                
-            });
+    <script src="../js/userspace.js"></script>
 
-            
-            var selectedSection = document.getElementById(sectionId);
-            selectedSection.style.display = 'block';
-            
-            
-            
-        }
-
-
-    </script>
-
-    <footer>
-
-        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
-
-    </footer>
 </body>
 </html>

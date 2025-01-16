@@ -1,15 +1,22 @@
+<?php 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
+    require_once ROOTPATH."/php/util.php";
+    init_php_session();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi des Stages - Accueil</title>
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/page_acceuil.css" rel="stylesheet">
+    <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
         
 </head>
 <body>
-    <?php require "header.php"; ?>    
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <div class="container">
         
@@ -71,8 +78,8 @@
         </section>
 
     
-        <?php require "footer.php"; ?>    
+        <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
     
-</main>
+    </main>
 </body>
 </html>

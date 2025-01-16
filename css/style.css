@@ -8,8 +8,7 @@ body {
 header {
     background-color: #293358;
     color: #fff;
-    /* padding: 10px 20px; */
-    padding: 0;
+    padding: 10px 20px;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -38,7 +37,7 @@ nav a:hover {
 }
 
 .logo {
-    width: 50px; /* Taille du logo */
+    width: 100px; /* Taille du logo */
     height: auto;
 }
 
@@ -167,6 +166,7 @@ footer {
 }
 .infoperso, .infostage, .infotuteur, .infoentreprise {
     background-color: #ecf0f1;
+    height: 90%;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
