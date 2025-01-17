@@ -1,7 +1,3 @@
-<?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
-<?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,34 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi des Stages - Tableau de Bord</title>
-    <link href="styleeee.css" rel="stylesheet">
+    <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     
 </head>
 <body>
 
-    <header id="premier">
-        
-
-    </header>
-
-    
-    <header>
-        
-        <h1>Suivi des Stages</h1>
-        <nav>
-            <a href="PageAccueil_tuteur.html">Accueil</a>
-            <a href="Tableau_Bord_tuteur.html">Tableau de bord</a>
-            <a href="Espace_UsersV2_tuteur.html">Mon espace</a>
-	        <a href="Gestion_docs_tuteur.html">Documents Rendus</a>
-        </nav>
-        <div class="user-info">
-            <div class="profile">
-                <img src="profile-placeholder.png" alt="Profil utilisateur">
-                <span>Nom Utilisateur</span>
-            </div>
-        </div>
-        <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
-    </header>
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <main class="main-content">
         <section class="section">
@@ -64,8 +39,6 @@
         
     </main>
 
-    <footer>
-        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
-    </footer>
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>
