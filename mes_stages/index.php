@@ -22,27 +22,28 @@
     <main class="main-content">
         <section class="section">
             <h2>Mes Stages</h2>
+            <p>Voici la liste de vos stages :</p>
             <ul class="stage-list">
                 <li class="stage-item">
                     <div>
                         <h3>Stage Développement Web</h3>
                         <span>Entreprise : TechCorp | Juin 2024</span>
                     </div>
-                    <button>Voir Détails</button>
+                    <a href="stage_detail_web.html">Voir Détails</a>
                 </li>
                 <li class="stage-item">
                     <div>
                         <h3>Stage Analyse de Données</h3>
                         <span>Entreprise : DataAnalytica | Décembre 2024</span>
                     </div>
-                    <button>Voir Détails</button>
+                    <a href="stage_detail_data.html">Voir Détails</a>
                 </li>
                 <li class="stage-item">
                     <div>
                         <h3>Stage Sécurité Informatique</h3>
                         <span>Entreprise : SecureTech | Mars 2025</span>
                     </div>
-                    <button>Voir Détails</button>
+                    <a href="stage_detail_security.html">Voir Détails</a>
                 </li>
             </ul>
         </section>
