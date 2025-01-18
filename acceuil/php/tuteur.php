@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi des Stages - Accueil</title>
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-    <link href="css/tuteur.css" rel="stylesheet">
+    <link href=<?= L_HOME_FOLDER."/css/other.css" ?> rel="stylesheet">
     
 </head>
 <body>

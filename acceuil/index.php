@@ -11,5 +11,8 @@
     {
         require_once "php/tuteur.php";
     }
+    else{
+        require_once "php/other.php";
+    }
 
 ?>

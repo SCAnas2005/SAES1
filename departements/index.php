@@ -20,7 +20,7 @@
 
     <main class="main-content">
         <section class="section">
-            <h2>Liste des Départements</h2>
+            <h2>Départements</h2>
             <div class="departments-list">
                 <a href="departement_informatique.html" class="department-link">Département Informatique</a>
                 <a href="departement_sd.html" class="department-link">Département Science des Données</a>
@@ -28,7 +28,6 @@
                 <a href="departement_gea.html" class="department-link">Département GEA</a>
                 <a href="departement_geii.html" class="department-link">Département GEII</a>
                 <a href="departement_reseautelecom.html" class="department-link">Département R&T</a>
-                <!-- Ajouter d'autres départements si nécessaire -->
             </div>
         </section>
     </main>

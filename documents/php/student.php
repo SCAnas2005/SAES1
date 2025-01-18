@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi des Stages - Gestion des Documents</title>
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-    <link href="css/student.css" rel="stylesheet">
+    <link href=<?= L_DOCUMENTS_FOLDER."/css/style.css" ?> rel="stylesheet">
 </head>
 <body>
 <?php require ROOTPATH."/php/header.php"; ?>

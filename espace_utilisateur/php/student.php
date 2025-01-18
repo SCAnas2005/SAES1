@@ -31,12 +31,12 @@
                 
                 <section id="info" class="infoperso">
                     <h1>Mes Informations</h1>
-                    <p><strong>Nom :</strong> <?= $infos["nom"] ?></p>
-                    <p><strong>Prénom :</strong> <?= $infos["prenom"] ?></p>
-                    <p><strong>INE :</strong> <?= $infos["login"] ?></p>
+                    <p><strong>Nom :</strong> <?= $user["nom"] ?></p>
+                    <p><strong>Prénom :</strong> <?= $user["prenom"] ?></p>
+                    <p><strong>INE :</strong> <?= $user["login"] ?></p>
                     <!-- <p><strong>Département :</strong> </p> -->
-                    <p><strong>E-mail :</strong> <?= $infos["email"] ?></p>
-                    <p><strong>Téléphone :</strong> <?= $infos["telephone"] ?></p>
+                    <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
+                    <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
 
                 </section>
         
@@ -44,7 +44,7 @@
                     <h1>Mes Stages</h1>
 
                     <ul>
-                        <li><a href=<?= L_STAGE_FOLDER ?>>Stage 1 : Développement Web - 2024</a></li>
+                        <li><a href=<?= L_STAGE_FOLDER ?>>Stage 1 : <?= $user["mission"] ?></a></li>
                     </ul>
 
                 </section>
@@ -52,10 +52,10 @@
                 <section id="infotuteur" class="infotuteur">
                     <h1>Mon tuteur</h1>
                     
-                    <p><strong>Nom :</strong> </p>
-                    <p><strong>Prénom :</strong> </p>
-                    <p><strong>E-mail :</strong> </p>
-                    <p><strong>Téléphone :</strong> </p>
+                    <p><strong>Nom :</strong> <?= $user["nom_tuteur_stage"] ?></p>
+                    <p><strong>Prénom :</strong> <?= $user["prenom_tuteur_stage"] ?> </p>
+                    <p><strong>E-mail :</strong> <?= $user["email_tuteur_stage"] ?> </p>
+                    <p><strong>Téléphone :</strong> <?= $user["telephone_tuteur_stage"] ?> </p>
                         
                     
                 </section>
@@ -63,12 +63,10 @@
                 <section id="infoentreprise" class="infoentreprise">
                     <h1>Mon Entreprise</h1>
                     
-                    <p><strong>Nom :</strong> </p>
-                    <p><strong>Adresse :</strong> </p>
-                    <p><strong>E-mail :</strong> </p>
-                    <p><strong>Téléphone :</strong> </p>
-                        
-                    
+                    <p><strong>Nom :</strong> <?= $user["nom_entreprise"] ?></p>
+                    <p><strong>Adresse :</strong> <?= $user["adresse_entreprise"] ?></p>
+                    <p><strong>Ville :</strong> <?= $user["ville_entreprise"] ?></p>
+                    <p><strong>Téléphone :</strong> <?= $user["telephone_entreprise"] ?></p>
                 </section>
             
             

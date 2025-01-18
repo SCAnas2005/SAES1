@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi des Stages - Tableau de Bord</title>
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href=<?= L_DASHBOARD_FOLDER."/css/tuteur.css" ?> rel="stylesheet">
     
 </head>
 <body>

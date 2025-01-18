@@ -7,7 +7,12 @@
     $_SESSION["PATHS"] = ["ROOTPATH" => ROOTPATH, "AUTH_FOLDER" => AUTH_FOLDER, "CONFIG_FOLDER" => CONFIG_FOLDER, "DATABASE_FOLDER" => DATABASE_FOLDER];
     $_SESSION["usertype"] = "student";
 
+    $user = Database::search_user("rudiger_marc");
 
-    header("Location: acceuil/");
+    $user = Database::load_all_info($user["id"]);
+    $_SESSION["user"] = $user; 
+
+
+    header("Location: authentification/");
 ?>
 

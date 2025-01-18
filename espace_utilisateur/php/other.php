@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon espace - Suivi des Stages</title>
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href=<?= L_USERAREA_FOLDER."/css/style.css" ?> rel="stylesheet">
    
 </head>
 <body>
@@ -33,6 +33,8 @@
                     <p><strong>Téléphone :</strong> </p>
 
                 </section>
+        
+                
             
             
             </div>
@@ -43,8 +45,6 @@
         <div class="main-content">
         
         <section class="profile-actions">
-            
-            
             <a href="#">Se déconnecter</a>
         
         </section>
@@ -79,6 +79,6 @@
 
     </script>
 
-<?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>

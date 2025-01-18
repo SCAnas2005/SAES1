@@ -1,3 +1,9 @@
+<?php 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
+    require_once ROOTPATH."/php/util.php";
+    init_php_session();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
