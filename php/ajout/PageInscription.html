@@ -83,6 +83,17 @@
             border-radius: 55px;
         }
 
+        #insc{
+            text-align: center;
+          }
+
+          #insc2{
+            text-align: center;
+          }
+          #insc3{
+            text-align: center;
+          }
+
         .Inscription{
             text-align: center;
           }
@@ -176,7 +187,9 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
+        #form{
+          text-align: center;
+        }
         div.button
         {   
             display: flex;
@@ -210,66 +223,78 @@
 <body>
     <header>
         <h1>Suivi des Stages</h1>
-        <section class="user-info">
-            <div class="profile">
-                <img src="profile-placeholder.png" alt="Profil utilisateur">
-            </div>
-        </div>
         <!-- Logo de l'IUT -->
-        <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
+        <img src="assets\iut_logo.png" alt="Logo IUT" class="header-logo">
     </header>
     <main class="main-content">
         <section class="Inscription">
-            <h2>Inscrivez vous</h2>
-            <form action="/SAES1-main/php/PageConnexion.html" method="post">
-                <ul>
-                  <li>
-                    <label for="name">Nom&nbsp;:</label>
-                    <input type="text" id="name" name="user_name" />
-                  </li>
-                  <li>
-                    <label for="pname">Prénom&nbsp;:</label>
-                    <input type="text" id="pname" name="user_pname" />
-                  </li>
-                  <li>
-                    <label for="ename">entreprise&nbsp;:</label>
-                    <input type="text" id="ename" name="user_ename" />
-                  </li>
-                  <li>
-                    <label for="mail">E-mail&nbsp;:</label>
-                    <input type="email" id="mail" name="user_email" />
-                  </li>
-                  <li>
-                    <label for="mdp">Mot de passe&nbsp;:</label>
-                    <input type="password   " id="mdp" name="motdepasse" />
-                  </li>
-                  <li>
-                    <label for="cmdp">Confirmer Mot de passe&nbsp;:</label>
-                    <input type="password" id="cmdp" name="cmotdepasse" />
-                </li>
-                <h2>Qui êtes vous?</h2>
-                  </section>
-                  <section>
-                  <li style="list-style-type:none;" class="choix">
-                    <label for="role">tuteur pédagogique</label>
-                    <input type="radio" id="trole" name="roles" value="tuteurp" checked />
-                    <label for="role">tuteur entreprise</label>
-                    <input type="radio" id="terole" name="roles" value="tuteure" checked />
-                    <label for="role">etudiant</label>
-                    <input type="radio" id="erole" name="roles" value="etudiant" checked />
-                  </li>
-                  <li style="list-style-type:none;" class="choix">
-                      <label for="role">directeur d'étude</label>
-                      <input type="radio" id="drole" name="roles" value="directeur" checked />
-
-                      <label for="role">responsable stage</label>
-                      <input type="radio" id="rrole" name="roles" value="responsable" checked />
-
-                      <label for="role">Chef Département</label>
-                      <input type="radio" id="crole" name="roles" value="chef" checked />
-                  </li>
+            <form action="PageConnexion.html" method="post">
+                <section class="choix">
+                    <h2>Qui êtes vous?</h2>
+                    <label for="role-selection">Choisisez votre role:</label>
+                    <select name="select">
+                            <option value="" selected>--Choisisez votre role--</option>
+                            <option value="tuteur"   onclick="MontreTuteur()">tuteur</option>
+                            <option value="etudiant" onclick="MontreEtudiant()">étudiant</option>
+                            <option value="directeur"onclick="MontreProf()">directeur d'étude</option>
+                            <option value="resp"     onclick="MontreProf()">responsable stage</option>
+                            <option value="chef"     onclick="MontreProf()">Chef Département</option>
+                      </select>
+                    <div>
+                          <ul  id = "insc" style ="display : block;">
+                              <li>
+                                <input type="text" id="name"  placeholder="Nom" />
+                              </li>
+                              <li>
+                                <input type="text" id="pname"  placeholder="Prénom" />
+                              </li>
+                              <li>
+                              <input type="text" id="ename" placeholder="Entreprise ou Université" />
+                            </li>
+                            <li>
+                              <input type="email" id="mail" placeholder = "E-mail" />
+                            </li>
+                            <li>
+                              <input type="password   " id="mdp" placeholder = "Mot de passe" />
+                            </li>
+                            <li>
+                              <input type="password" id="cmdp" placeholder = "Confirmation de mot de passe" />
+                            </ul>
+                            <ul id = "insc2" style ="display : none;">
+                                <li>
+                                  <input type="text" id="name" placeholder="Nom" />
+                                </li>
+                                <li>
+                                  <input type="text" id="pname" placeholder="Prénom" />
+                                </li>
+                                <input type="text" id="ename" placeholder="INE" />
+                              </li>
+                              <li>
+                                <input type="password   " id="mdp" placeholder="Mot de passe" />
+                              </li>
+                              <li>
+                                <input type="password" id="cmdp" placeholder="Confiramtion mot de passe" />
+                              </ul>
+                                <ul  id = "insc3" style ="display : none;">
+                                <li>
+                                  <input type="text" id="name" placeholder="Nom" />
+                                </li>
+                                <li>
+                                  <input type="text" id="pname" placeholder="Prénom" />
+                                </li>
+                              <li>
+                                <input type="email" id="mail" placeholder="E-mail" />
+                              </li>
+                              <li>
+                                <input type="password   " id="mdp" placeholder="Mot de passe" />
+                              </li>
+                              <li>
+                                <input type="password" id="cmdp" placeholder="Confirmation mot de passe" />
+                              </ul>
+                    </div>
                 </ul>
-            </section>
+                <h2>Inscrivez vous</h2>
+                </section>
               <div class="button">
                 <button type="submit">M'inscrire</button>
               </div>
@@ -282,3 +307,24 @@
 
 </body>
 </html>
+<script>
+const t = document.getElementById("insc");
+const e = document.getElementById("insc2");
+const d = document.getElementById("insc3");
+  function MontreTuteur() {
+    t.style.display ='block' ;
+    e.style.display = 'none';
+    d.style.display = 'none';
+  }
+            
+      function MontreEtudiant() {
+        t.style.display ='none' ;
+        e.style.display = 'block';
+        d.style.display = 'none';
+      }
+      function MontreProf() {
+        t.style.display ='none' ;
+        e.style.display = 'none';
+        d.style.display = 'block';
+      }
+</script>
