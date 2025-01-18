@@ -24,7 +24,8 @@ CREATE TABLE Utilisateur(
    UNIQUE(login)
 );
 INSERT INTO Utilisateur
-VALUES (0, "Hadri", "Anas", "haanas2020@gmail.com", "0750011950", "12301162", "$2y$10$7c9cXb3inJRjjppunEoa7eOnuxnIewaeuhk.17SiPsx8t7buqZ796");
+VALUES (2, "Rudiger", "Marc", "marc.rudiger@gmail.com", "0601020305", "none", "$2y$10$7c9cXb3inJRjjppunEoa7eOnuxnIewaeuhk.17SiPsx8t7buqZ796");
+VALUES (1, "Audibert", "Laurent", "laurent.audibert@univ-paris13.fr", "0601020304", "12301163", "$2y$10$7c9cXb3inJRjjppunEoa7eOnuxnIewaeuhk.17SiPsx8t7buqZ796");
 
 CREATE TABLE Entreprise(
    id_Entreprise INT,
@@ -36,6 +37,9 @@ CREATE TABLE Entreprise(
    PRIMARY KEY(id_Entreprise)
 );
 
+INSERT INTO Entreprise
+VALUES (0, "5 rue des tulipes", "75000", "Paris", "", "0102030405");
+
 CREATE TABLE Tuteur_entreprise(
    id INT,
    id_Entreprise INT NOT NULL,
@@ -44,11 +48,20 @@ CREATE TABLE Tuteur_entreprise(
    FOREIGN KEY(id_Entreprise) REFERENCES Entreprise(id_Entreprise)
 );
 
+INSERT INTO Tuteur_entreprise 
+VALUES (2, 0);
+
 CREATE TABLE Etudiant(
    id INT,
+   id_enseignant INT,
    PRIMARY KEY(id),
    FOREIGN KEY(id) REFERENCES Utilisateur(id)
+   FOREIGN KEY(id) REFERENCES Enseignant(id_enseignantw)
 );
+
+
+select * from Utilisateur 
+
 
 CREATE TABLE Secretaire(
    id INT,
@@ -59,6 +72,7 @@ CREATE TABLE Secretaire(
 
 CREATE TABLE Enseignant(
    id INT,
+   id_etudiant INT, 
    Bureau VARCHAR(50),
    PRIMARY KEY(id),
    FOREIGN KEY(id) REFERENCES Utilisateur(id)
@@ -96,6 +110,9 @@ CREATE TABLE Semestre(
    FOREIGN KEY(id) REFERENCES Enseignant(id),
    FOREIGN KEY(annne) REFERENCES annne(annne)
 );
+INSERT INTO Semestre
+VALUES (0, 1, 0, 2025);
+
 
 CREATE TABLE Inscription(
    id_Departement INT,
@@ -107,6 +124,9 @@ CREATE TABLE Inscription(
    FOREIGN KEY(id) REFERENCES Etudiant(id),
    FOREIGN KEY(annne) REFERENCES annne(annne)
 );
+
+INSERT INTO Inscription
+VALUES (0, 1, 0, 2025);
 
 CREATE TABLE Stage(
    id_Departement INT,
@@ -128,6 +148,9 @@ CREATE TABLE Stage(
    FOREIGN KEY(id_2) REFERENCES Enseignant(id),
    FOREIGN KEY(id_3) REFERENCES Tuteur_entreprise(id)
 );
+
+INSERT INTO Stage
+VALUES (0, 1, 0, 2025, 0, "2025-01-24", "2025-03-24", "Créer une application", "2025-04-01", "R201", 0, 0, 0);
 
 CREATE TABLE Action(
    id_Departement INT,

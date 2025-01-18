@@ -50,9 +50,9 @@
         <section class="section">
             <h2>Actions rapides</h2>
             <ul>
-                <li><a href="voir_stages.php">Voir mes stages</a></li>
-                <li><a href="Gestion_docs.php">Déposer un document</a></li>
-                <li><a href="notifications.php">Voir mes notifications</a></li>
+                <li><a href=<?= L_MES_STAGES_FOLDER ?>>Voir mes stages</a></li>
+                <li><a href=<?= L_DOCUMENTS_FOLDER ?>>Déposer un document</a></li>
+                <li><a href=<?= L_MES_STAGES_FOLDER ?>>Voir mes notifications</a></li>
             </ul>
         </section>
     </main>

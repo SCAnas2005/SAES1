@@ -10,7 +10,7 @@
         {
             self::$USERNAME = "root";
             self::$PASSWORD = "";
-            self::$DSN = "mysql:database=sae_gds;host=localhost"; 
+            self::$DSN = "mysql:host=localhost;dbname=sae_gds"; 
             $options = 
             [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", 
@@ -24,6 +24,24 @@
                 echo "PDO connexion failed: " . $th->getMessage(); 
             }
         }
+
+        public static function search_user($username)
+        {
+            if ($username == null)
+            {
+                return false;
+            }
+            $username = self::$PDO->quote(html_entity_decode($username));
+            $sql = "SELECT * FROM utilisateur WHERE login = $username;";
+            $request = self::$PDO->query($sql);
+
+            if ($request)
+            {
+                return $request->fetch();
+            }
+            return false;
+        }
+
     }
     
 

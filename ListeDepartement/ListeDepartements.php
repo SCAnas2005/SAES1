@@ -1,11 +1,18 @@
+<?php 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
+    require_once ROOTPATH."/php/util.php";
+    init_php_session();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Départements - Suivi des Stages</title>
-<link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+    <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 	
 <body>
@@ -19,8 +26,8 @@
                 <a href="departement_sd.html" class="department-link">Département Science des Données</a>
                 <a href="departement_carriere_juridique.html" class="department-link">Département Carrières Juridiques</a>
                 <a href="departement_gea.html" class="department-link">Département GEA</a>
-		<a href="departement_geii.html" class="department-link">Département GEII</a>
-		<a href="departement_reseautelecom.html" class="department-link">Département R&T</a>
+                <a href="departement_geii.html" class="department-link">Département GEII</a>
+                <a href="departement_reseautelecom.html" class="department-link">Département R&T</a>
                 <!-- Ajouter d'autres départements si nécessaire -->
             </div>
         </section>
