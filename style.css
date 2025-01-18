@@ -1,0 +1,315 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image:url("https://www.tourisme93.com/Local/tourisme93/files/10811/universite-paris-13-012.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+        }
+    select{
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: #293358;
+    border-color: #ad947e;
+}
+.form{
+    display: flex;
+    justify-content: center;
+}
+ul{
+    padding-left: 410px; 
+}
+
+form p{
+    color:#ecf0f1;
+}
+#titre{
+    padding-top: 7px;
+    padding-bottom: 0px;
+    color: #ffffff;
+    margin-bottom:-2px ;
+
+}
+ul li{
+    font-size: 40px;
+        width: 500px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #293358;
+    
+}
+ul button{    
+    margin-bottom: 10px;
+    color: #ffffff;
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    background-color: #293358;
+    border-color: #ad947e;
+
+}
+
+form{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    background-color: #293358;
+    margin: 30px;
+    padding-bottom: 80px;
+    border-radius: 5px;
+}
+section button{
+    background-color: #ad947e;
+    color: #293358;
+    border-radius: 15px;
+
+}
+#retry{
+    background-color: #ad947e;
+    color: #293358;
+    border-radius: 15px;
+
+}
+
+section input{
+    margin-bottom: 10px;
+    color: #ffffff;
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    background-color: #293358;
+    border-color: #ad947e;
+}
+section a{
+    margin-bottom: 10px;
+    color: #ad947e;
+    border-radius: 15px;
+
+}
+#conex {
+    display: flex;
+    align-items: flex-start;
+    color: #ad947e;
+    background-color: #fff;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    border: solid;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width:166px;
+    border-left-width:16px;
+
+}
+
+#premier{
+
+    background-color: #ad947e;
+   
+}
+
+#fond {
+    background-color: #293358;
+    color: #fff;
+    font-family: Arial, sans-serif;
+   padding: 5px;
+}
+
+header {
+    background-color: #293358;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #ad947e;
+    color: #293358;
+}
+
+.logo {
+    width: 50px; /* Taille du logo */
+    height: auto;
+}
+
+.main-content {
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-info img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.profile-info h2 {
+    color: #293358;
+}
+
+.profile-info p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+form section {
+    padding-top:5px;
+    margin-top: 5px;
+    margin-left: 64px;
+    margin-right: 50px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    background-color: #ad947e;
+    color: #293358;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.profile-actions a {
+    display: inline-block;
+    background-color: #293358;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.profile-actions a:hover {
+    background-color: #ad947e;
+    color: #293358;
+}
+
+footer {
+    background-color: #293358;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
+.user-space-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.menu {
+    width: 250px;
+    background-color: #293358;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px 0 0 8px;
+}
+.menu h2 {
+    text-align: center;
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+.menu ul li {
+    margin: 15px 0;
+}
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.menu ul li a:hover {
+    background-color: #ad947e;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+.main-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.infoperso, .infostage, .infotuteur, .infoentreprise {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: none;
+}
+.infoperso p  {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.infotuteur p {
+
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+
+.infoentreprise p{
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+
+.infostage ul li {
+    background-color: #bdc3c7;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 5px 0;
+    font-size: 18px;
+}

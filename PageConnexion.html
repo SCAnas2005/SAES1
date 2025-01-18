@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Suivi des Stages - Accueil</title>
+</head>
+<body>
+
+    <div id="fond">
+      <p>Suivi des Stages</p>
+    </div>
+    <div>
+      <ul id="choix">
+        <li id="titre"> Qui êtes vous? </li>
+        <li>
+          <button value="tuteur"   onclick="MontreTuteur()">tuteur</button>
+        </li>
+        <li>
+          <button value="etudiant" onclick="MontreEtudiant()">étudiant</button>
+        </li>
+        <li>
+          <button value="directeur"onclick="MontreProf()">directeur d'étude</button>
+        </li>
+        <li>
+          <button value="resp"     onclick="MontreProf()">responsable stage</button>
+        </li>
+        <li>
+        <button value="chef"     onclick="MontreProf()">Chef Département</button>
+        </li>
+      </ul>
+      </div>
+    <div class="form">
+        <form id="t" action="PageAccueil.html" method="post" style="display: none;">
+          <p id="conex">Connexion</p>
+          <section>
+          <input type="email" placeholder="Email"><br>
+          <input type="password" placeholder="Mot de passe"><br>
+          <button type="submit">Connnexion</button><br>
+          <p>Pas de compte?</p>
+          <a href="PageInscription.html">Inscrivez-vous</a><br>
+          <p>Vous vous êtes trompé de rôle?</p>
+          <input id="retry" type="button" value="retour" onclick="retour()" />            
+        </section> 
+          </form>
+
+          <form id="e" action="PageAccueil.html" method="post" style="display: none;">
+            <p id="conex">Connexion</p>
+            <section>
+            <input type="text" placeholder="INE"><br>
+            <input type="password" placeholder="Mot de passe"><br>
+            <button type="submit">Connnexion</button><br>      
+            <p >Pas de compte?</p>
+            <a href="PageInscription.html">Inscrivez-vous</a><br>
+            <p>Vous vous êtes trompé de rôle?</p>
+              <input id="retry" type="button" value="retour" onclick="retour()" />            
+            </section> 
+            </form>
+
+            <form id="d" action="PageAccueil.html" method="post" style="display: none;">
+              <p id="conex">Connexion</p>
+              <section>
+              <input type="email" placeholder="Email"><br>
+              <input type="password" placeholder="Mot de passe"><br>
+              <button type="submit">Connnexion</button><br>      
+              <p>Pas de compte?</p>
+              <a href="PageInscription.html">Inscrivez-vous</a><br>
+              <p>Vous vous êtes trompé de rôle?</p>
+              <input id="retry" type="button" value="retour" onclick="retour()" />
+            </section>     
+            </form>
+          </div>
+</body>
+</html>
+<script>
+    const t = document.getElementById("t");
+    const e = document.getElementById("e");
+    const d = document.getElementById("d");
+    const c = document.getElementById("choix");
+
+      function MontreTuteur() {
+        t.style.display ='block' ;
+        e.style.display = 'none';
+        d.style.display = 'none';
+        c.style.display = 'none';
+      }
+                
+          function MontreEtudiant() {
+            t.style.display ='none' ;
+            e.style.display = 'block';
+            d.style.display = 'none';
+            c.style.display = 'none';
+          }
+
+          function MontreProf() {
+            t.style.display ='none' ;
+            e.style.display = 'none';
+            d.style.display = 'block';
+            c.style.display = 'none';
+          }
+
+          function retour(){
+            c.style.display = 'block';
+            t.style.display ='none' ;
+            e.style.display = 'none';
+            d.style.display = 'none';
+          }
+        
+    </script>
