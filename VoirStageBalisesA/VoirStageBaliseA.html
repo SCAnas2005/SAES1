@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voir mes Stages - Suivi des Stages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #293358;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center; /* Aligne les onglets au centre */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #ad947e;
+            color: #293358;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .main-content {
+            padding: 20px;
+            background-color: #ffffff;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            background-color: #293358;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .stage-list {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .stage-item {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .stage-item:hover {
+            background-color: #ad947e;
+            color: white;
+        }
+
+        .stage-item h3 {
+            margin: 0;
+            color: #293358;
+        }
+
+        .stage-item span {
+            color: #555;
+        }
+
+        .stage-item a {
+            background-color: #293358;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .stage-item a:hover {
+            background-color: #ad947e;
+            color: white;
+        }
+
+        footer {
+            background-color: #293358;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
+        <h1>Suivi des Stages</h1>
+        <nav>
+            <a href="accueil.html">Accueil</a>
+            <a href="tableau_de_bord.html">Tableau de bord</a>
+            <a href="mon_espace.html">Mon espace</a>
+            <a href="gestion_documents.html">Documents</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="section">
+            <h2>Mes Stages</h2>
+            <p>Voici la liste de vos stages :</p>
+            <ul class="stage-list">
+                <li class="stage-item">
+                    <div>
+                        <h3>Stage Développement Web</h3>
+                        <span>Entreprise : TechCorp | Juin 2024</span>
+                    </div>
+                    <a href="stage_detail_web.html">Voir Détails</a>
+                </li>
+                <li class="stage-item">
+                    <div>
+                        <h3>Stage Analyse de Données</h3>
+                        <span>Entreprise : DataAnalytica | Décembre 2024</span>
+                    </div>
+                    <a href="stage_detail_data.html">Voir Détails</a>
+                </li>
+                <li class="stage-item">
+                    <div>
+                        <h3>Stage Sécurité Informatique</h3>
+                        <span>Entreprise : SecureTech | Mars 2025</span>
+                    </div>
+                    <a href="stage_detail_security.html">Voir Détails</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
+    </footer>
+</body>
+</html>
