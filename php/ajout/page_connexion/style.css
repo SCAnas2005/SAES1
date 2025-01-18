@@ -27,18 +27,18 @@ form p{
 }
 #titre{
     padding-top: 7px;
-    padding-bottom: 0px;
+    padding-bottom: 5px;
     color: #ffffff;
     margin-bottom:-2px ;
 
 }
 ul li{
-    font-size: 40px;
+    font-size: 30px;
         width: 500px;
     display: flex;
     justify-content: center;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
     background-color: #293358;
     
 }

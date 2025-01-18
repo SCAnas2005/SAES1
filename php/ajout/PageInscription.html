@@ -236,9 +236,9 @@
                             <option value="" selected>--Choisisez votre role--</option>
                             <option value="tuteur"   onclick="MontreTuteur()">tuteur</option>
                             <option value="etudiant" onclick="MontreEtudiant()">étudiant</option>
-                            <option value="directeur"onclick="MontreProf()">directeur d'étude</option>
-                            <option value="resp"     onclick="MontreProf()">responsable stage</option>
-                            <option value="chef"     onclick="MontreProf()">Chef Département</option>
+                            <option value="Enseignant"     onclick="MontreSecretaire()">Enseignant</option>
+                            <option value="secretaire"     onclick="MontreSecretaire()">Secretaire</option>
+                            <option value="chef"     onclick="MontreAutre()">Chef Département</option>
                       </select>
                     <div>
                           <ul  id = "insc" style ="display : block;">
@@ -249,7 +249,7 @@
                                 <input type="text" id="pname"  placeholder="Prénom" />
                               </li>
                               <li>
-                              <input type="text" id="ename" placeholder="Entreprise ou Université" />
+                              <input type="text" id="ename" placeholder="Entreprise" />
                             </li>
                             <li>
                               <input type="email" id="mail" placeholder = "E-mail" />
@@ -291,6 +291,27 @@
                               <li>
                                 <input type="password" id="cmdp" placeholder="Confirmation mot de passe" />
                               </ul>
+
+                              <ul  id = "insc4" style ="display : none;">
+                                <li>
+                                  <input type="text" id="name" placeholder="Nom" />
+                                </li>
+                                <li>
+                                  <input type="text" id="pname" placeholder="Prénom" />
+                                </li>
+                                <li>
+                                  <input type="text" id="pname" placeholder="Bureau" />
+                                </li>
+                              <li>
+                                <input type="email" id="mail" placeholder="E-mail" />
+                              </li>
+                              <li>
+                                <input type="password   " id="mdp" placeholder="Mot de passe" />
+                              </li>
+                              <li>
+                                <input type="password" id="cmdp" placeholder="Confirmation mot de passe" />
+                              </ul>
+
                     </div>
                 </ul>
                 <h2>Inscrivez vous</h2>
@@ -311,20 +332,34 @@
 const t = document.getElementById("insc");
 const e = document.getElementById("insc2");
 const d = document.getElementById("insc3");
+const s = document.getElementById("insc4");
+
   function MontreTuteur() {
     t.style.display ='block' ;
     e.style.display = 'none';
     d.style.display = 'none';
+    s.style.display = 'none';
   }
             
       function MontreEtudiant() {
         t.style.display ='none' ;
         e.style.display = 'block';
         d.style.display = 'none';
+        s.style.display = 'none';
+
       }
-      function MontreProf() {
+      function MontreAutre() {
         t.style.display ='none' ;
         e.style.display = 'none';
         d.style.display = 'block';
+        s.style.display = 'none';
+
+      }
+      function MontreSecretaire() {
+        t.style.display ='none' ;
+        e.style.display = 'none';
+        d.style.display = 'none';
+        s.style.display = 'block';
+
       }
 </script>
