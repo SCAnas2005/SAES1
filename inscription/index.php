@@ -34,6 +34,7 @@
             Database::add_user($infos, $role);
 
             //return to connexion
+            header("Location: ".L_LOGIN_FOLDER);
         }
         
     }

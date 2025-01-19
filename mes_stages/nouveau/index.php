@@ -9,6 +9,11 @@
     $tuteurs = Database::get_all_tuteur_entreprise();
     $tuteurs_peda = Database::get_all_profs();
 
+    if ($_SESSION["has_stage"])
+    {
+        header("Location: ".L_MES_STAGES_FOLDER);
+    }
+
     if (isset($_POST["entreprise"]))
     {
         $stagename = $_POST["titre"];
@@ -99,6 +104,7 @@
                         <option value=<?= $tuteur["id"] ?>><?= $tuteur["prenom"]." ".$tuteur["nom"] ?></option>
                     <?php endforeach; ?>
                 </select>
+
                 <label for="jury-2">Deuxième jury</label>
                 <select id="jury-2" name="jury-2">
                     <option value="" disabled selected hidden>Choisir un tuteur de stage</option>

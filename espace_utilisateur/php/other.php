@@ -1,3 +1,9 @@
+<?php 
+    if ($_SESSION["has_stage"])
+    {
+    }
+    $user = $data["userinfo"];
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon espace - Suivi des Stages</title>
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-    <link href=<?= L_USERAREA_FOLDER."/css/style.css" ?> rel="stylesheet">
    
 </head>
 <body>
@@ -26,15 +31,14 @@
             <div class="main-content">
                 
                 <section id="info" class="infoperso">
-                    <h1>Mes Informations</h1>
-                    <p><strong>Nom :</strong> </p>
-                    <p><strong>Prénom :</strong> </p>
-                    <p><strong>E-mail :</strong> </p>
-                    <p><strong>Téléphone :</strong> </p>
+                <h1>Mes Informations</h1>
+                    <p><strong>Nom :</strong> <?= $user["nom"] ?></p>
+                    <p><strong>Prénom :</strong> <?= $user["prenom"] ?></p>
+                    <!-- <p><strong>Département :</strong> </p> -->
+                    <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
+                    <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
 
                 </section>
-        
-                
             
             
             </div>
@@ -45,6 +49,8 @@
         <div class="main-content">
         
         <section class="profile-actions">
+            
+            
             <a href="#">Se déconnecter</a>
         
         </section>
@@ -57,28 +63,8 @@
     
     
  
-    <script>
-        
-        function showSection(sectionId) {
-            
-            
-            var sections = document.querySelectorAll('.infoperso, .infostage, .infotuteur, .infoentreprise');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-                
-            });
+    <script src="../js/userspace.js"></script>
 
-            
-            var selectedSection = document.getElementById(sectionId);
-            selectedSection.style.display = 'block';
-            
-            
-            
-        }
-
-
-    </script>
-
-    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
+<?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>

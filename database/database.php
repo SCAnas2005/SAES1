@@ -79,6 +79,16 @@
                         JOIN Utilisateur u ON e.id = u.id
                         WHERE u.login = $login;";
                 $request = self::execute_sql($sql);
+                return $request;
+        }
+
+        public static function search_enseignant($login)
+        {
+            $login = self::get_sql_syntax($login);
+            // echo $login; exit;
+            $sql = " select * from utilisateur join enseignant using (id) where login = $login;";
+            $request = self::execute_sql($sql);
+            return $request;
         }
 
         public static function search_user($login, $role=null)
@@ -100,7 +110,9 @@
                 return self::search_tuteur_entreprise($login);
             } else if ($role == "tuteur_pedagogique"){
                 return self::search_tuteur_pedagogique($login);
-            }  else{
+            } else if ($role == "prof") {
+                return self::search_enseignant($login);
+            } else{
                 return false;
             }
             
@@ -441,19 +453,20 @@
             VALUES (1, 1, $id, 2025);
 
             INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, id_1, id_2, id_3)
-            VALUES (1, 1, $id, 2025, $date_debut, $date_fin, $titre, $description, $taches, $date_soutenance, $salle_soutenance, $tuteur_pedagogique, $jury2, $tuteur_stage);
+            VALUES (1, 1, $id, 2025, $date_debut, $date_fin, $titre, $description, $taches, $date_soutenance, $salle_soutenance, $tuteur_pedagogique, $jury2, $tuteur_stage);";
+            self::execute_sql($sql);
 
-            SET @id_stage = LAST_INSERT_ID();";
+            $id_stage = self::$PDO->lastInsertId();
 
             for ($i = 1; $i < 5; $i++)
             {
-                $sql.="
-                SET @date_realisation = DATE_ADD(CURDATE(), INTERVAL (SELECT delaiEnJours FROM TypeAction WHERE id_TypeAction = $i) DAY);
+                $sql = "SET @date_realisation = DATE_ADD(CURDATE(), INTERVAL (SELECT delaiEnJours FROM TypeAction WHERE id_TypeAction = $i) DAY);
                 INSERT INTO Action (id_Departement, numSemestre, id, annee, id_Stage, date_realisation, id_1)
-                VALUES(1, 1, $id, 2025, @id_stage, @date_realisation, $i, $id);";
+                VALUES(1, 1, $id, 2025, $id_stage, @date_realisation, $i, $id);";
+                
+                self::execute_sql($sql);
             }
             // echo "<pre>".$sql."</pre>";exit;
-            self::execute_sql($sql);
         }
 
         public static function get_all_entreprises()
@@ -468,7 +481,7 @@
         {
             $nom = self::get_sql_syntax($infos["nom"]);
             $prenom = self::get_sql_syntax($infos["prenom"]);
-            $email =self::get_sql_syntax( $infos["email"]);
+            $email = self::get_sql_syntax( $infos["email"]);
             $telephone = self::get_sql_syntax($infos["tel"]);
             $login = self::get_sql_syntax($infos["login"]);
             $pw = self::$PDO->quote(password_hash($infos["password"], PASSWORD_BCRYPT));

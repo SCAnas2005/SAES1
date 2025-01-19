@@ -12,10 +12,12 @@
         header("Location: ".L_LOGIN_FOLDER);
     }
 
+    $user = $_SESSION["data"]["userinfo"];
+    // echo "<pre>"; print_r($user); echo "</pre>";exit;
+    
     if ($_SESSION["usertype"] == "student")
     {
         // $user = Database::load_all_info($user["id"]);
-        $user = $_SESSION["data"]["userinfo"];
         $stages = Database::get_stage_from_user($user["id"]);
         $_SESSION["data"]["stages"] = [];
         

@@ -19,6 +19,7 @@
         $password = $_POST["password"];
         $role = $_POST["role"];
         $user = Database::search_user($login, $role);
+        // print_r($user);exit;
         if ($user == null or count($user) == 0 or !password_verify($password, $user["motdepasse"]))
         {
             $incorect_password = "Le login ou le mot de passe sont incorrect";

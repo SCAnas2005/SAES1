@@ -1,8 +1,8 @@
 CREATE TABLE Utilisateur (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   nom VARCHAR(50) UNIQUE,
-   prenom VARCHAR(50) UNIQUE,
-   email VARCHAR(50) UNIQUE,
+   nom VARCHAR(50) ,
+   prenom VARCHAR(50) ,
+   email VARCHAR(50) ,
    telephone VARCHAR(20),
    login VARCHAR(50) UNIQUE,
    motdepasse VARCHAR(50)  

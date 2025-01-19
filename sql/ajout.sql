@@ -144,7 +144,7 @@ SET @last_user_id = LAST_INSERT_ID();
 INSERT INTO Enseignant (id, Bureau)
 VALUES (@last_user_id, "R202");
 
--- Tuteur
+-- Tuteur d'entreprise
 INSERT INTO Utilisateur (nom, prenom, email, telephone, login, motdepasse)
 VALUES ('Dupont', 'Jean', 'jean.dupont@example.com', '0601020306', 'jean_dupont', SHA2('motdepasse', 256));
 SET @last_user_id = LAST_INSERT_ID();
