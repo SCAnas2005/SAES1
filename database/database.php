@@ -349,9 +349,19 @@
             return $req;
         }
 
+        public static function get_all_students()
+        {   
+            $sql = "select * from utilisateur join etudiant using (id);";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
 
-
-
+        public static function get_all_departements()
+        {   
+            $sql = "select * from departement;";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
 
 
 

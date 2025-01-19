@@ -3,6 +3,7 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
+    $students = $_SESSION["data"]["students"];
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
     {
         header("Location: /");
@@ -32,20 +33,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Dupont</td>
-                    <td>Jean</td>
-                    <td><a href="details_stage.html" class="details-button">Détails stage</a></td>
-                </tr>
-                <tr>
-                    <td>Lemoine</td>
-                    <td>Sophie</td>
-                    <td><a href="details_stage.html" class="details-button">Détails stage</a></td>
-                </tr>
+                <?php foreach ($students as $student): ?>
+                    <tr>
+                        <td><?= $student["nom"] ?></td>
+                        <td><?= $student["prenom"] ?></td>
+                        <td><a href="" class="details-button">Détails stage</a></td>
+                    </tr>
+                <?php endforeach; ?>
                 <!-- Ajouter d'autres étudiants ici -->
             </tbody>
         </table>
-        <a href="index.html">Retour à la liste des départements</a>
+        <a href="">Retour à la liste des départements</a>
     </main>
 
    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>

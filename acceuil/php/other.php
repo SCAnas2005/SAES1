@@ -1,3 +1,8 @@
+<?php 
+    $student_count = count($_SESSION["data"]["students"]);
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,7 +26,7 @@
         <section>
             <h2>Vos Notifications</h2>
             <ul>
-                <li>METTRE LES NOTIFS</li>
+                <li>AUCUNE NOTIFICATION POUR LE MOMENT</li>
             </ul>
             
         </section>
@@ -34,17 +39,17 @@
         
         <section>
             <h2>Mes Etudiants</h2>
-            <p>Vous avez TOTAL etudiants dans votre promotions.</p>
-            <button><a href="promo.html">Voir ma promotion</a></button>
+            <p>Vous avez <?= $student_count ?> etudiants dans votre promotions.</p>
+            <a href=<?= L_STUDENTS_FOLDER ?>>Voir ma promotion</a>
         </section>
 
        
-        <section>
+        <!-- <section>
             <h2>Document reçus</h2>
             <form action="upload_document.php" method="post" enctype="multipart/form-data">
                 <p>METTRE LES DOCS RECUS</p>
             </form>
-        </section>
+        </section> -->
     </div>
 
         

@@ -3,6 +3,7 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
+    $deps = $_SESSION["data"]["departements"];
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +23,10 @@
         <section class="section">
             <h2>Départements</h2>
             <div class="departments-list">
-                <a href="departement_informatique.html" class="department-link">Département Informatique</a>
-                <a href="departement_sd.html" class="department-link">Département Science des Données</a>
-                <a href="departement_carriere_juridique.html" class="department-link">Département Carrières Juridiques</a>
-                <a href="departement_gea.html" class="department-link">Département GEA</a>
-                <a href="departement_geii.html" class="department-link">Département GEII</a>
-                <a href="departement_reseautelecom.html" class="department-link">Département R&T</a>
+                <?php foreach ($deps as $dep): ?>
+                    <a href="" class="department-link">Département <?= $dep["libelle"] ?></a>
+                <?php endforeach; ?>
+
             </div>
         </section>
     </main>

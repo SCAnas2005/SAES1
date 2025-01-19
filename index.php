@@ -46,7 +46,7 @@
             $_SESSION["has_stage"] = false;
         }
     }
-    else{
+    else if ($_SESSION["usertype"] == "student"){
         $stages = Database::get_stage_from_tuteur_entreprise($user["id"]);
         $_SESSION["data"]["stages"] = [];
     
@@ -73,7 +73,13 @@
         }else{
             $_SESSION["has_stage"] = false;
         }
-    }   
+    }else{
+        $students = Database::get_all_students();
+        $_SESSION["data"]["students"] = $students;
+
+        $deps = Database::get_all_departements();
+        $_SESSION["data"]["departements"] = $deps;
+    }
     
 
     header("Location: ".L_HOME_FOLDER);
