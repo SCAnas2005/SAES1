@@ -1,3 +1,9 @@
+<?php 
+    if ($_SESSION["has_stage"])
+    {
+    }
+    $user = $data["userinfo"];
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,11 +31,12 @@
             <div class="main-content">
                 
                 <section id="info" class="infoperso">
-                    <h1>Mes Informations</h1>
-                    <p><strong>Nom :</strong> </p>
-                    <p><strong>Prénom :</strong> </p>
-                    <p><strong>E-mail :</strong> </p>
-                    <p><strong>Téléphone :</strong> </p>
+                <h1>Mes Informations</h1>
+                    <p><strong>Nom :</strong> <?= $user["nom"] ?></p>
+                    <p><strong>Prénom :</strong> <?= $user["prenom"] ?></p>
+                    <!-- <p><strong>Département :</strong> </p> -->
+                    <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
+                    <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
 
                 </section>
             
@@ -56,27 +63,7 @@
     
     
  
-    <script>
-        
-        function showSection(sectionId) {
-            
-            
-            var sections = document.querySelectorAll('.infoperso, .infostage, .infotuteur, .infoentreprise');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-                
-            });
-
-            
-            var selectedSection = document.getElementById(sectionId);
-            selectedSection.style.display = 'block';
-            
-            
-            
-        }
-
-
-    </script>
+    <script src="../js/userspace.js"></script>
 
 <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>

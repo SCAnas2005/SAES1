@@ -110,9 +110,10 @@
     font-size: 24px;
     margin-bottom: 20px;
 }
-.infoperso, .infostage, .infotuteur, .infoentreprise {
+.infoperso, .infostage, .infotuteur, .infotuteurpeda, .infoentreprise {
     background-color: #ecf0f1;
     padding: 20px;
+    height: 90%;
     border-radius: 8px;
     margin-bottom: 30px;
     display: none;
@@ -122,11 +123,18 @@
     font-size: 18px;
 }
 
-.infotuteur p {
+.infotuteur p, .infotuteurpeda p {
 
     margin: 5px 0;
     font-size: 18px;
 }
+
+.infotuteurpeda p {
+
+    margin: 5px 0;
+    font-size: 18px;
+}
+
 
 
 .infoentreprise p{

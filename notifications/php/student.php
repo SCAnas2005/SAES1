@@ -1,3 +1,9 @@
+<?php 
+
+    $notifications = Database::get_notifications($user["id"]);
+    print_r($notifications);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications - Suivi des Stages</title>
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href=<?= L_NOTIFICATIONS_FOLDER."/css/style.css" ?> rel="stylesheet">
 </head>
 <body>
  <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>

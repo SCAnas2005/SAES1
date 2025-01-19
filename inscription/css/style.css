@@ -1,40 +1,33 @@
-
-section {
-    margin-bottom: 20px;
-    flex: 1; /* Les sections occupent chacune un espace égal */
+.main-content {
     padding: 20px;
-    margin: 20px auto;
     background-color: #ffffff;
-    border: 2px solid #ccc;
+    margin: 20px auto;
+    max-width: 1200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    max-width: 1200px; /* Largeur maximale du conteneur */
-}
-    
-    
-
-.container {
-    display: flex; /* Utilisation de Flexbox */
-    justify-content: space-between; /* Ajout d'un espace visible entre les éléments */
-    gap: 20px; /* Espace entre les deux éléments */
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 1800px; /* Largeur maximale du conteneur */
 }
 
+.section {
+    margin-bottom: 20px;
+}
 
-
-
-section h2 {
-    background-color: #293358;
-    color: white;
+.section h2 {
+    background-color: #ffcc00;
+    color: #002060;
     padding: 10px;
     border-radius: 5px;
 }
 
-section a
-{
-    text-align: right;
+.connexion{
+    text-align: center;
+    
+  }
+
+.connexion h2 {
+    background-color: #ad947e;      
+    color: #293358;
+    padding: 4px;
+    border-radius: 55px;
 }
 
 .user-info {
@@ -58,7 +51,7 @@ section a
 
 .user-info .profile span {
     font-size: 1.2em;
-    color: #293358;
+    color: #002060;
 }
 
 form {
@@ -76,15 +69,14 @@ form input, form textarea {
 
 form button {
     padding: 10px;
-    background-color: #293358;
+    background-color: #ffcc00;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: white;
 }
 
 form button:hover {
-    background-color: #ad947e;
+    background-color: #ff9900;
 }
 
 ul {

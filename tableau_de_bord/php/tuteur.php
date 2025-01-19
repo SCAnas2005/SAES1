@@ -1,3 +1,17 @@
+<?php 
+    $data = $_SESSION["data"];
+    $stages = $data["stages"];
+    $students = [];
+    for ($i = 0; $i < count($stages); $i++)
+    {
+        $stage = $stages[$i];
+        $students[$i] = $stage["student"];
+    }
+    $document_recu = 0;
+
+    if (isset($_POST["submit"]))
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,18 +36,21 @@
             
             <div class="summary-box">
                 <h3>Documents reçus</h3>
-                <p>3 documents reçus</p>
-                <span class="status">Validés</span>
+                <p><?= $document_recu ?> documents reçus</p>
+                <!-- <span class="status">Validés</span> -->
             </div>
         
         </section>
         
+
         <section class="section">
-            <div class="document-item">
-                  <p> Etudiants : <strong> NOM prenom </strong></p> 
-                  <a href="#">Voir les details du stage </a> 
-            </div>
-            </section>
+            <?php for ($i = 0; $i < count($students); $i++): ?>
+                <div class="document-item">
+                    <p> Etudiant : <strong> <?= $students[$i]["prenom"]." ".$students[$i]["nom"] ?> </strong></p> 
+                    <a href=<?= L_STAGE_FOLDER."/index.php?id=".$stage["infostage"]["id"] ?>>Voir les détails du stages</a>
+                </div>
+            <?php endfor; ?>
+        </section>
 
         
     </main>

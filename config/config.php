@@ -3,6 +3,7 @@
     define("AUTH_FOLDER", ROOTPATH."/Authentification");
     define("CONFIG_FOLDER", ROOTPATH."/config");
     define("DATABASE_FOLDER", ROOTPATH."/database");
+    define ("DOCS_FOLDER", ROOTPATH."/docs");
     // define("USERAREA_FOLDER", ROOTPATH."espace_utilisateur");
     define("L_USERAREA_FOLDER", "/"."espace_utilisateur");
     define("L_DASHBOARD_FOLDER", "/"."tableau_de_bord");
@@ -14,7 +15,11 @@
     define ("L_STAGE_FOLDER", "/"."espace_utilisateur/stage");
     define ("L_DEPARTMENTS_FOLDER", "/"."departements");
     define ("L_STUDENTS_FOLDER", "/"."mes_etudiants");
-
+    define ("L_NOTIFICATIONS_FOLDER", "/"."notifications");
+    define ("L_LOGIN_FOLDER", "/"."authentification");
+    define ("L_SIGNUP_FOLDER", "/"."inscription");
+    
+    
 
     $DBUSERNAME = "root";
     $DBPASSWORD = "";

@@ -5,6 +5,7 @@
 
     if ($_SESSION["usertype"] == "student")
     {
+        include "php/doc_managment.php";
         require_once "php/student.php";
     }
     else if ($_SESSION["usertype"] == "tuteur")

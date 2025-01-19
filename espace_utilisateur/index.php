@@ -3,8 +3,13 @@
     require_once ROOTPATH."/php/util.php";
     require_once DATABASE_FOLDER."/database.php";
     init_php_session();
-    $user = $_SESSION["user"];
 
+    if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
+    {
+        header("Location: /");
+    }
+
+    $data = $_SESSION["data"];
 
     if ($_SESSION["usertype"] == "student")
     {

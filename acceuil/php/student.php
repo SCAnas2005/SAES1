@@ -1,3 +1,11 @@
+<?php 
+    $stage_number = 0;
+    if ($_SESSION["has_stage"])
+    {
+        $stage_number = count($_SESSION["data"]["stages"]);
+    }
+?>  
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,15 +27,14 @@
         </section>
 
        
-        <section>
+        <!-- <section>
             <h2>Vos Notifications</h2>
             <ul>
                 <li>Votre rapport de stage a été validé par le tuteur.</li>
                 <li>Le stage chez XYZ commence le 15 janvier.</li>
                 <li>Un nouveau message vous attend dans votre espace.</li>
             </ul>
-            
-        </section>
+        </section> -->
     </div>
       
 
@@ -37,7 +44,7 @@
         
         <section>
             <h2>Mes Stages</h2>
-            <p>Vous avez 2 stages en cours. Dernière mise à jour : <span id="last-update">15 septembre 2024</span></p>
+            <p>Vous avez <?= $stage_number ?> stages en cours</p>
             <button><a href=<?= L_MES_STAGES_FOLDER ?>>Voir mes stages</a></button>
         </section>
 
@@ -47,7 +54,7 @@
             <form action="upload_document.php" method="post" enctype="multipart/form-data">
                 <label for="document">Choisir un fichier :</label>
                 <input type="file" id="document" name="document" required>
-                <button type="submit">Soumettre</button>
+                <a href=<?= L_DOCUMENTS_FOLDER ?>>Voir mes documents</a>
             </form>
         </section>
     </div>

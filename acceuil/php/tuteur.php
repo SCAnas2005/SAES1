@@ -23,14 +23,14 @@
         </section>
 
        
-        <section>
+        <!-- <section>
             <h2>Vos Notifications</h2>
             <ul>
                 <li>NOM PRENOM a rendu son rapport</li>
                 <li>Un nouveau message vous attend dans votre espace.</li>
             </ul>
             
-        </section>
+        </section> -->
     </div>
       
 

@@ -3,6 +3,26 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
+    $data = $_SESSION["data"];
+    $stages = $data["stages"];
+
+    $output_tab = [];
+    foreach ($stages as $stage) {
+        $student_id = $stage["student"]["id"];
+        array_push($output_tab, [$stage, get_user_docs($student_id)]);
+    }
+
+    if (isset($_POST["download"]))
+    {
+        $_SESSION["download_file"] = $_POST["download"];
+        header("Location: ". L_DOCUMENTS_FOLDER."/php/download.php");
+    }
+
+    if (isset($_POST["remove"]))
+    {
+        $_SESSION["remove_file"] = $_POST["remove"];
+        header("Location: ". L_DOCUMENTS_FOLDER."/php/remove.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +44,7 @@
             
             <div class="document-item">
             
-                <p>Dans cet espace vous pouvez consultez et gérez les documents associés à vos stagiaires. <br>
+                <p>Dans cet espace vous pouvez consultez les documents associés à vos stagiaires. <br>
                 Vous pouvez également télécharger de nouveaux documents.</p>
             
             </div>
@@ -34,20 +54,23 @@
 
         <section class="section document-list">
             <h3>Documents Rendus</h3>
-            <div class="document-item">
-                <span>Rapport de Stage - Juin 2024</span>
-                <div>
-                    <button class="form-button" onclick="window.location.href='download-link'">Télécharger</button>
-                    <button class="form-button" onclick="alert('Document supprimé')">Supprimer</button>
-                </div>
-            </div>
-            <div class="document-item">
-                <span>Convention de Stage - Décembre 2023</span>
-                <div>
-                    <button class="form-button" onclick="window.location.href='download-link'">Télécharger</button>
-                    <button class="form-button" onclick="alert('Document supprimé')">Supprimer</button>
-                </div>
-            </div>
+            <?php foreach ($output_tab as $tab): ?>
+                <p><?= $tab[0]["student"]["prenom"]." ".$tab[0]["student"]["nom"]?></p>
+                <?php if (count($tab[1]) > 0): ?>
+                    <?php foreach ($tab[1] as $doc): ?>
+                        <div class="document-item">
+                            <span><?= basename($doc) ?></span>
+                            <div>
+                                <form method="post">
+                                    <button class="form-button" name="download" value=<?= $doc ?>>Télécharger</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>0 document</p>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </section>
     </main>
 

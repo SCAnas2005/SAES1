@@ -37,8 +37,7 @@ CREATE TABLE Tuteur_entreprise (
 
 CREATE TABLE Etudiant (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   id_enseignant INT,
-   FOREIGN KEY (id_enseignant) REFERENCES Utilisateur(id)
+   FOREIGN KEY (id) REFERENCES Utilisateur(id)
 );
 
 CREATE TABLE Secretaire (
@@ -49,9 +48,8 @@ CREATE TABLE Secretaire (
 
 CREATE TABLE Enseignant (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   id_etudiant INT,
    Bureau VARCHAR(50),
-   FOREIGN KEY (id_etudiant) REFERENCES Etudiant(id)
+   FOREIGN KEY (id) REFERENCES Utilisateur(id)
 );
 
 CREATE TABLE Administrateur (
@@ -96,8 +94,8 @@ CREATE TABLE Inscription (
    FOREIGN KEY (annee) REFERENCES Annee(annee)
 );
 
--- INSERT INTO Inscription (id_Departement, numSemestre, id, annee)
--- VALUES (1, 1, 1, 2025);
+INSERT INTO Inscription
+VALUES (1, 1, id, 2025);
 
 CREATE TABLE Stage (
    id_Departement INT,
@@ -107,9 +105,11 @@ CREATE TABLE Stage (
    id_Stage INT AUTO_INCREMENT PRIMARY KEY,
    date_debut DATE,
    date_fin DATE,
-   mission VARCHAR(50),
+   titre VARCHAR(50),
    date_soutenance DATE,
    salle_soutenance VARCHAR(50),
+   taches TEXT,
+   description VARCHAR(100),
    id_1 INT,
    id_2 INT NOT NULL,
    id_3 INT NOT NULL,
@@ -120,8 +120,10 @@ CREATE TABLE Stage (
 );
 
 
--- INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, mission, date_soutenance, salle_soutenance, id_1, id_2, id_3)
--- VALUES (1, 1, 1, 2025, '2025-01-24', '2025-03-24', 'Créer une application', '2025-04-01', 'R201', 1, 1, 1);
+INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, id_1, id_2, id_3)
+VALUES (1, 1, 1, 2025, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, tuteur_enseignant_1, tuteur_enseignant_2, tuteur_stage);
+
+
 
 CREATE TABLE TypeAction (
    id_TypeAction INT AUTO_INCREMENT PRIMARY KEY,
@@ -149,6 +151,12 @@ CREATE TABLE Action (
    FOREIGN KEY (id_TypeAction) REFERENCES TypeAction(id_TypeAction),
    FOREIGN KEY (id_1) REFERENCES Utilisateur(id)
 );
+
+INSERT INTO Action (id_Departement, numSemestre, id, anne, id_Stage, date_realisation, id_1)
+VALUES(1, 1, id, 2025, id_stage, date_realisation, 1, id),
+      (1, 1, id, 2025, id_stage, date_realisation, 2, id),
+      (1, 1, id, 2025, id_stage, date_realisation, 3, id),
+      (1, 1, id, 2025, id_stage, date_realisation, 4, id);
 
 CREATE TABLE Intervient (
    id_Departement INT,

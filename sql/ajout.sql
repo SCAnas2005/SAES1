@@ -101,3 +101,52 @@ VALUES
     (1, 1, 1),  -- Secrétaire 1 gère le département informatique, semestre 1
     (2, 2, 2);  -- Secrétaire 2 gère le département mathématiques, semestre 2
 
+
+
+
+
+INSERT INTO typeaction
+VALUES
+  (2, 'Prise de contact entreprise', 1, 'tuteur entreprise', 14, 'Début du stage', 0, NULL),
+  (3, 'Planification de la soutenance', 1, 'jury', 21, 'Début du stage', 0, NULL),
+  (4, 'Dépôt du rapport de stage', 1, 'tuteur entreprise-jury', 14, 'Début du stage', 1, NULL);
+
+
+
+
+INSERT INTO Inscription
+VALUES (1, 1, id, 2025);
+
+INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, id_1, id_2, id_3)
+VALUES (1, 1, 1, 2025, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, tuteur_enseignant_1, tuteur_enseignant_2, tuteur_stage);
+
+INSERT INTO Action (id_Departement, numSemestre, id, anne, id_Stage, date_realisation, id_1)
+VALUES(1, 1, id, 2025, id_stage, date_realisation, 1, id),
+      (1, 1, id, 2025, id_stage, date_realisation, 2, id),
+      (1, 1, id, 2025, id_stage, date_realisation, 3, id),
+      (1, 1, id, 2025, id_stage, date_realisation, 4, id);
+
+
+
+
+-- Ajouter un étudiant
+INSERT INTO Utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Dupont', 'Jean', 'jean.dupont@example.com', '0601020306', 'jean_dupont', SHA2('motdepasse', 256));
+SET @last_user_id = LAST_INSERT_ID();
+INSERT INTO Etudiant (last_user_id)
+VALUES (@last_user_id);
+
+
+-- AJOUTER un prof
+INSERT INTO Utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Dupont', 'Jean', 'jean.dupont@example.com', '0601020306', 'jean_dupont', SHA2('motdepasse', 256));
+SET @last_user_id = LAST_INSERT_ID();
+INSERT INTO Enseignant (id, Bureau)
+VALUES (@last_user_id, "R202");
+
+-- Tuteur
+INSERT INTO Utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Dupont', 'Jean', 'jean.dupont@example.com', '0601020306', 'jean_dupont', SHA2('motdepasse', 256));
+SET @last_user_id = LAST_INSERT_ID();
+INSERT INTO Enseignant (id, Bureau)
+VALUES (@last_user_id, "R202");

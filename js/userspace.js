@@ -33,6 +33,6 @@ function showSection(sectionId) {
     }
     
 
-}
+}   
 
 showSection("info");

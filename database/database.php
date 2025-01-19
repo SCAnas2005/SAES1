@@ -27,7 +27,13 @@
 
         public static function get_sql_syntax($text)
         {
-            return self::$PDO->quote(html_entity_decode($text));
+            $res = self::$PDO->quote(htmlspecialchars($text));
+            return $res;
+        }
+
+        public static function decode_html($text)
+        {
+            return html_entity_decode($text);
         }
 
         public static function execute_sql($sql)
@@ -40,17 +46,64 @@
             return false;
         }
 
-        public static function search_user($login)
+        public static function execute_sql_all($sql)
         {
-            if ($login == null or $login == "")
+            $request = self::$PDO->query($sql);
+            if ($request)
             {
+                return $request->fetchall();
+            }
+            return false;
+        }
+
+        public static function search_student($login)
+        {
+            $login = self::get_sql_syntax($login);
+            $sql = "SELECT * FROM utilisateur JOIN Etudiant USING (id) WHERE login = $login;";
+            $request = self::execute_sql($sql);
+            return $request;
+        }
+        public static function search_tuteur_entreprise($login)
+        {
+            $login = self::get_sql_syntax($login);
+            $sql = "SELECT * FROM utilisateur JOIN Tuteur_entreprise USING (id) WHERE login = $login;";
+            $request = self::execute_sql($sql);
+            return $request;
+        }
+        public static function search_tuteur_pedagogique($login)
+        {
+            $login = self::get_sql_syntax($login);
+                $sql = "SELECT u.*
+                        FROM Stage s
+                        JOIN Enseignant e ON s.id_1 = e.id
+                        JOIN Utilisateur u ON e.id = u.id
+                        WHERE u.login = $login;";
+                $request = self::execute_sql($sql);
+        }
+
+        public static function search_user($login, $role=null)
+        {
+            if ($role == null)
+            {
+                if ($login == null or $login == "")
+                {
+                    return false;
+                }
+                $login = self::get_sql_syntax($login);
+                $sql = "SELECT * FROM utilisateur WHERE login = $login;";
+                $request = self::execute_sql($sql);
+
+                return $request;
+            }else if ($role == "student"){
+                return self::search_student($login);
+            } else if ($role == "tuteur_entreprise"){
+                return self::search_tuteur_entreprise($login);
+            } else if ($role == "tuteur_pedagogique"){
+                return self::search_tuteur_pedagogique($login);
+            }  else{
                 return false;
             }
-            $login = self::get_sql_syntax($login);
-            $sql = "SELECT * FROM utilisateur WHERE login = $login;";
-            $request = self::execute_sql($sql);
-
-            return $request;
+            
         }
 
         public static function load_all_info($id)
@@ -62,10 +115,17 @@
                 u.telephone as telephone,
                 u.email as email,
                 u.login as login,
+                t1.id as id_tuteur_enseignant_1,
                 t1.nom AS nom_tuteur_enseignant_1,
                 t1.prenom AS prenom_tuteur_enseignant_1,
+                t1.email as email_tuteur_enseignant_1,
+                t1.telephone as telephone_tuteur_enseignant_1,
+                t2.id as id_tuteur_enseignant_2,
                 t2.nom AS nom_tuteur_enseignant_2,
                 t2.prenom AS prenom_tuteur_enseignant_2,
+                t2.email as email_tuteur_enseignant_2,
+                t2.telephone as telephone_tuteur_enseignant_2,
+                te.id as id_tuteur_stage,
                 te.nom AS nom_tuteur_stage,
                 te.prenom AS prenom_tuteur_stage,
                 te.telephone as telephone_tuteur_stage,
@@ -74,24 +134,373 @@
                 ent.adresse AS adresse_entreprise,
                 ent.ville AS ville_entreprise,
                 ent.tel AS telephone_entreprise,
-                s.id_Stage, s.date_debut, s.date_fin, s.mission, s.date_soutenance, s.salle_soutenance
+                s.id_Stage, s.date_debut, s.date_fin, s.titre, s.taches, s.description, s.date_soutenance, s.salle_soutenance
                 FROM
                     Etudiant e
                 JOIN Utilisateur u ON e.id = u.id
-                JOIN Stage s ON e.id = s.id
-                JOIN Enseignant en1 ON s.id_1 = en1.id
-                JOIN Enseignant en2 ON s.id_2 = en2.id
-                JOIN Utilisateur t1 ON en1.id = t1.id
-                JOIN Utilisateur t2 ON en2.id = t2.id
-                JOIN Tuteur_entreprise tec ON s.id_3 = tec.id
-                JOIN Utilisateur te ON tec.id = te.id
-                JOIN Entreprise ent ON tec.id_Entreprise = ent.id_Entreprise
+                LEFT JOIN Stage s ON e.id = s.id
+                LEFT JOIN Enseignant en1 ON s.id_1 = en1.id
+                LEFT JOIN Enseignant en2 ON s.id_2 = en2.id
+                LEFT JOIN Utilisateur t1 ON en1.id = t1.id
+                LEFT JOIN Utilisateur t2 ON en2.id = t2.id
+                LEFT JOIN Tuteur_entreprise tec ON s.id_3 = tec.id
+                LEFT JOIN Utilisateur te ON tec.id = te.id
+                LEFT JOIN Entreprise ent ON tec.id_Entreprise = ent.id_Entreprise
                 WHERE e.id = $id;
             ";
             $request = self::execute_sql($sql);
-
             return $request;
         }
 
+        public static function get_stage_from_user($userid)
+        {
+            $sql = "SELECT 
+                s.*
+            FROM 
+                Stage s
+            JOIN 
+                Inscription i ON s.id_Departement = i.id_Departement AND s.numSemestre = i.numSemestre AND s.id = i.id AND s.annee = i.annee
+            WHERE 
+                i.id = $userid; ";
+
+            $req = self::execute_sql_all($sql);
+
+            // print_r($req);exit;
+            return $req;
+        }
+
+        public static function get_tuteur_from_stage($userid, $stageid)
+        {
+            $sql = "SELECT 
+                        tuteur_entreprise.id AS tuteur_id,
+                        u.nom AS tuteur_nom,
+                        u.prenom AS tuteur_prenom,
+                        u.email AS tuteur_email,
+                        u.telephone AS tuteur_tel
+                    FROM 
+                        Stage s
+                    JOIN 
+                        Inscription i ON s.id_Departement = i.id_Departement 
+                                    AND s.numSemestre = i.numSemestre 
+                                    AND s.id = i.id 
+                                    AND s.annee = i.annee
+                    JOIN 
+                        Tuteur_entreprise tuteur_entreprise ON s.id_3 = tuteur_entreprise.id
+                    JOIN 
+                        Entreprise e ON tuteur_entreprise.id_Entreprise = e.id_Entreprise
+                    JOIN 
+                        Utilisateur u ON u.id = e.id_Entreprise
+                    WHERE 
+                        s.id_Stage = $stageid;
+            ";  
+
+            $req = self::execute_sql($sql);
+
+            // print_r($req);
+            return $req;
+        }
+
+        public static function get_tuteur_pedagogique_from_stage($userid, $stageid)
+        {
+            $sql = "SELECT 
+                u.id AS tuteur_pedagogique_id,
+                u.nom AS tuteur_pedagogique_nom,
+                u.prenom AS tuteur_pedagogique_prenom,
+                u.email AS tuteur_pedagogique_email,
+                u.telephone AS tuteur_pedagogique_tel
+                FROM 
+                    Stage s
+                JOIN 
+                    Utilisateur u ON u.id = s.id_1
+                WHERE 
+                    s.id_Stage = $stageid;
+                ";
+
+            $req = self::execute_sql($sql);
+
+            // print_r($req);
+            return $req;
+        }
+
+        public static function get_entreprise_from_stage($userid, $stageid)
+        {
+            $sql = "SELECT 
+                e.id_Entreprise AS entreprise_id,
+                e.nom AS entreprise_nom,
+                e.adresse AS entreprise_adresse,
+                e.code_postal AS entreprise_code_postal,
+                e.ville AS entreprise_ville,
+                e.indicationVisite AS entreprise_indicationVisite,
+                e.tel AS entreprise_tel
+                FROM 
+                    Stage s
+                JOIN 
+                    Inscription i ON s.id_Departement = i.id_Departement 
+                                AND s.numSemestre = i.numSemestre 
+                                AND s.id = i.id 
+                                AND s.annee = i.annee
+                JOIN 
+                    Tuteur_entreprise tuteur_entreprise ON s.id_3 = tuteur_entreprise.id
+                JOIN 
+                    Entreprise e ON tuteur_entreprise.id_Entreprise = e.id_Entreprise
+                WHERE 
+                    s.id_Stage = $stageid;
+                ";
+
+            $req = self::execute_sql($sql);
+
+            // print_r($req);exit;
+            return $req;
+        }
+
+
+        public static function get_jury_from_stage($userid, $stageid)
+        {
+            $sql = "SELECT 
+                e1.id AS enseignant_1_id,
+                u1.nom AS enseignant_1_nom,
+                u1.prenom AS enseignant_1_prenom,
+                u1.email AS enseignant_1_email,
+                u1.telephone AS enseignant_1_tel,
+                e2.id AS enseignant_2_id,
+                u2.nom AS enseignant_2_nom,
+                u2.prenom AS enseignant_2_prenom,
+                u2.email AS enseignant_2_email,
+                u2.telephone AS enseignant_2_tel
+                FROM 
+                    Stage s
+                JOIN 
+                    Enseignant e1 ON e1.id = s.id_1
+                JOIN 
+                    Utilisateur u1 ON u1.id = e1.id
+                JOIN 
+                    Enseignant e2 ON e2.id = s.id_2
+                JOIN 
+                    Utilisateur u2 ON u2.id = e2.id
+                WHERE 
+                    s.id_Stage = $stageid;
+            ";
+
+            $req = self::execute_sql_all($sql);
+
+            // print_r($req);exit;
+            echo $stageid;
+            return $req;
+        }
+
+
+
+
+
+
+
+
+        public static function get_stage_from_tuteur_entreprise($id)
+        {
+            $sql = "SELECT 
+                s.*
+            FROM 
+                Stage s
+            JOIN 
+                Tuteur_entreprise te ON s.id_3 = te.id_Entreprise
+            WHERE 
+                te.id = $id;  ";
+
+            $req = self::execute_sql_all($sql);
+
+            // print_r($req);
+            return $req;
+        }
+
+
+        public static function get_students_from_stage($id, $stageid)
+        {
+            $sql = "SELECT 
+                    u.*
+                FROM 
+                    Stage s
+                JOIN 
+                    Tuteur_entreprise te ON s.id_3 = te.id_Entreprise
+                JOIN 
+                    Inscription i ON s.id = i.id
+                JOIN 
+                    Etudiant e ON i.id = e.id
+                JOIN 
+                    Utilisateur u ON e.id = u.id
+                WHERE 
+                    s.id_Stage = $stageid;  
+                ";
+
+            $req = self::execute_sql($sql);
+
+            // print_r($req);
+            return $req;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static function get_notifications($userid)
+        {
+            $sql = "SELECT
+                    a.id_Action,
+                    a.date_realisation,
+                    a.lienDocument,
+                    ta.libelle AS type_action_libelle,
+                    ta.Executant,
+                    ta.Destinataire,
+                    ta.delaiEnJours,
+                    ta.ReferenceDelai,
+                    ta.requiertDoc,
+                    ta.LienModeleDoc
+                FROM
+                    Action a
+                JOIN
+                    TypeAction ta ON a.id_TypeAction = ta.id_TypeAction
+                WHERE
+                    a.id_1 = $userid;
+            ";
+
+            $req = self::execute_sql($sql);
+            return $req;
+        }
+
+
+        public static function get_all_tuteur_entreprise()
+        {
+            $sql = "SELECT
+                    Utilisateur.id,
+                    Utilisateur.nom,
+                    Utilisateur.prenom
+                FROM
+                    Tuteur_entreprise
+                INNER JOIN
+                    Utilisateur ON Tuteur_entreprise.id = Utilisateur.id;
+            ";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+        public static function get_all_profs()
+        {
+            $sql = "SELECT
+                    Utilisateur.id,
+                    Utilisateur.nom,
+                    Utilisateur.prenom
+                FROM
+                    enseignant
+                INNER JOIN
+                    Utilisateur ON enseignant.id = Utilisateur.id;
+            ";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+        public static function add_stage($userinfo, $infos)
+        {
+            $id = $userinfo["id"];
+            $titre = self::get_sql_syntax($infos["titre"]);
+            $entreprise_nom = self::get_sql_syntax($infos["entreprise"]);
+            $entreprise_adresse = self::get_sql_syntax($infos["entreprise_adresse"]);
+            $entreprise_ville = self::get_sql_syntax($infos["entreprise_ville"]);
+            $entreprise_codepostal = self::get_sql_syntax($infos["entreprise_codepostal"]);
+            $entreprise_email = self::get_sql_syntax($infos["entreprise_email"]);
+            $entreprise_tel = self::get_sql_syntax($infos["entreprise_tel"]);
+
+
+            $date_debut = self::get_sql_syntax($infos["date_debut"]);
+            $date_fin = self::get_sql_syntax($infos["date_fin"]);
+
+            $salle_soutenance = self::get_sql_syntax($infos["salle_soutenance"]);
+            $date_soutenance = self::get_sql_syntax($infos["date_soutenance"]);
+
+            $tuteur_stage = self::get_sql_syntax($infos["tuteur_stage"]);
+            $tuteur_pedagogique = self::get_sql_syntax($infos["tuteur_pedagogique"]);
+            $jury2 = self::get_sql_syntax($infos["jury2"]);
+
+            $description = self::get_sql_syntax($infos["description"]);
+            $taches = self::get_sql_syntax($infos["taches"]);
+
+            $jury2 = $infos["jury2"];
+
+            // echo $id;  echo "<pre>";print_r($infos);echo "</pre>";exit;
+
+            $sql = "INSERT INTO Inscription
+            VALUES (1, 1, $id, 2025);
+
+            INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, id_1, id_2, id_3)
+            VALUES (1, 1, $id, 2025, $date_debut, $date_fin, $titre, $description, $taches, $date_soutenance, $salle_soutenance, $tuteur_pedagogique, $jury2, $tuteur_stage);
+
+            SET @id_stage = LAST_INSERT_ID();";
+
+            for ($i = 1; $i < 5; $i++)
+            {
+                $sql.="
+                SET @date_realisation = DATE_ADD(CURDATE(), INTERVAL (SELECT delaiEnJours FROM TypeAction WHERE id_TypeAction = $i) DAY);
+                INSERT INTO Action (id_Departement, numSemestre, id, annee, id_Stage, date_realisation, id_1)
+                VALUES(1, 1, $id, 2025, @id_stage, @date_realisation, $i, $id);";
+            }
+            // echo "<pre>".$sql."</pre>";exit;
+            self::execute_sql($sql);
+        }
+
+        public static function get_all_entreprises()
+        {
+            $sql = "select * from entreprise;";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }       
+
+
+        public static function add_user($infos, $role=null)
+        {
+            $nom = self::get_sql_syntax($infos["nom"]);
+            $prenom = self::get_sql_syntax($infos["prenom"]);
+            $email =self::get_sql_syntax( $infos["email"]);
+            $telephone = self::get_sql_syntax($infos["tel"]);
+            $login = self::get_sql_syntax($infos["login"]);
+            $pw = self::$PDO->quote(password_hash($infos["password"], PASSWORD_BCRYPT));
+            if ($role == "tuteur_entreprise")
+            {
+                $entreprise_id = $infos["choix_entreprise"];
+            }
+            // echo "<pre>";
+            // print_r($infos);
+            // echo "</pre>";exit;
+            $sql = "INSERT INTO Utilisateur (nom, prenom, email, telephone, login, motdepasse)
+            VALUES ($nom, $prenom, $email, $telephone, $login, $pw);";
+
+            $sql .= "SET @last_user_id = LAST_INSERT_ID();";
+            if ($role == "student")
+            {
+                $sql .= "INSERT INTO Etudiant (id)
+                VALUES (@last_user_id);";"";
+            }else if ($role == "tuteur_entreprise")
+            {
+                $sql .= "INSERT INTO Tuteur_entreprise (id)
+                VALUES (@last_user_id, $entreprise_id);";"";
+            }else{
+                $sql .= "INSERT INTO Enseignant (id)
+                VALUES (@last_user_id);";
+            }
+            
+            self::execute_sql($sql);
+        }
+
     }
+
+
+    
 ?>

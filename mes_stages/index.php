@@ -4,7 +4,15 @@
     require_once DATABASE_FOLDER."/database.php";
     init_php_session();
 
+    if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
+    {
+        header("Location: /");
+    }
 
+    $data = $_SESSION["data"];
+    $stages = $data["stages"];
+    $n = count($stages);
+    
 ?>
 
 <!DOCTYPE html>
@@ -22,30 +30,22 @@
     <main class="main-content">
         <section class="section">
             <h2>Mes Stages</h2>
-            <p>Voici la liste de vos stages :</p>
-            <ul class="stage-list">
-                <li class="stage-item">
-                    <div>
-                        <h3>Stage Développement Web</h3>
-                        <span>Entreprise : TechCorp | Juin 2024</span>
-                    </div>
-                    <a href="stage_detail_web.html">Voir Détails</a>
-                </li>
-                <li class="stage-item">
-                    <div>
-                        <h3>Stage Analyse de Données</h3>
-                        <span>Entreprise : DataAnalytica | Décembre 2024</span>
-                    </div>
-                    <a href="stage_detail_data.html">Voir Détails</a>
-                </li>
-                <li class="stage-item">
-                    <div>
-                        <h3>Stage Sécurité Informatique</h3>
-                        <span>Entreprise : SecureTech | Mars 2025</span>
-                    </div>
-                    <a href="stage_detail_security.html">Voir Détails</a>
-                </li>
-            </ul>
+            <?php if($n > 0): ?>
+                <ul class="stage-list">
+                    <?php foreach($stages as $stage): ?>
+                        <li class="stage-item">
+                            <div>
+                                <h3><?= $stage["infostage"]["titre"] ?></h3>
+                                <span>Entreprise : <?= $stage["entreprise"]["entreprise_nom"] ?> | <?= $stage["infostage"]["date_debut"] ?></span>
+                            </div>
+                            <a href=<?= L_USERAREA_FOLDER."/stage"?>>Voir Détails</a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p> Vous n'avez actuellement pas de stage </p>
+            <?php endif; ?>
+            <a href=<?= L_MES_STAGES_FOLDER . "/nouveau" ?>>Ajouter un stage</a>
         </section>
     </main>
 

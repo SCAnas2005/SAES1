@@ -3,6 +3,11 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
+    if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
+    {
+        header("Location: /");
+    }
+
     if ($_SESSION["usertype"] == "student")
     {
         require_once "php/student.php";
