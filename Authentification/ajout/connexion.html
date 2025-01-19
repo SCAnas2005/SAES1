@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Connexion</title>
+    <link href="connexion.css" rel="stylesheet">
+   
+</head>
+
+
+
+    <header>
+        <h1>Suivi des Stages</h1>
+        <nav>
+            
+        </nav>
+        <img src="logo-iut.png" alt="Logo IUT" class="logo"> <!-- Logo IUT ajouté ici -->
+    </header>
+
+<body>
+    <div class="containerinscription">
+        <div id="role-selection">
+            <h1>Bienvenue</h1>
+            <p>Choisissez votre rôle pour continuer :</p>
+            <button class="bouton-student" onclick="connexion('eleve')">Étudiant</button>
+        <button class="bouton-teacher" onclick="connexion('prof')">Enseignant</button>
+        <button class="bouton-chef" onclick="connexion('chef')">Chef de Département</button>
+        <button class="bouton-tuteurent" onclick="connexion('tuteurent')">Tuteur entreprise</button>
+        <button class="bouton-tuteurpeda" onclick="connexion('tuteurpeda')">Tuteur pédagogique</button>
+        <p><strong>Pas encore de compte ? </strong> <a href="inscription.html"><button>Inscrivez-vous</button></a></p> 
+        </div>
+
+        <form id="student-login" class="hidden">
+            <h2>Connexion Étudiant</h2>
+            <input type="text" placeholder="INE" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit" class="submit-bouton">Se Connecter</button>
+            <button type="button" class="bouton-return" onclick="retour()">Retour</button>
+        </form>
+
+        <form id="teacher-login" class="hidden">
+            <h2>Connexion Professeur</h2>
+            <input type="text" placeholder="Identifiant" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit" class="submit-bouton">Se Connecter</button>
+            <button type="button" class="bouton-return" onclick="retour()">Retour</button>
+        </form>
+
+        <form id="chef-login" class="hidden">
+            <h2>Connexion Chef de département</h2>
+            <input type="text" placeholder="Identifiant" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit" class="submit-bouton">Se Connecter</button>
+            <button type="button" class="bouton-return" onclick="retour()">Retour</button>
+        </form>
+
+        <form id="tuteurent-login" class="hidden">
+            <h2>Connexion Tuteur entreprise</h2>
+            <input type="text" placeholder="Identifiant" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit" class="submit-bouton">Se Connecter</button>
+            <button type="button" class="bouton-return" onclick="retour()">Retour</button>
+        </form>
+
+        <form id="tuteurpeda-login" class="hidden">
+            <h2>Connexion Tuteur pédagogique</h2>
+            <input type="text" placeholder="Identifiant" required>
+            <input type="password" placeholder="Mot de passe" required>
+            <button type="submit" class="submit-bouton">Se Connecter</button>
+            <button type="button" class="bouton-return" onclick="retour()">Retour</button>
+        </form>
+    </div>
+
+    <script>
+        function connexion(role) {
+            document.getElementById('role-selection').classList.add('hidden');
+            document.getElementById('student-login').classList.add('hidden');
+            document.getElementById('teacher-login').classList.add('hidden');
+            document.getElementById('chef-login').classList.add('hidden');
+            document.getElementById('tuteurpeda-login').classList.add('hidden');
+            document.getElementById('tuteurent-login').classList.add('hidden');
+
+            if (role === 'eleve') {
+                document.getElementById('student-login').classList.remove('hidden');
+            } else if (role === 'prof') {
+                document.getElementById('teacher-login').classList.remove('hidden');
+            }
+            else if (role === 'chef') {
+                document.getElementById('chef-login').classList.remove('hidden');
+            }
+            else if (role === 'tuteurent') {
+                document.getElementById('tuteurent-login').classList.remove('hidden');
+            }
+            else if (role === 'tuteurpeda') {
+                document.getElementById('tuteurpeda-login').classList.remove('hidden');
+            }
+        }
+
+        function retour() {
+            document.getElementById('role-selection').classList.remove('hidden');
+            document.getElementById('student-login').classList.add('hidden');
+            document.getElementById('teacher-login').classList.add('hidden');
+            document.getElementById('teacher-login').classList.add('hidden');
+            document.getElementById('chef-login').classList.add('hidden');
+            document.getElementById('tuteurpeda-login').classList.add('hidden');
+            document.getElementById('tuteurent-login').classList.add('hidden');
+        }
+    </script>
+
+
+<footer>
+    <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
+</footer>
+
+</body>
+</html>
