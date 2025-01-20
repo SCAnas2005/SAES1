@@ -4,24 +4,29 @@
     init_php_session();
 
     $data = $_SESSION["data"];
-    $stages = $data["stages"];
-
-    $output_tab = [];
-    foreach ($stages as $stage) {
-        $student_id = $stage["student"]["id"];
-        array_push($output_tab, [$stage, get_user_docs($student_id)]);
-    }
-
-    if (isset($_POST["download"]))
+    $stages = [];
+    if (isset($_SESSION["has_stage"]))
     {
-        $_SESSION["download_file"] = $_POST["download"];
-        header("Location: ". L_DOCUMENTS_FOLDER."/php/download.php");
-    }
+        $stages = $data["stages"];
+    
+        $output_tab = [];
+        foreach ($stages as $stage) {
+            $student_id = $stage["student"]["id"];
+            array_push($output_tab, [$stage, get_user_docs($student_id)]);
+        }
+    
+        if (isset($_POST["download"]))
+        {
+            $_SESSION["download_file"] = $_POST["download"];
+            header("Location: ". L_DOCUMENTS_FOLDER."/php/download.php");
+        }
+    
+        if (isset($_POST["remove"]))
+        {
+            $_SESSION["remove_file"] = $_POST["remove"];
+            header("Location: ". L_DOCUMENTS_FOLDER."/php/remove.php");
+        }
 
-    if (isset($_POST["remove"]))
-    {
-        $_SESSION["remove_file"] = $_POST["remove"];
-        header("Location: ". L_DOCUMENTS_FOLDER."/php/remove.php");
     }
 ?>
 
@@ -54,23 +59,27 @@
 
         <section class="section document-list">
             <h3>Documents Rendus</h3>
-            <?php foreach ($output_tab as $tab): ?>
-                <p><?= $tab[0]["student"]["prenom"]." ".$tab[0]["student"]["nom"]?></p>
-                <?php if (count($tab[1]) > 0): ?>
-                    <?php foreach ($tab[1] as $doc): ?>
-                        <div class="document-item">
-                            <span><?= basename($doc) ?></span>
-                            <div>
-                                <form method="post">
-                                    <button class="form-button" name="download" value=<?= $doc ?>>Télécharger</button>
-                                </form>
+            <?php if (count($stages) > 0): ?>
+                <?php foreach ($output_tab as $tab): ?>
+                    <p><?= $tab[0]["student"]["prenom"]." ".$tab[0]["student"]["nom"]?></p>
+                    <?php if (count($tab[1]) > 0): ?>
+                        <?php foreach ($tab[1] as $doc): ?>
+                            <div class="document-item">
+                                <span><?= basename($doc) ?></span>
+                                <div>
+                                    <form method="post">
+                                        <button class="form-button" name="download" value=<?= $doc ?>>Télécharger</button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>0 document</p>
-                <?php endif; ?>
-            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>0 document</p>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Il n'y a aucun document</p>
+            <?php endif;?>
         </section>
     </main>
 

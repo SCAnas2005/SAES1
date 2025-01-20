@@ -1,7 +1,4 @@
 <?php 
-    if ($_SESSION["has_stage"])
-    {
-    }
     $user = $data["userinfo"];
 ?>
 <!DOCTYPE html>
@@ -51,7 +48,7 @@
         <section class="profile-actions">
             
             
-            <a href="#">Se déconnecter</a>
+            <a href="/php/deconnexion.php">Deconnexion</a>
         
         </section>
         

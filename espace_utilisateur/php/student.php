@@ -2,7 +2,7 @@
     
     $user = $data["userinfo"];
     
-    if ($_SESSION["has_stage"])
+    if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"])
     {
         $stages = $data["stages"];
         $tuteur_entreprise = $data["current_stage"]["tuteur_entreprise"];

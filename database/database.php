@@ -67,6 +67,7 @@
         {
             $login = self::get_sql_syntax($login);
             $sql = "SELECT * FROM utilisateur JOIN Tuteur_entreprise USING (id) WHERE login = $login;";
+            // echo $sql;exit;
             $request = self::execute_sql($sql);
             return $request;
         }
@@ -93,6 +94,7 @@
 
         public static function search_user($login, $role=null)
         {
+
             if ($role == null)
             {
                 if ($login == null or $login == "")
@@ -504,21 +506,25 @@
             // echo "</pre>";exit;
             $sql = "INSERT INTO Utilisateur (nom, prenom, email, telephone, login, motdepasse)
             VALUES ($nom, $prenom, $email, $telephone, $login, $pw);";
-
-            $sql .= "SET @last_user_id = LAST_INSERT_ID();";
+            self::execute_sql($sql);
+            $last_user_id = self::$PDO->lastInsertId();
             if ($role == "student")
             {
-                $sql .= "INSERT INTO Etudiant (id)
-                VALUES (@last_user_id);";"";
+                $sql = "INSERT INTO Etudiant (id)
+                VALUES ($last_user_id);";"";
             }else if ($role == "tuteur_entreprise")
             {
-                $sql .= "INSERT INTO Tuteur_entreprise (id)
-                VALUES (@last_user_id, $entreprise_id);";"";
+                $sql = "INSERT INTO Tuteur_entreprise (id)
+                VALUES ($last_user_id, $entreprise_id);";"";
             }else{
-                $sql .= "INSERT INTO Enseignant (id)
-                VALUES (@last_user_id);";
+                $sql = "INSERT INTO Enseignant (id)
+                VALUES ($last_user_id);";
             }
-            
+
+            // echo "<pre>";
+            // echo $sql;
+            // echo "</pre>";exit;
+
             self::execute_sql($sql);
         }
 

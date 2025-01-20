@@ -1,11 +1,15 @@
 <?php 
     $data = $_SESSION["data"];
-    $stages = $data["stages"];
+
     $students = [];
-    for ($i = 0; $i < count($stages); $i++)
+    if (isset($_SESSION["has_stage"]))
     {
-        $stage = $stages[$i];
-        $students[$i] = $stage["student"];
+        $stages = $data["stages"];
+        for ($i = 0; $i < count($stages); $i++)
+        {
+            $stage = $stages[$i];
+            $students[$i] = $stage["student"];
+        }
     }
     $document_recu = 0;
 
@@ -44,12 +48,17 @@
         
 
         <section class="section">
-            <?php for ($i = 0; $i < count($students); $i++): ?>
-                <div class="document-item">
-                    <p> Etudiant : <strong> <?= $students[$i]["prenom"]." ".$students[$i]["nom"] ?> </strong></p> 
-                    <a href=<?= L_STAGE_FOLDER."/index.php?id=".$stage["infostage"]["id"] ?>>Voir les détails du stages</a>
-                </div>
-            <?php endfor; ?>
+            <?php if (count($students) > 0): ?>
+                <?php for ($i = 0; $i < count($students); $i++): ?>
+                    <div class="document-item">
+                        <p> Etudiant : <strong> <?= $students[$i]["prenom"]." ".$students[$i]["nom"] ?> </strong></p> 
+                        <a href=<?= L_STAGE_FOLDER."/index.php?id=".$stage["infostage"]["id"] ?>>Voir les détails du stages</a>
+                    </div>
+                <?php endfor; ?>
+            
+            <?php else: ?>
+                <p>Vous n'avez pas d'étudiant</p>
+            <?php endif; ?>
         </section>
 
         

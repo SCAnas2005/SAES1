@@ -1,4 +1,13 @@
-
+<?php 
+    $stages = [];
+    $data = $_SESSION["data"];
+    if (isset($_SESSION["has_stage"]))
+    {
+        $stages = $data["stages"];
+    }
+    
+    $n_stages = count($stages);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -40,8 +49,8 @@
         
         <section>
             <h2>Mes Stagiaires</h2>
-            <p>Vous avez 2 stages en cours. Dernière mise à jour : <span id="last-update">15 septembre 2024</span></p>
-            <button><a href="Espace_UsersV2.html">Voir mes Stagiaires</a></button>
+            <p>Vous avez <?= $n_stages ?> stages en cours</p>
+            <button><a href=<?= L_DASHBOARD_FOLDER ?>>Voir mes Stagiaires</a></button>
         </section>
 
        

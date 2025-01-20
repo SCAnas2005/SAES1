@@ -1,7 +1,4 @@
 <?php 
-    if ($_SESSION["has_stage"])
-    {
-    }
     $user = $data["userinfo"];
 ?>
 <!DOCTYPE html>

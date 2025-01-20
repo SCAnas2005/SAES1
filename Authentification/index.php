@@ -28,6 +28,10 @@
             $_SESSION["logged"] = true;
             $_SESSION["data"]["userinfo"] = $user;
             $_SESSION["usertype"] = $role;
+            if ($role == "tuteur_entreprise" or $role == "tuteur_pedagogique")
+            {
+                $_SESSION["usertype"] = "tuteur";
+            }
             header("Location: /");
         }
     }

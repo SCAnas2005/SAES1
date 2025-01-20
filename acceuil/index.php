@@ -5,7 +5,8 @@
 
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
     {
-        header("Location: /");
+        
+        header("Location: ".L_LOGIN_FOLDER);
     }
 
     if ($_SESSION["usertype"] == "student")

@@ -14,7 +14,7 @@
 
     $user = $_SESSION["data"]["userinfo"];
     // echo "<pre>"; print_r($user); echo "</pre>";exit;
-    
+    // echo $_SESSION["usertype"];exit;
     if ($_SESSION["usertype"] == "student")
     {
         // $user = Database::load_all_info($user["id"]);
@@ -46,7 +46,7 @@
             $_SESSION["has_stage"] = false;
         }
     }
-    else if ($_SESSION["usertype"] == "student"){
+    else if ($_SESSION["usertype"] == "tuteur_entreprise" or $_SESSION["usertype"] == "tuteur_pedagogique"){
         $stages = Database::get_stage_from_tuteur_entreprise($user["id"]);
         $_SESSION["data"]["stages"] = [];
     

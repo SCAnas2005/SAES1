@@ -3,11 +3,11 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
-    $students = $_SESSION["data"]["students"];
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
     {
         header("Location: /");
     }
+    $students = $_SESSION["data"]["students"];
 ?>
 
 <!DOCTYPE html>
@@ -33,13 +33,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($students as $student): ?>
-                    <tr>
-                        <td><?= $student["nom"] ?></td>
-                        <td><?= $student["prenom"] ?></td>
-                        <td><a href="" class="details-button">Détails stage</a></td>
-                    </tr>
-                <?php endforeach; ?>
+                <?php if (count($students) > 0): ?>
+                    <?php foreach ($students as $student): ?>
+                        <tr>
+                            <td><?= $student["nom"] ?></td>
+                            <td><?= $student["prenom"] ?></td>
+                            <td><a href="" class="details-button">Détails stage</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <h3>Vous n'avez pas d'étudiants</h3>
+                <?php endif; ?>
                 <!-- Ajouter d'autres étudiants ici -->
             </tbody>
         </table>
