@@ -4,7 +4,7 @@
     require_once DATABASE_FOLDER."/database.php";
     init_php_session();
     Database::init_database();
-    $user = $_SESSION["user"];
+    $data = $_SESSION["data"];
 
 
     if ($_SESSION["usertype"] == "student")

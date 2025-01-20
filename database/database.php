@@ -111,7 +111,7 @@
             } else if ($role == "tuteur_entreprise"){
                 return self::search_tuteur_entreprise($login);
             } else if ($role == "tuteur_pedagogique"){
-                return self::search_tuteur_pedagogique($login);
+                return self::search_enseignant($login);
             } else if ($role == "prof") {
                 return self::search_enseignant($login);
             } else{
@@ -376,28 +376,19 @@
 
 
 
-        public static function get_notifications($userid)
+        public static function get_notifications_from_user($userid)
         {
             $sql = "SELECT
-                    a.id_Action,
-                    a.date_realisation,
-                    a.lienDocument,
-                    ta.libelle AS type_action_libelle,
-                    ta.Executant,
-                    ta.Destinataire,
-                    ta.delaiEnJours,
-                    ta.ReferenceDelai,
-                    ta.requiertDoc,
-                    ta.LienModeleDoc
+                    *
                 FROM
-                    Action a
+                    Action
                 JOIN
-                    TypeAction ta ON a.id_TypeAction = ta.id_TypeAction
+                    TypeAction USING (id_TypeAction) 
                 WHERE
-                    a.id_1 = $userid;
+                    id_1 = $userid;
             ";
 
-            $req = self::execute_sql($sql);
+            $req = self::execute_sql_all($sql);
             return $req;
         }
 
@@ -457,7 +448,7 @@
             $description = self::get_sql_syntax($infos["description"]);
             $taches = self::get_sql_syntax($infos["taches"]);
 
-            $jury2 = $infos["jury2"];
+            $jury2 = $infos["jury2"]; 
 
             // echo $id;  echo "<pre>";print_r($infos);echo "</pre>";exit;
 
@@ -472,11 +463,16 @@
 
             for ($i = 1; $i < 5; $i++)
             {
-                $sql = "SET @date_realisation = DATE_ADD(CURDATE(), INTERVAL (SELECT delaiEnJours FROM TypeAction WHERE id_TypeAction = $i) DAY);
-                INSERT INTO Action (id_Departement, numSemestre, id, annee, id_Stage, date_realisation, id_1)
-                VALUES(1, 1, $id, 2025, $id_stage, @date_realisation, $i, $id);";
-                
+                $tab = self::execute_sql("SELECT delaiEnJours FROM TypeAction WHERE id_TypeAction = $i");
+                $delaiEnJours = $tab["delaiEnJours"];
+                $date_realisation = (new DateTime($infos["date_debut"]))->add(new DateInterval("P{$delaiEnJours}D"))->format('Y-m-d');
+                $date_realisation = self::get_sql_syntax($date_realisation);
+
+                $sql = "INSERT INTO Action (id_Departement, numSemestre, id, annee, id_Stage, date_realisation, id_TypeAction, id_1)
+                VALUES(1, 1, $id, 2025, $id_stage, $date_realisation, $i, $id);";
+
                 self::execute_sql($sql);
+                
             }
             // echo "<pre>".$sql."</pre>";exit;
         }

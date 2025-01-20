@@ -1,7 +1,12 @@
 <?php 
 
-    $notifications = Database::get_notifications($user["id"]);
-    print_r($notifications);
+    $notifications = [];
+    $userinfo = $data["userinfo"];
+    if (isset($_SESSION["has_stage"]))
+    {
+        $notifications = Database::get_notifications_from_user($userinfo["id"]);
+        // print_r($notifications);exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,22 +24,21 @@
     <main class="main-content">
         <section class="section">
             <h2>Notifications</h2>
-            <ul class="notification-list">
-                <li class="notification-item">
-                    <div>
-                        <h3>Nouveau document disponible</h3>
-                        <p>Un nouveau document a été ajouté à votre espace.</p>
-                    </div>
-                    <a href="gestion_documents.html">Voir</a>
-                </li>
-                <li class="notification-item">
-                    <div>
-                        <h3>Rappel de soutenance</h3>
-                        <p>Votre soutenance est prévue le 15 juin 2024.</p>
-                    </div>
-                    <a href="mon_espace.html">Détails</a>
-                </li>
-            </ul>
+            <?php if (count($notifications) > 0): ?>
+                <ul class="notification-list">
+                    <?php foreach ($notifications as $notification): ?>
+                        <li class="notification-item">
+                            <div>
+                                <h3><?= $notification["libelle"] ?></h3>
+                                <p>Vous avez des actions à faire pour le <?= $notification["date_realisation"] ?></p>
+                            </div>
+                            <!-- <a href="gestion_documents.html">Voir</a> -->
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Vous n'avez aucune actions à faire</p>   
+            <?php endif; ?>
         </section>
     </main>
 
