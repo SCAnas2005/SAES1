@@ -61,23 +61,17 @@ CREATE TABLE Annee (
    annee INT PRIMARY KEY
 );
 
-CREATE TABLE Departement (
-   id_Departement INT AUTO_INCREMENT PRIMARY KEY,
-   libelle VARCHAR(50) UNIQUE,
-   id INT NOT NULL UNIQUE,
-   FOREIGN KEY (id) REFERENCES Enseignant(id)
-);
+   CREATE TABLE Departement (
+      id_Departement INT AUTO_INCREMENT PRIMARY KEY,
+      libelle VARCHAR(50) UNIQUE
+   );
 
 CREATE TABLE Semestre (
    id_Departement INT,
    numSemestre INT,
    id INT NOT NULL,
    annee INT NOT NULL,
-   PRIMARY KEY (id_Departement, numSemestre),
-   UNIQUE (id),
-   FOREIGN KEY (id_Departement) REFERENCES Departement(id_Departement),
-   FOREIGN KEY (id) REFERENCES Enseignant(id),
-   FOREIGN KEY (annee) REFERENCES Annee(annee)
+   PRIMARY KEY (id_Departement, numSemestre)
 );
 
 -- INSERT INTO Semestre (id_Departement, numSemestre, id, annee)
@@ -90,7 +84,7 @@ CREATE TABLE Inscription (
    annee INT,
    PRIMARY KEY (id_Departement, numSemestre, id, annee),
    FOREIGN KEY (id_Departement, numSemestre) REFERENCES Semestre(id_Departement, numSemestre),
-   FOREIGN KEY (id) REFERENCES Etudiant(id),
+   FOREIGN KEY (id) REFERENCES Utilisateur(id),
    FOREIGN KEY (annee) REFERENCES Annee(annee)
 );
 

@@ -53,7 +53,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    /* height: 40vh; */
     margin-bottom: 20px;
     margin: 20px auto;
     background-color: #ffffff;

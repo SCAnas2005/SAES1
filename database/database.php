@@ -366,12 +366,33 @@
         }
 
 
+        public static function get_departement_from_id($id)
+        {
+            $sql = "select * from departement where id_Departement = $id;";
+            $req = self::execute_sql($sql);
+            return $req;
+        }
 
+        public static function get_students_from_departement($departement_id)
+        {
+            $sql = "select * from utilisateur join etudiant using (id) join departement using (id_Departement) where etudiant.id_Departement = $departement_id;";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
 
+        public static function get_departement_from_enseignant($teacher_id)
+        {
+            $sql = "select * from departement join enseignant using (id_Departement) where enseignant.id = $teacher_id;";
+            $req = self::execute_sql($sql);
+            return $req;
+        }
 
-
-
-
+        public static function get_departement_from_etudiant($student_id)
+        {
+            $sql = "select * from departement join etudiant using (id_Departement) where etudiant.id = $student_id;";
+            $req = self::execute_sql($sql);
+            return $req;
+        }
 
 
 
@@ -388,6 +409,16 @@
                     id_1 = $userid;
             ";
 
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+
+        public static function get_notifications_from_tuteur_entreprise($tuteur_entreprise)
+        {
+            $sql = "select typeaction.*, action.* from action join typeaction using (id_TypeAction) join stage using (id_Stage) 
+                    join Utilisateur on action.id_1 = Utilisateur.id join tuteur_entreprise on tuteur_entreprise.id = stage.id_3 
+                    where tuteur_entreprise.id = $tuteur_entreprise and typeaction.Destinataire = 'tuteur entreprise';";
             $req = self::execute_sql_all($sql);
             return $req;
         }
@@ -447,16 +478,19 @@
 
             $description = self::get_sql_syntax($infos["description"]);
             $taches = self::get_sql_syntax($infos["taches"]);
+            $departement = self::get_sql_syntax($infos["departement"]);
 
             $jury2 = $infos["jury2"]; 
 
             // echo $id;  echo "<pre>";print_r($infos);echo "</pre>";exit;
 
             $sql = "INSERT INTO Inscription
-            VALUES (1, 1, $id, 2025);
+            VALUES ($departement, 1, $id, 2025);
 
             INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, id_1, id_2, id_3)
-            VALUES (1, 1, $id, 2025, $date_debut, $date_fin, $titre, $description, $taches, $date_soutenance, $salle_soutenance, $tuteur_pedagogique, $jury2, $tuteur_stage);";
+            VALUES ($departement, 1, $id, 2025, $date_debut, $date_fin, $titre, $description, $taches, $date_soutenance, $salle_soutenance, $tuteur_pedagogique, $jury2, $tuteur_stage);";
+            
+            // echo $sql;exit;
             self::execute_sql($sql);
 
             $id_stage = self::$PDO->lastInsertId();
@@ -469,7 +503,7 @@
                 $date_realisation = self::get_sql_syntax($date_realisation);
 
                 $sql = "INSERT INTO Action (id_Departement, numSemestre, id, annee, id_Stage, date_realisation, id_TypeAction, id_1)
-                VALUES(1, 1, $id, 2025, $id_stage, $date_realisation, $i, $id);";
+                VALUES($departement, 1, $id, 2025, $id_stage, $date_realisation, $i, $id);";
 
                 self::execute_sql($sql);
                 
@@ -506,15 +540,18 @@
             $last_user_id = self::$PDO->lastInsertId();
             if ($role == "student")
             {
-                $sql = "INSERT INTO Etudiant (id)
-                VALUES ($last_user_id);";"";
+                $departement =  self::get_sql_syntax($infos["choix_departement"]);
+                $sql = "INSERT INTO Etudiant (id, id_Departement)
+                VALUES ($last_user_id, $departement);";
             }else if ($role == "tuteur_entreprise")
             {
-                $sql = "INSERT INTO Tuteur_entreprise (id)
+                $sql = "INSERT INTO Tuteur_entreprise (id, id_Entreprise)
                 VALUES ($last_user_id, $entreprise_id);";"";
             }else{
-                $sql = "INSERT INTO Enseignant (id)
-                VALUES ($last_user_id);";
+                $bureau =  self::get_sql_syntax($infos["bureau"]);
+                $departement =  self::get_sql_syntax($infos["choix_departement"]);
+                $sql = "INSERT INTO Enseignant (id, Bureau, id_Departement)
+                VALUES ($last_user_id, $bureau, $departement);";
             }
 
             // echo "<pre>";
@@ -523,6 +560,7 @@
 
             self::execute_sql($sql);
         }
+
 
     }
 

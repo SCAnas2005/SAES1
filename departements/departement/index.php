@@ -1,15 +1,19 @@
 <?php 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
+    require DATABASE_FOLDER."/database.php";
     require_once ROOTPATH."/php/util.php";
     init_php_session();
+
+    Database::init_database();
 
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
     {
         header("Location: /");
     }
     $data = $_SESSION["data"];
-    $students = $data["my_departement_students"];
-    $dep = $data["my_departement"];
+    $departement_id = $_GET["id"];
+    $dep = Database::get_departement_from_id($departement_id);
+    $students = Database::get_students_from_departement($departement_id);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Département Informatique - Suivi des Stages</title>
+    <title>Département - Suivi des Stages</title>
    <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
    <link href="css/style.css" rel="stylesheet">
 </head>
@@ -25,7 +29,7 @@
    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <main>
-        <h2>Liste des Étudiants et Stages de votre département <?= $dep["libelle"] ?></h2>
+        <h2>Liste des Étudiants du département <?= $dep["libelle"] ?></h2>
         <?php if (count($students) > 0): ?>
         <table>
             <thead>
@@ -36,6 +40,7 @@
                 </tr>
             </thead>
             <tbody>
+                
                     <?php foreach ($students as $student): ?>
                         <tr>
                             <td><?= $student["nom"] ?></td>
@@ -47,7 +52,7 @@
                 </tbody>
             </table>
         <?php else: ?>
-            <h3>Vous n'avez pas d'étudiants</h3>
+            <h3>Il n'y a aucun étudiant dans cette promotion</h3>
         <?php endif; ?>
         <a href=<?= L_DEPARTMENTS_FOLDER ?>>Retour à la liste des départements</a>
     </main>

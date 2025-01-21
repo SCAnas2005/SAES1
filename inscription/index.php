@@ -6,6 +6,7 @@
     Database::init_database();
 
     $entreprises = Database::get_all_entreprises();
+    $departements = Database::get_all_departements();
 
     $role = "";
     $used_login = null;
@@ -26,7 +27,16 @@
             $choix_entreprise = $_POST["choix_entreprise"];
             $infos["choix_entreprise"] = $choix_entreprise;
         }
-        
+        if ($role == "prof" or $role == "student")
+        {
+            $choix_departement = $_POST["choix_departement"];
+            $infos["choix_departement"] = $choix_departement;
+        }
+        if ($role == "prof")
+        {
+            $bureau = $_POST["bureau"];
+            $infos["bureau"] = $bureau;
+        }
         $user = Database::search_user($login);
         if ($user)
         {
@@ -69,7 +79,7 @@
                     <p>Choisissez votre rôle pour continuer :</p>
                     <button name="student" class="bouton-student" type="button" onclick="connexion('student')">Étudiant</button>
                     <button name="prof" class="bouton-teacher" type="button" onclick="connexion('prof')">Enseignant</button>
-                    <button name="chef_dep" class="bouton-chef" type="button" onclick="connexion('chef_dep')">Chef de Département</button>
+                    <!-- <button name="chef_dep" class="bouton-chef" type="button" onclick="connexion('chef_dep')">Chef de Département</button> -->
                     <button name="tuteur_entreprise" class="bouton-tuteurent" type="button" onclick="connexion('tuteur_entreprise')">Tuteur entreprise</button>
                     <button name="tuteur_pedagogique" class="bouton-tuteurpeda" type="button" onclick="connexion('tuteur_pedagogique')">Tuteur pédagogique</button>
                     <p><a href=<?= L_LOGIN_FOLDER ?>>Se connecter</a></p> 
@@ -81,12 +91,19 @@
                     <input name="prenom" type="text" placeholder="Prénom" required>
                     <input name="email" type="email" placeholder="e-mail" required>
                     <input name="tel" type="text" placeholder="Téléphone" required>
+                    <input id="bureau" name="bureau" type="text" placeholder="Bureau" class="hidden" required>
                     <input name="login" type="text" placeholder="login" required>
                     <input name="password" type="password" placeholder="Mot de passe" required>
                     <select id="choix_entreprise" name="choix_entreprise" class="hidden" required>
-                        <option value="a" disabled selected>Veuillez choisir une entreprise</option>
+                        <option value="" disabled selected>Veuillez choisir une entreprise</option>
                         <?php foreach($entreprises as $entreprise): ?>
                             <option value=<?= $entreprise["id_Entreprise"] ?>><?= $entreprise["nom"] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select id="choix_departement" name="choix_departement" class="hidden" required>
+                        <option value="" disabled selected>Veuillez choisir un département</option>
+                        <?php foreach($departements as $departement): ?>
+                            <option value=<?= $departement["id_Departement"] ?>><?= $departement["libelle"] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <input type="hidden" id="role" name="role" value='<?= $role ?>'>
@@ -111,16 +128,50 @@
             document.getElementById('role').value = role; // Définir le rôle choisi
             if (role == "tuteur_entreprise")
             {
-                document.getElementById('choix_entreprise').classList.remove('hidden');
-            }else{
-                document.getElementById('choix_entreprise').classList.add('hidden');
+                var a = document.getElementById('choix_entreprise');
+                a.classList.remove('hidden');
+                a.required = true;
             }
+            else{
+                var a = document.getElementById('choix_entreprise');
+                a.classList.add('hidden');
+                a.required = false;
+            }
+            if (role == "prof" || role == "student" || role == "tuteur_pedagogique")
+            {
+                var a = document.getElementById('choix_departement');
+                a.classList.remove('hidden');
+                a.required = true;
+            }
+            else{
+               var a =  document.getElementById('choix_departement');
+               a.classList.add('hidden');
+               a.required = false;
+            }
+            if (role == "prof")
+            {
+                var a = document.getElementById('bureau');
+                a.classList.remove('hidden');
+                a.required = true;
+            }
+            else{
+                var a = document.getElementById('bureau');
+                a.classList.add('hidden');
+                a.required = false;
+            }
+
         }
 
         function retour() {
             document.getElementById('role-selection').classList.remove('hidden');
             document.getElementById('student-login').classList.add('hidden');
         }
+    </script>
+
+    <script>
+    if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+    }
     </script>
 
 </body>

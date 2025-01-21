@@ -52,7 +52,7 @@
                     <!-- <p><strong>Département :</strong> </p> -->
                     <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
                     <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
-
+                    <p><strong>Département :</strong> <?= $data["my_departement"]["libelle"] ?></p>
                 </section>
         
                 <section id="stages" class="infostage">

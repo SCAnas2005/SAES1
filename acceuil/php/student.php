@@ -1,9 +1,12 @@
 <?php 
     $stage_number = 0;
-    if ($_SESSION["has_stage"])
+    if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"])
     {
         $stage_number = count($_SESSION["data"]["stages"]);
+        // echo "<pre>";print_r($_SESSION["data"]["current_stage"]);echo "</pre>";exit;
+        $notifications_number = count($_SESSION["data"]["current_stage"]["actions"]);
     }
+
 ?>  
 
 <!DOCTYPE html>
@@ -27,14 +30,17 @@
         </section>
 
        
-        <!-- <section>
+        <section>
             <h2>Vos Notifications</h2>
             <ul>
-                <li>Votre rapport de stage a été validé par le tuteur.</li>
-                <li>Le stage chez XYZ commence le 15 janvier.</li>
-                <li>Un nouveau message vous attend dans votre espace.</li>
+                <?php if($_SESSION["has_stage"] and $notifications_number > 0): ?>
+                    <li>Vous avez <?= $notifications_number ?> actions à faire</li>
+                <?php else: ?>
+                    <li>AUCUNE NOTIFICATION POUR LE MOMENT</li>
+                <?php endif; ?>
             </ul>
-        </section> -->
+            <a href=<?= L_NOTIFICATIONS_FOLDER ?> >Voir plus</a>
+        </section>
     </div>
       
 

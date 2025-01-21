@@ -24,7 +24,7 @@
             <h2>Départements</h2>
             <div class="departments-list">
                 <?php foreach ($deps as $dep): ?>
-                    <a href="" class="department-link">Département <?= $dep["libelle"] ?></a>
+                    <a href="departement/index.php?id=<?= $dep["id_Departement"] ?>" class="department-link">Département <?= $dep["libelle"] ?></a>
                 <?php endforeach; ?>
 
             </div>

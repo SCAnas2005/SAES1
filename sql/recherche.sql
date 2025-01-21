@@ -213,3 +213,7 @@ JOIN
 WHERE 
     s.id_Stage = 1;  
     
+
+select typeaction.*, action.* from action join typeaction using (id_TypeAction) join stage using (id_Stage) 
+join Utilisateur on action.id_1 = Utilisateur.id join tuteur_entreprise on tuteur_entreprise.id = stage.id_3 
+where tuteur_entreprise.id = 1 and typeaction.Destinataire = "tuteur entreprise";

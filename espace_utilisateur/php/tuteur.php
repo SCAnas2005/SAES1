@@ -34,7 +34,7 @@
                     <!-- <p><strong>Département :</strong> </p> -->
                     <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
                     <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
-
+                    
                 </section>
             
             

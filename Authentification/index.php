@@ -62,7 +62,7 @@
                 <p>Choisissez votre rôle pour continuer :</p>
                 <button name="student" class="bouton-student" type="button" onclick="connexion('student')">Étudiant</button>
                 <button name="prof" class="bouton-teacher" type="button" onclick="connexion('prof')">Enseignant</button>
-                <button name="chef_dep" class="bouton-chef" type="button" onclick="connexion('chef_dep')">Chef de Département</button>
+                <!-- <button name="chef_dep" class="bouton-chef" type="button" onclick="connexion('chef_dep')">Chef de Département</button> -->
                 <button name="tuteur_entreprise" class="bouton-tuteurent" type="button" onclick="connexion('tuteur_entreprise')">Tuteur entreprise</button>
                 <button name="tuteur_pedagogique" class="bouton-tuteurpeda" type="button" onclick="connexion('tuteur_pedagogique')">Tuteur pédagogique</button>
                 

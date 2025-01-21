@@ -1,11 +1,10 @@
 <?php 
 
     $notifications = [];
-    $userinfo = $data["userinfo"];
-    if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"] == true)
+    $etudiant = $data["userinfo"];
+    if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"])
     {
-        $notifications = $data["current_stage"]["actions"];
-        // print_r($notifications);exit;
+        $notifications = $data["actions"];
     }
 ?>
 
@@ -28,6 +27,7 @@
                 <ul class="notification-list">
                     <?php foreach ($notifications as $notification): ?>
                         <li class="notification-item">
+                            <h2></h2>
                             <div>
                                 <h3><?= $notification["libelle"] ?></h3>
                                 <p>Vous avez des actions à faire pour le <?= $notification["date_realisation"] ?></p>
