@@ -1,120 +1,143 @@
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
-        header {
-            background-color: #293358;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header {
+    background-color: #293358;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        header h1 {
-            margin: 0;
-        }
+header h1 {
+    margin: 0;
+}
 
-        nav {
-            display: flex;
-            flex-grow: 1;
-            justify-content: center;
-        }
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
-        nav a:hover {
-            background-color: #ad947e;
-            color: #293358;
-        }
+nav a:hover {
+    background-color: #ad947e;
+    color: #293358;
+}
 
-        .header-logo {
-            width: 50px;
-            height: auto;
-        }
+.header-logo {
+    width: 50px;
+    height: auto;
+}
 
-        .main-content {
-            padding: 20px;
-            background-color: #ffffff;
-            margin: 20px auto;
-            max-width: 1200px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+.main-content {
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
 
-        .section {
-            margin-bottom: 20px;
-        }
+.section {
+    margin-bottom: 20px;
+}
 
-        .section h2 {
-            background-color: #293358;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
+.section h2 {
+    background-color: #293358;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
 
-        .notification-list {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-        }
+.notification-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
 
-        .notification-item {
-            background-color: #f9f9f9;
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.notification-item {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .notification-item:hover {
-            background-color: #ad947e;
-            color: white;
-        }
+.notification-item:hover {
+    background-color: #ad947e;
+    color: white;
+}
 
-        .notification-item h3 {
-            margin: 0;
-            color: #293358;
-        }
+.notification-item h3 {
+    margin: 0;
+    color: #293358;
+}
 
-        .notification-item p {
-            margin: 5px 0 0;
-            color: #555;
-        }
+.notification-item p {
+    margin: 5px 0 0;
+    color: #555;
+}
 
-        .notification-item a {
-            background-color: #293358;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
+.notification-item a {
+    background-color: #293358;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
 
-        .notification-item a:hover {
-            background-color: #ad947e;
-            color: white;
-        }
+.notification-item a:hover {
+    background-color: #ad947e;
+    color: white;
+}
 
-        footer {
-            background-color: #293358;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+footer {
+    background-color: #293358;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.stagiaire-nom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background-color: #ecf0f1;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+
+/* Nom de l'entreprise à droite */
+.entreprise-nom {
+    font-weight: normal;
+    color: #34495e;
+    font-size: 1rem;
+}

@@ -34,7 +34,7 @@
                     <!-- <p><strong>Département :</strong> </p> -->
                     <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
                     <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
-                    
+                    <p><strong>Statut :</strong> <?= get_userstatut($_SESSION["real_usertype"])  ?></p>
                 </section>
             
             

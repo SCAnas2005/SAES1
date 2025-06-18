@@ -12,6 +12,11 @@
     }
     $data = $_SESSION["data"];
     $departement_id = $_GET["id"];
+    if ($data["my_departement"]["id_Departement"] == $departement_id)
+    {
+        header("Location: ".L_STUDENTS_FOLDER);
+    }
+
     $dep = Database::get_departement_from_id($departement_id);
     $students = Database::get_students_from_departement($departement_id);
 ?>

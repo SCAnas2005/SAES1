@@ -53,6 +53,7 @@
                     <p><strong>E-mail :</strong> <?= $user["email"] ?></p>
                     <p><strong>Téléphone :</strong> <?= $user["telephone"] ?></p>
                     <p><strong>Département :</strong> <?= $data["my_departement"]["libelle"] ?></p>
+                    <p><strong>Statut :</strong> <?= get_userstatut($_SESSION["real_usertype"])  ?></p>
                 </section>
         
                 <section id="stages" class="infostage">

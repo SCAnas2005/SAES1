@@ -65,4 +65,28 @@
         return count(get_user_docs($userid));
     }
 
+
+    function get_userstatut($role)
+    {
+        $statut = "";
+        switch ($role) {
+            case 'student':
+                $statut = "Etudiant";
+            break;
+            case "tuteur_entreprise":
+                $statut = "Tuteur";
+            break;
+            case "tuteur_pedagogique":
+                $statut = "Maitre de stage";
+            break;
+            case "prof":
+                $statut = "Enseignant";
+            break;
+            default:
+                # code...
+                break;
+        }
+        return $statut;
+    }
+
 ?>

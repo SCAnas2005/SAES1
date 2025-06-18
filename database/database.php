@@ -298,7 +298,6 @@
             $req = self::execute_sql_all($sql);
 
             // print_r($req);exit;
-            echo $stageid;
             return $req;
         }
 
@@ -319,6 +318,23 @@
                 Tuteur_entreprise te ON s.id_3 = te.id_Entreprise
             WHERE 
                 te.id = $id;  ";
+
+            $req = self::execute_sql_all($sql);
+
+            // print_r($req);
+            return $req;
+        }
+
+        public static function get_stage_from_tuteur_ens($id)
+        {
+            $sql = "SELECT 
+                s.*
+            FROM 
+                Stage s
+            JOIN 
+                Enseignant e ON s.id_1 = e.id
+            WHERE 
+                e.id = $id;  ";
 
             $req = self::execute_sql_all($sql);
 
@@ -423,6 +439,24 @@
             return $req;
         }
 
+        public static function get_notifications_from_tuteur_entreprise_per_stage($tuteur_entreprise, $id_stage)
+        {
+            $sql = "select typeaction.*, action.* from action join typeaction using (id_TypeAction) join stage using (id_Stage) 
+                    join Utilisateur on action.id_1 = Utilisateur.id join tuteur_entreprise on tuteur_entreprise.id = stage.id_3 
+                    where tuteur_entreprise.id = $tuteur_entreprise and typeaction.Destinataire = 'tuteur entreprise' and id_Stage=$id_stage;";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+        public static function get_notifications_from_tuteur_ens_per_stage($tuteur_peda, $id_stage)
+        {
+            $sql = "select typeaction.*, action.* from action join typeaction using (id_TypeAction) join stage using (id_Stage) 
+                    join Utilisateur on action.id_1 = Utilisateur.id join Enseignant on Enseignant.id = stage.id_1 
+                    where Enseignant.id = $tuteur_peda and typeaction.Destinataire = 'tuteur pedagogique' and id_Stage=$id_stage;";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
 
         public static function get_all_tuteur_entreprise()
         {
@@ -509,6 +543,19 @@
                 
             }
             // echo "<pre>".$sql."</pre>";exit;
+        }
+
+
+
+        public static function delete_stage($id_etudiant, $id_stage)
+        {
+            $sql = "DELETE FROM Stage
+                WHERE id_Stage = $id_stage;
+
+                DELETE FROM Inscription
+                WHERE id = $id_etudiant;
+            ";
+            self::execute_sql($sql);
         }
 
         public static function get_all_entreprises()

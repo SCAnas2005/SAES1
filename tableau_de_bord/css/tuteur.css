@@ -27,7 +27,7 @@
 .summary-box {
     background-color: #f9f9f9;
     padding: 20px;
-    width: 48%;
+    width: 46%;
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -82,4 +82,47 @@ a {
     color: white;
     padding: 10px;
     border-radius: 5px;
+}
+
+.etudiant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fdfdfd;
+    border-left: 5px solid #293358;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease;
+}
+
+.etudiant-item:hover {
+    background-color: #f1f5fc;
+}
+
+.etudiant-info p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.etudiant-actions a {
+    background-color: #293358;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+.etudiant-actions a:hover {
+    background-color: #1e2742;
+}
+
+.no-student-msg {
+    text-align: center;
+    color: #888;
+    font-style: italic;
 }

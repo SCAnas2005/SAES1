@@ -3,6 +3,11 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
+    if (!isset($_SESSION["logged"]))
+    {
+        header("Location: /");
+    }
+
     if ($_SESSION["usertype"] == "student")
     {
         include "php/doc_managment.php";

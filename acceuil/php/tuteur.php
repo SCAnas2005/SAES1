@@ -4,7 +4,11 @@
     if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"])
     {
         $stages = $data["stages"];
-        $notifications_number = count($_SESSION["data"]["actions"]);
+        $notifications_number = 0;
+        foreach ($stages as $stage) {
+            $notifications_number+=count($stage["actions"]);
+        }
+        // $notifications_number = count($_SESSION["data"]["actions"]);
     }
     
     $n_stages = count($stages);

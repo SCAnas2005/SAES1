@@ -63,8 +63,12 @@
                     <?php endforeach; ?>
                 </ul>
                 <!-- <p><strong>Évaluations :</strong> Note globale : 18/20</p> -->
-                <a href=<?= L_MES_STAGES_FOLDER ?> class="back-button">Retour à la liste des stages</a>
             </div>
+            <?php if ($_SESSION["usertype"] == "student"):?>
+                <a href=<?= L_MES_STAGES_FOLDER ?> class="back-button">Retour à la liste des stages</a>
+            <?php elseif ($_SESSION["usertype"] == "tuteur"): ?>
+                <a href=<?= L_DASHBOARD_FOLDER ?> class="back-button">Retour</a>
+            <?php endif; ?>
         </section>
     </main>
 

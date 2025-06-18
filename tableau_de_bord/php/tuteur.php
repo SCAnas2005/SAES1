@@ -4,14 +4,16 @@
     $students = [];
     if (isset($_SESSION["has_stage"]))
     {
+        $document_recu = 0;
         $stages = $data["stages"];
         for ($i = 0; $i < count($stages); $i++)
         {
             $stage = $stages[$i];
             $students[$i] = $stage["student"];
+            $document_recu += count(get_user_docs($students[$i]["id"]));
         }
     }
-    $document_recu = 0;
+
 
     if (isset($_POST["submit"]))
 ?>
@@ -40,26 +42,44 @@
             
             <div class="summary-box">
                 <h3>Documents reçus</h3>
-                <p><?= $document_recu ?> documents reçus</p>
+                <?php if ($document_recu > 0): ?>
+                    <p><?= $document_recu ?> documents reçus</p>
+                <?php else: ?>
+                    <p>Aucun document reçu</p>
+                <?php endif; ?>
+                <!-- <span class="status">Validés</span> -->
+            </div>
+
+            <div class="summary-box">
+                <h3>Stagiaires</h3>
+                <?php if (count($students) > 0): ?>
+                    <p><?= count($students); ?> stagiaires </p>
+                <?php else: ?>
+                    <p>Aucun stagiaire</p>
+                <?php endif; ?>
                 <!-- <span class="status">Validés</span> -->
             </div>
         
         </section>
-        
 
         <section class="section">
+            <h3>Vos stagiaires</h3>
             <?php if (count($students) > 0): ?>
                 <?php for ($i = 0; $i < count($students); $i++): ?>
-                    <div class="document-item">
-                        <p> Etudiant : <strong> <?= $students[$i]["prenom"]." ".$students[$i]["nom"] ?> </strong></p> 
-                        <a href=<?= L_STAGE_FOLDER."/index.php?id=".$stage["infostage"]["id"] ?>>Voir les détails du stages</a>
+                    <div class="etudiant-item">
+                        <div class="etudiant-info">
+                            <p><strong><?= $students[$i]["prenom"] . " " . $students[$i]["nom"] ?></strong></p>
+                        </div>
+                        <div class="etudiant-actions">
+                            <a href="<?= L_STAGE_FOLDER . "/index.php?id=" . $stage["infostage"]["id"] ?>">Voir les détails du stage</a>
+                        </div>
                     </div>
                 <?php endfor; ?>
-            
             <?php else: ?>
-                <p>Vous n'avez pas d'étudiant</p>
+                <p class="no-student-msg">Vous n'avez pas d'étudiant</p>
             <?php endif; ?>
         </section>
+
 
         
     </main>

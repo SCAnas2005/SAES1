@@ -6,7 +6,6 @@
     Database::init_database();
     $data = $_SESSION["data"];
 
-
     if ($_SESSION["usertype"] == "student")
     {
         require_once "php/student.php";

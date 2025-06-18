@@ -61,7 +61,11 @@
             <h3>Documents Rendus</h3>
             <?php if (count($stages) > 0): ?>
                 <?php foreach ($output_tab as $tab): ?>
-                    <p><?= $tab[0]["student"]["prenom"]." ".$tab[0]["student"]["nom"]?></p>
+                    <div class="stagiaire-nom">
+                        <span><?= $tab[0]["student"]["prenom"]." ".$tab[0]["student"]["nom"] ?></span>
+                        <span class="entreprise-nom"><?= $tab[0]["entreprise"]["entreprise_nom"] ?></span>
+                    </div>
+
                     <?php if (count($tab[1]) > 0): ?>
                         <?php foreach ($tab[1] as $doc): ?>
                             <div class="document-item">
@@ -74,11 +78,11 @@
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <p>0 document</p>
+                        <p class="no-doc">Aucun document fourni</p>
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Il n'y a aucun document</p>
+                <p class="no-doc">Il n'y a aucun document</p>
             <?php endif;?>
         </section>
     </main>

@@ -25,9 +25,10 @@
             $incorect_password = "Le login ou le mot de passe sont incorrect";
             $_SESSION["logged"] = false;
         }else{
+            $_SESSION["usertype"] = $role;
+            $_SESSION["real_usertype"] = $role;
             $_SESSION["logged"] = true;
             $_SESSION["data"]["userinfo"] = $user;
-            $_SESSION["usertype"] = $role;
             if ($role == "tuteur_entreprise" or $role == "tuteur_pedagogique")
             {
                 $_SESSION["usertype"] = "tuteur";
