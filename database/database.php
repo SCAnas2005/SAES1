@@ -342,6 +342,49 @@
             return $req;
         }
 
+        public static function get_stage_from_id($id_stage)
+        {
+            $sql = "SELECT 
+                    s.*,
+
+                    ete.nom AS 'tuteur_entreprise_nom',
+                    ete.prenom AS 'tuteur_entreprise_prenom',
+                    ete.email AS 'tuteur_entreprise_email',
+
+                    eu1.nom AS 'tuteur_pedagogique_nom',
+                    eu1.prenom AS 'tuteur_pedagogique_prenom',
+                    eu1.email AS 'tuteur_pedagogique_email',
+
+                    eu2.nom AS 'jury2_nom',
+                    eu2.prenom AS 'jury2_prenom',
+                    eu2.email AS 'jury2_email',
+
+                    ep.nom AS 'entreprise_nom',
+                    ep.adresse AS 'entreprise_adresse',
+                    ep.code_postal AS 'entreprise_code_postal',
+                    ep.ville AS 'entreprise_ville',
+                    ep.indicationVisite AS 'entreprise_indication_visite',
+                    ep.tel AS 'entreprise_tel'
+
+                FROM Stage s
+                JOIN Enseignant e1 ON s.id_1 = e1.id
+                JOIN Utilisateur eu1 ON eu1.id = e1.id
+
+                JOIN Enseignant e2 ON s.id_2 = e2.id
+                JOIN Utilisateur eu2 ON e2.id = eu2.id
+
+                JOIN Tuteur_entreprise te ON s.id_3 = te.id
+                JOIN Utilisateur ete ON te.id = ete.id
+
+                JOIN Entreprise ep ON ep.id_Entreprise = te.id_Entreprise
+
+                WHERE s.id_Stage = $id_stage;
+            ";
+
+
+            return self::execute_sql($sql);
+        }
+
 
         public static function get_students_from_stage($id, $stageid)
         {

@@ -38,7 +38,6 @@
                     <p><strong>Statut :</strong> <?= get_userstatut($_SESSION["usertype"]) ?></p>
                 </section>
             
-            
             </div>
        
         </div>

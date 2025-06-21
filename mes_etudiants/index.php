@@ -49,7 +49,9 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="<?= L_STAGE_FOLDER . "/index.php?id=" . $student["stages"][0]["infostage"]["id"] ?>" class="arrow-button" title="Voir détails">→</a>
+                                <?php if ($student["has_stage"]): ?>
+                                    <a href="<?= L_STAGE2_FOLDER . "/stage.php?stage_id=" . $student["stages"][0]["infostage"]["id_Stage"] ?>" class="arrow-button" title="Voir détails">→</a>
+                                <?php endif; ?>        
                             </td>
                         </tr>
                     <?php endforeach; ?>

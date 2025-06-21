@@ -13,6 +13,7 @@
     define("L_GLOBAL_CSS_FOLDER", "/"."css");
     define("L_MES_STAGES_FOLDER", "/"."mes_stages");
     define ("L_STAGE_FOLDER", "/"."espace_utilisateur/stage");
+    define ("L_STAGE2_FOLDER", "/"."stage");
     define ("L_DEPARTMENTS_FOLDER", "/"."departements");
     define ("L_STUDENTS_FOLDER", "/"."mes_etudiants");
     define ("L_NOTIFICATIONS_FOLDER", "/"."notifications");

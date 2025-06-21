@@ -62,6 +62,7 @@
                         <li><?= $task ?></li> 
                     <?php endforeach; ?>
                 </ul>
+                <p><strong>Validé :</strong> <?= $stage["infostage"]["valide"] ? "Oui" : "Non" ?></p>
                 <!-- <p><strong>Évaluations :</strong> Note globale : 18/20</p> -->
             </div>
             <?php if ($_SESSION["usertype"] == "student"):?>

@@ -19,7 +19,7 @@
 
     function is_logged()
     {
-        return isset($_SESSION["username"]);
+        return isset($_SESSION["logged"]);
     }
 
     function is_admin()
