@@ -47,7 +47,7 @@
         <section class="section">
             <h2>Détails du Stage</h2>
             <div class="details-container">
-                <h3>Stage</h3>
+                <h3>Stage - <?= $stage["student"]["prenom"]." ".$stage["student"]["nom"]  ?></h3>
                 <p><strong>Titre du stage :</strong> <?= $stage["infostage"]["titre"] ?></p>
                 <p><strong>Entreprise :</strong> <?= $stage["entreprise"]["entreprise_nom"] ?> </p>
                 <p><strong>Durée :</strong> <?=$dateDebut ?> - <?= $dateFin ?></p>

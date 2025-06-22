@@ -16,6 +16,7 @@
     define ("L_STAGE2_FOLDER", "/"."stage");
     define ("L_DEPARTMENTS_FOLDER", "/"."departements");
     define ("L_STUDENTS_FOLDER", "/"."mes_etudiants");
+    define ("L_TEACHERS_FOLDER", "/"."enseignants");
     define ("L_NOTIFICATIONS_FOLDER", "/"."notifications");
     define ("L_LOGIN_FOLDER", "/"."authentification");
     define ("L_SIGNUP_FOLDER", "/"."inscription");

@@ -39,19 +39,44 @@ header h1 {
     border-radius: 5px;
 }
 
+/* Section harmonisée */
 .document-list {
-    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 }
 
+/* Un élément de document */
 .document-item {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
     background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    margin-bottom: 10px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
 }
+
+/* Boutons uniformisés */
+.document-item .form-button {
+    background-color: #293358;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.document-item .form-button:hover {
+    background-color: #ad947e;
+}
+
 
 .document-item span {
     font-size: 1.1em;
@@ -78,4 +103,88 @@ header h1 {
 .form-button:hover {
     background-color: #ad947e;
     color: #293358;
+}
+
+/* -------- Statut coloré -------- */
+.status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+}
+
+.status.attente {
+    background-color: #f39c12; /* jaune */
+}
+
+.status.reçu {
+    background-color: #3498db; /* bleu clair */
+}
+
+.status.envoyé {
+    background-color: #9b59b6; /* violet */
+}
+
+.status.validé {
+    background-color: #27ae60; /* vert */
+}
+
+.status.non-envoyé {
+    background-color: #e74c3c; /* rouge */
+}
+
+/* -------- Table style -------- */
+.document-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.document-table th,
+.document-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.document-table th {
+    background-color: #293358;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.document-table tr:hover {
+    background-color: #f8f8f8;
+}
+
+/* -------- Custom upload + submit -------- */
+.document-table input[type="file"] {
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    width: 90%;
+}
+
+.document-table button {
+    background-color: #293358;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.document-table button:hover {
+    background-color: #ad947e;
+    color: #fff;
 }

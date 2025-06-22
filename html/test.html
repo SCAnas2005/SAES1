@@ -1,0 +1,302 @@
+<!-- <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents Administratifs - Secrétaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #293358;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #ad947e;
+            color: #293358;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .main-content {
+            padding: 20px;
+            background-color: #ffffff;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .section h2 {
+            background-color: #293358;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #293358;
+            color: white;
+        }
+
+        button {
+            padding: 6px 10px;
+            background-color: #293358;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #ad947e;
+            cursor: pointer;
+        }
+
+        .validate-btn {
+            background-color: green;
+        }
+
+        input[type="file"] {
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #293358;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
+        <h1>Suivi des Stages - Secrétaire</h1>
+        <nav>
+            <a href="accueil.html">Accueil</a>
+            <a href="tableau_bord_secretaire.html">Tableau de bord</a>
+            <a href="notifications.html">Notifications</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="section">
+            <h2>Documents Administratifs des Stagiaires</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Convention</th>
+                        <th>Autres Documents</th>
+                        <th>Envoyer un Document</th>
+                        <th>Valider le Stage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Durand</td>
+                        <td>Emma</td>
+                        <td>✅ <a href="#">Voir</a></td>
+                        <td>Lettre Motivation, Attestation</td>
+                        <td>
+                            <input type="file"><br>
+                            <button>Envoyer</button>
+                        </td>
+                        <td>
+                            <button class="validate-btn">Valider</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lemoine</td>
+                        <td>Lucas</td>
+                        <td>❌ Non reçu</td>
+                        <td>Aucun</td>
+                        <td>
+                            <input type="file"><br>
+                            <button>Envoyer</button>
+                        </td>
+                        <td>
+                            <button class="validate-btn">Valider</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyen</td>
+                        <td>Linh</td>
+                        <td>✅ <a href="#">Voir</a></td>
+                        <td>Convention signée</td>
+                        <td>
+                            <input type="file"><br>
+                            <button>Envoyer</button>
+                        </td>
+                        <td>
+                            <button class="validate-btn">Valider</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
+    </footer>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Suivi des Documents - Secrétaire</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    header {
+      background-color: #293358;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #293358;
+      color: white;
+    }
+
+    .status {
+      font-weight: bold;
+    }
+
+    .attente { color: orange; }
+    .envoyé { color: green; }
+    .non-envoyé { color: red; }
+
+    .btn-link {
+      text-decoration: none;
+      color: white;
+      background-color: #293358;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .btn-link:hover {
+      background-color: #ad947e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Suivi des Documents de Stage</h1>
+  </header>
+
+  <main>
+    <h2>Étudiants de la Promo</h2>
+    <table>
+      <tr>
+        <th>Nom</th>
+        <th>Bordereau</th>
+        <th>Convention</th>
+        <th>Actions</th>
+      </tr>
+
+      <tr>
+        <td>Lucas Dupont</td>
+        <td><span class="status attente">Reçu</span></td>
+        <td><span class="status non-envoyé">Non envoyé</span></td>
+        <td><a href="etudiant.html?id=1" class="btn-link">Gérer</a></td>
+      </tr>
+
+      <tr>
+        <td>Emma Martin</td>
+        <td><span class="status envoyé">Validé</span></td>
+        <td><span class="status attente">Reçu</span></td>
+        <td><a href="etudiant.html?id=2" class="btn-link">Gérer</a></td>
+      </tr>
+    </table>
+  </main>
+
+</body>
+</html>
+
+

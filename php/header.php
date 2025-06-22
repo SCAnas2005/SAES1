@@ -19,13 +19,18 @@
             <a href=<?= L_NOTIFICATIONS_FOLDER ?>>Mes actions</a>
             <a href=<?= L_DOCUMENTS_FOLDER ?>>Documents Rendus</a>
 
-        <?php else: // ($_SESSION["usertype"] == "tuteur"): ?> 
+        <?php else: ?> 
             <a href=<?= L_HOME_FOLDER ?>>Accueil</a>
             <!-- <a href=<?= L_DASHBOARD_FOLDER ?>>Tableau de bord</a> -->
             <a href=<?= L_DEPARTMENTS_FOLDER ?>>Départements</a>
             <a href=<?= L_STUDENTS_FOLDER ?>>Mes étudiants</a>
+            <?php if($_SESSION["usertype"] == "secretaire"): ?>
+                <a href=<?= L_TEACHERS_FOLDER ?>>Enseignants</a>
+            <?php endif; ?>
             <a href=<?= L_USERAREA_FOLDER ?>>Mon espace</a>
-
+             <?php if($_SESSION["usertype"] == "secretaire"): ?>
+                <a href=<?= L_DOCUMENTS_FOLDER ?>>Documents</a>
+            <?php endif; ?>
         <?php endif; ?>
     </nav>
     <img src=<?= L_ASSETS_FOLDER."/iut_logo.png" ?> alt="Logo IUT" class="logo"> <!-- Logo IUT ajouté ici -->

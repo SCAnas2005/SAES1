@@ -82,11 +82,37 @@
             case "prof":
                 $statut = "Enseignant";
             break;
+            case "secretaire":
+                $statut = "Secrétaire";
+            break;
             default:
                 # code...
                 break;
         }
         return $statut;
+    }
+
+
+
+    function get_statut_classname_from_status($statut)
+    {
+        $s = "";
+        switch (strtolower($statut)) {
+            case 'non envoyé':
+                $s = "non-envoye";
+                break;
+            case 'attente':
+                $s = "attente";
+                break;
+
+            case 'validé':
+                $s = "validé";
+                break;
+            default:
+                # code...
+                break;
+        }
+        return $s;
     }
 
 ?>

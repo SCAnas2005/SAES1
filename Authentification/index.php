@@ -11,6 +11,7 @@
         header("Location: /");
     }
 
+
     $role = "";
     $incorect_password = null;
     if (isset($_POST["login"], $_POST["password"], $_POST["role"]))
@@ -63,9 +64,9 @@
                 <p>Choisissez votre rôle pour continuer :</p>
                 <button name="student" class="bouton-student" type="button" onclick="connexion('student')">Étudiant</button>
                 <button name="prof" class="bouton-teacher" type="button" onclick="connexion('prof')">Enseignant</button>
-                <!-- <button name="chef_dep" class="bouton-chef" type="button" onclick="connexion('chef_dep')">Chef de Département</button> -->
                 <button name="tuteur_entreprise" class="bouton-tuteurent" type="button" onclick="connexion('tuteur_entreprise')">Tuteur entreprise</button>
                 <button name="tuteur_pedagogique" class="bouton-tuteurpeda" type="button" onclick="connexion('tuteur_pedagogique')">Tuteur pédagogique</button>
+                <button name="secretaire" class="bouton-chef" type="button" onclick="connexion('secretaire')">Secrétaire</button>
                 
                 <p><strong>Pas encore de compte ? </strong> <a href=<?= L_SIGNUP_FOLDER ?>>Inscrivez-vous</a></p> 
             </div>

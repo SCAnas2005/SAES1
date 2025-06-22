@@ -87,11 +87,58 @@
         }else{
             $_SESSION["has_stage"] = false;
         }
-    }else{
+    } 
+    // else if ($_SESSION["usertype"] == "secretaire")
+    // {
+    //     $students = Database::get_all_students();
+    //     $profs = Database::get_all_profs();
+    //     $_SESSION["data"]["profs"] = $profs;
+    //     $_SESSION["data"]["students"] = $students;
+        
+    //     $mystudents = Database::get_students_from_departement($user["id_Departement"]);
+    //     $myprofs = Database::get_profs_from_dep($user["id_Departement"]);
+        
+    //     $_SESSION["data"]["my_departement"]["students"] = $mystudents;
+    //     $_SESSION["data"]["my_departement"]["profs"] = $myprofs;
+    //     // echo "<pre>"; print_r($mystudents); echo "</pre>";exit;
+        
+    //     $deps = Database::get_all_departements();
+    //     $_SESSION["data"]["departements"] = $deps;
+
+    //     $_SESSION["data"]["my_departement_students"] = [];  
+    //     $student_from_departement = Database::get_students_from_departement($user["id_Departement"]);
+    //     foreach ($student_from_departement as $student) {
+    //         $stages = Database::get_stage_from_user($student["id"]);
+    //         $tab = ["has_stage"=>false, "student"=>$student, "stages"=>[]];
+    //         if (count($stages) > 0)
+    //         {
+    //             $tab["has_stage"] = true;
+    //             for($i = 0; $i < count($stages); $i++)
+    //             {
+    //                 $stage = $stages[$i];
+    //                 $tuteur_stage = Database::get_tuteur_from_stage($student["id"], $stage["id_Stage"]);
+    //                 $st = Database::get_students_from_stage($student["id"], $stage["id_Stage"]);
+    //                 $tuteur_pedagogique = Database::get_tuteur_pedagogique_from_stage($student["id"], $stage["id_Stage"]);
+    //                 $entreprise = Database::get_entreprise_from_stage($student["id"], $stage["id_Stage"]);
+    //                 $jury = Database::get_jury_from_stage($student["id"], $stage["id_Stage"]);
+        
+    
+    //                 $tab_stage = ["infostage"=>$stage, "tuteur_entreprise"=>$tuteur_stage, "student"=> $st,"tuteur_pedagogique"=>$tuteur_pedagogique, "entreprise"=>$entreprise, "jury"=>$jury];
+    //                 array_push($tab["stages"], $tab_stage);
+    //             }
+    //         }
+    //         array_push($_SESSION["data"]["my_departement_students"], $tab);
+    //     }
+
+    // }
+    else if ($_SESSION["usertype"] == "prof" || $_SESSION["usertype"] == "secretaire") {
         $students = Database::get_all_students();
         $_SESSION["data"]["students"] = $students;
-        $_SESSION["data"]["my_departement"] = Database::get_departement_from_enseignant($user["id"]);
-
+        if ($_SESSION["usertype"] == "prof")
+            $_SESSION["data"]["my_departement"] = Database::get_departement_from_enseignant($user["id"]);
+        else {
+            $_SESSION["data"]["my_departement"] = Database::get_departement_from_id($user["id_Departement"]);
+        }
 
 
         $_SESSION["data"]["my_departement_students"] = [];  
@@ -122,6 +169,14 @@
         
         $deps = Database::get_all_departements();
         $_SESSION["data"]["departements"] = $deps;
+
+
+        if ($_SESSION["usertype"] == "secretaire") {
+            $profs = Database::get_all_profs();
+            $_SESSION["data"]["profs"] = $profs;
+
+            $_SESSION["data"]["my_departement_profs"] = Database::get_profs_from_dep($user["id_Departement"]);
+        }
 
     }
     

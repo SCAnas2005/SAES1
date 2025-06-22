@@ -150,3 +150,159 @@ VALUES ('Dupont', 'Jean', 'jean.dupont@example.com', '0601020306', 'jean_dupont'
 SET @last_user_id = LAST_INSERT_ID();
 INSERT INTO Enseignant (id, Bureau)
 VALUES (@last_user_id, "R202");
+
+
+
+
+
+
+
+
+-- PROFESSEURS
+-- Exemple pour un professeur
+-- INSERT INTO Utilisateur(...) VALUES (...);
+-- INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'R205', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Finta', 'Lucian', 'lucian.finta@univ-paris13.fr', 'lucian.finta', 'lucian');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'R205', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Audibert', 'Laurent', 'laurent.audibert@univ-paris13.fr', 'laurent.audibert', 'laurent');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'Q102', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Dubacq', 'Jean-Christophe', 'jean-christophe.dubacq@univ-paris13.fr', 'jean-christophe.dubacq', 'jean-christophe');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'S201', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Lemaire', 'Bouchaib', 'bouchaib.lemaire@univ-paris13.fr', 'bouchaib.lemaire', 'bouchaib');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'P120', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Osmani', 'Aomar', 'aomar.osmani@univ-paris13.fr', 'aomar.osmani', 'aomar');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'L111', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Bouthinion', 'Alain', 'bouthinon@univ-paris13.fr', 'alain.bouthinion', 'alain');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'R214', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Hébert', 'Thierry', 'hebertiut@gmail.com', 'thierry.hebert', 'thierry');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'Q132', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Bosc', 'Marcel', 'marcel.bosc@univ-paris13.fr', 'marcel.bosc', 'marcel');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'S118', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Bacher', 'Eric', 'bacher@lipn.fr', 'eric.bacher', 'eric');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'R208', 1);
+
+INSERT INTO Utilisateur(nom, prenom, email, login, motdepasse)
+VALUES ('Gerard', 'Pierre', 'pierre.gerard@univ-paris13.fr', 'pierre.gerard', 'pierre');
+INSERT INTO Enseignant(id, Bureau, id_Departement) VALUES (LAST_INSERT_ID(), 'T103', 1);
+
+
+
+
+-- ETUDIANTS
+-- Étudiant 11
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Garcia', 'Tom', 'tom.garcia@example.com', '0611122233', 'tom.garcia', 'tom');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 2);
+
+-- Étudiant 12
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Lopez', 'Sarah', 'sarah.lopez@example.com', '0622233344', 'sarah.lopez', 'sarah');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
+
+-- Étudiant 13
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Roux', 'Nathan', 'nathan.roux@example.com', '0633344455', 'nathan.roux', 'nathan');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 14
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Fournier', 'Clara', 'clara.fournier@example.com', '0644455566', 'clara.fournier', 'clara');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 2);
+
+-- Étudiant 15
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Girard', 'Ethan', 'ethan.girard@example.com', '0655566677', 'ethan.girard', 'ethan');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 16
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Andre', 'Camille', 'camille.andre@example.com', '0666677788', 'camille.andre', 'camille');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
+
+-- Étudiant 17
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Lemoine', 'Adam', 'adam.lemoine@example.com', '0677788899', 'adam.lemoine', 'adam');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 2);
+
+-- Étudiant 18
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Noel', 'Ines', 'ines.noel@example.com', '0688899900', 'ines.noel', 'ines');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 19
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Meunier', 'Leo', 'leo.meunier@example.com', '0699900011', 'leo.meunier', 'leo');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
+
+-- Étudiant 20
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Gauthier', 'Anna', 'anna.gauthier@example.com', '0612341122', 'anna.gauthier', 'anna');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 21
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Perrin', 'Mathis', 'mathis.perrin@example.com', '0623452233', 'mathis.perrin', 'mathis');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 2);
+
+-- Étudiant 22
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Marchand', 'Julie', 'julie.marchand@example.com', '0634563344', 'julie.marchand', 'julie');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
+
+-- Étudiant 23
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Renard', 'Axel', 'axel.renard@example.com', '0645674455', 'axel.renard', 'axel');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 24
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Blanc', 'Laura', 'laura.blanc@example.com', '0656785566', 'laura.blanc', 'laura');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 2);
+
+-- Étudiant 25
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Roy', 'Maxime', 'maxime.roy@example.com', '0667896677', 'maxime.roy', 'maxime');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
+
+-- Étudiant 26
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Guerin', 'Alice', 'alice.guerin@example.com', '0678907788', 'alice.guerin', 'alice');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 27
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Lemoine', 'Noe', 'noe.lemoine@example.com', '0689018899', 'noe.lemoine', 'noe');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 2);
+
+-- Étudiant 28
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Henry', 'Eva', 'eva.henry@example.com', '0690129900', 'eva.henry', 'eva');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+-- Étudiant 29
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Robin', 'Gabriel', 'gabriel.robin@example.com', '0611231011', 'gabriel.robin', 'gabriel');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
+
+-- Étudiant 30
+INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
+VALUES ('Fabre', 'Lina', 'lina.fabre@example.com', '0622342122', 'lina.fabre', 'lina');
+INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);

@@ -43,7 +43,7 @@
         <section class="section">
             <h2>Détails du Stage</h2>
             <div class="details-container">
-                <h3>Stage</h3>
+                <h3>Stage - <?= $stage["etudiant_prenom"]." ".$stage["etudiant_nom"] ?></h3>
                 <p><strong>Titre du stage :</strong> <?= $stage["titre"] ?></p>
                 <p><strong>Entreprise :</strong> <?= $stage["entreprise_nom"] ?> </p>
                 <p><strong>Durée :</strong> <?=$dateDebut ?> - <?= $dateFin ?></p>
@@ -67,7 +67,7 @@
                 <a href=<?= L_MES_STAGES_FOLDER ?> class="back-button">Retour à la liste des stages</a>
         <?php elseif ($_SESSION["usertype"] == "tuteur"): ?>
             <a href=<?= L_DASHBOARD_FOLDER ?> class="back-button">Retour</a>
-        <?php elseif ($_SESSION["usertype"] == "prof"): ?>
+        <?php elseif ($_SESSION["usertype"] == "prof" || $_SESSION["usertype"] == "secretaire"): ?>
             <a href=<?= L_STUDENTS_FOLDER ?> class="back-button">Retour</a>
         <?php endif; ?>
     </main>

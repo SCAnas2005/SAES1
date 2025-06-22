@@ -92,6 +92,18 @@
             return $request;
         }
 
+        public static function search_secretaire($login)
+        {
+            $login = self::get_sql_syntax($login);
+            // echo $login; exit;
+            $sql = " select * from utilisateur 
+                join secretaire using (id)  
+                join gere on secretaire.id = gere.id
+                where login = $login;";
+            $request = self::execute_sql($sql);
+            return $request;
+        }
+
         public static function search_user($login, $role=null)
         {
 
@@ -114,6 +126,9 @@
                 return self::search_enseignant($login);
             } else if ($role == "prof") {
                 return self::search_enseignant($login);
+            } else if ($role == "secretaire")
+            {
+                return self::search_secretaire($login);
             } else{
                 return false;
             }
@@ -181,6 +196,54 @@
 
             // print_r($req);exit;
             return $req;
+        }
+
+
+        public static function get_stage_and_docs_from_all_students()
+        {
+            $sql = "SELECT 
+                *
+            FROM 
+                Stage s
+            LEFT JOIN 
+                DocumentStage ds USING (id_Stage)
+            JOIN 
+                Utilisateur u ON u.id = s.id;
+            ";
+
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+        public static function get_stage_and_docs_from_student($id_student)
+        {
+            $sql = "SELECT 
+                *
+            FROM 
+                Stage s
+            LEFT JOIN 
+                DocumentStage ds USING (id_Stage)
+            JOIN 
+                Utilisateur u ON u.id = s.id
+            WHERE u.id = $id_student;
+            "; 
+
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+        public static function add_stage_document($student_id, $stage_id, $type_document, $chemin_fichier, $statut, $commentaire)
+        {
+            $type_document = self::$PDO->quote($type_document);
+            $chemin_fichier = self::$PDO->quote($chemin_fichier);
+            $statut = self::$PDO->quote($statut);
+            $commentaire = self::$PDO->quote($commentaire);
+
+            $sql = "INSERT INTO DocumentStage(id_Etudiant, id_Stage, type_document, chemin_fichier, statut, commentaire)
+                    VALUES ($student_id, $stage_id, $type_document, $chemin_fichier, $statut, $commentaire);
+            ";
+
+            self::execute_sql($sql);
         }
 
         public static function get_tuteur_from_stage($userid, $stageid)
@@ -347,6 +410,9 @@
             $sql = "SELECT 
                     s.*,
 
+                    u.nom AS 'etudiant_nom',
+                    u.prenom AS 'etudiant_prenom',
+
                     ete.nom AS 'tuteur_entreprise_nom',
                     ete.prenom AS 'tuteur_entreprise_prenom',
                     ete.email AS 'tuteur_entreprise_email',
@@ -367,6 +433,9 @@
                     ep.tel AS 'entreprise_tel'
 
                 FROM Stage s
+
+                JOIN Utilisateur u ON s.id = u.id
+
                 JOIN Enseignant e1 ON s.id_1 = e1.id
                 JOIN Utilisateur eu1 ON eu1.id = e1.id
 
@@ -384,7 +453,6 @@
 
             return self::execute_sql($sql);
         }
-
 
         public static function get_students_from_stage($id, $stageid)
         {
@@ -445,6 +513,8 @@
             $req = self::execute_sql($sql);
             return $req;
         }
+
+
 
         public static function get_departement_from_etudiant($student_id)
         {
@@ -519,14 +589,19 @@
         public static function get_all_profs()
         {
             $sql = "SELECT
-                    Utilisateur.id,
-                    Utilisateur.nom,
-                    Utilisateur.prenom
+                    Utilisateur.*
                 FROM
                     enseignant
                 INNER JOIN
                     Utilisateur ON enseignant.id = Utilisateur.id;
             ";
+            $req = self::execute_sql_all($sql);
+            return $req;
+        }
+
+        public static function get_profs_from_dep($id_departement)
+        {
+            $sql = "SELECT Utilisateur.* FROM Utilisateur JOIN Enseignant USING (id) WHERE id_Departement = $id_departement;";
             $req = self::execute_sql_all($sql);
             return $req;
         }

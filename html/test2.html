@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion Étudiant - Stage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    header {
+      background-color: #293358;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .doc-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .doc-section h3 {
+      color: #293358;
+    }
+
+    .actions {
+      margin-top: 15px;
+    }
+
+    .actions a, .actions button {
+      text-decoration: none;
+      background-color: #293358;
+      color: white;
+      padding: 10px 15px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .actions a:hover, .actions button:hover {
+      background-color: #ad947e;
+    }
+
+    .validation {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .validation button {
+      font-size: 16px;
+      padding: 12px 30px;
+    }
+
+    .status {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .envoye { color: green; }
+    .attente { color: orange; }
+    .non-recu { color: red; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Suivi de Lucas Dupont</h1>
+  </header>
+
+  <main>
+    <h2>Gestion des Documents</h2>
+
+    <!-- Bordereau Section -->
+    <div class="doc-section">
+      <h3>Bordereau</h3>
+      <p>Statut : <span class="status attente">Reçu</span></p>
+      <div class="actions">
+        <a href="#">📥 Télécharger</a>
+        <a href="#">👁️ Consulter</a>
+        <button>📤 Envoyer un nouveau</button>
+        <button>✅ Valider Bordereau</button>
+      </div>
+    </div>
+
+    <!-- Convention Section -->
+    <div class="doc-section">
+      <h3>Convention de Stage</h3>
+      <p>Statut : <span class="status non-recu">Non reçu</span></p>
+      <div class="actions">
+        <a href="#">📥 Télécharger</a>
+        <a href="#">👁️ Consulter</a>
+        <button>📤 Envoyer la Convention</button>
+      </div>
+    </div>
+
+    <!-- Validation Finale -->
+    <div class="validation">
+      <button>🎓 Valider le Stage</button>
+    </div>
+  </main>
+
+</body>
+</html>

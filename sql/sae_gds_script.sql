@@ -41,9 +41,9 @@ CREATE TABLE Etudiant (
 );
 
 CREATE TABLE Secretaire (
-   id INT AUTO_INCREMENT PRIMARY KEY,
+   id INT PRIMARY KEY AUTO_INCREMENT,
    Bureau VARCHAR(50),
-   FOREIGN KEY (id) REFERENCES Utilisateur(id)
+   FOREIGN KEY (id) REFERENCES Utilisateur(id),
 );
 
 CREATE TABLE Enseignant (

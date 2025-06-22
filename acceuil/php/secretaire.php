@@ -1,6 +1,6 @@
 <?php 
     $student_count = count($_SESSION["data"]["my_departement_students"]);
-
+    $profs_count = count($_SESSION["data"]["my_departement_profs"]);
 ?>
 
 <!DOCTYPE html>
@@ -44,31 +44,30 @@
         </section>
 
        
-        <!-- <section>
-            <h2>Document reçus</h2>
-            <form action="upload_document.php" method="post" enctype="multipart/form-data">
-                <p>METTRE LES DOCS RECUS</p>
-            </form>
-        </section> -->
+        <section>
+            <h2>Les enseignants</h2>
+            <p>Vous avez <?= $profs_count ?> enseignants dans votre promotions.</p>
+            <a href=<?= L_TEACHERS_FOLDER ?>>Voir</a>
+        </section>
     </div>
 
         
     
-        <section>
-            <h2>Contactez-nous</h2>
-            <form action="contact.php" method="post">
-                <label for="name">Votre nom :</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Votre email :</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Votre message :</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Envoyer</button>
-            </form>
-        </section>
+    <section>
+        <h2>Contactez-nous</h2>
+        <form action="contact.php" method="post">
+            <label for="name">Votre nom :</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Votre email :</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Votre message :</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
 
     
         </main>
