@@ -69,7 +69,62 @@ h2 {
     margin-left: 10px;
 }
 
-.envoye { color: green; }
-.attente { color: orange; }
-.non-recu { color: red; }
-.non-envoye {color: red;}
+.valide { color: green; }
+.attente { color: blue; }
+.recu { color: orange; }
+.non-recu {color: red;}
+
+.upload-button {
+  display: inline-block;
+  background-color: #293358;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.upload-button:hover {
+  background-color: #ad947e;
+}
+
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.actions form,
+.actions button,
+.actions .upload-button {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.actions form button,
+.actions .upload-button {
+  background-color: #293358;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.actions form button:hover,
+.actions .upload-button:hover {
+  background-color: #ad947e;
+}
+
+/* Cacher l'input file, mais accessible via label */
+input[type="file"] {
+  display: none;
+}

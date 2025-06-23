@@ -210,7 +210,6 @@
             JOIN 
                 Utilisateur u ON u.id = s.id;
             ";
-
             $req = self::execute_sql_all($sql);
             return $req;
         }
@@ -238,10 +237,11 @@
             $chemin_fichier = self::$PDO->quote($chemin_fichier);
             $statut = self::$PDO->quote($statut);
             $commentaire = self::$PDO->quote($commentaire);
-
+            
             $sql = "INSERT INTO DocumentStage(id_Etudiant, id_Stage, type_document, chemin_fichier, statut, commentaire)
                     VALUES ($student_id, $stage_id, $type_document, $chemin_fichier, $statut, $commentaire);
             ";
+
 
             self::execute_sql($sql);
         }

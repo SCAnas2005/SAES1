@@ -33,12 +33,30 @@
         return ($p1 == $p2);
     }
 
+    function get_user_dirpath($userid)
+    {
+        $userdir = $_SERVER['DOCUMENT_ROOT'] . "/docs/$userid";
+        return $userdir;
+    }
+
+    function is_user_dir($userid)
+    {
+        $userdir = get_user_dirpath($userid);
+        return is_dir($userdir);
+    }
+
+    function make_user_dir($userid)
+    {
+        $userdir = get_user_dirpath($userid);
+        mkdir($userdir);
+    }
+
     function get_user_docs($userid) 
     {   
         $userdir = $_SERVER['DOCUMENT_ROOT'] . "/docs/$userid";
-        if (!is_dir($userdir))
+        if (!is_user_dir($userid))
         {
-            mkdir($userdir);
+            make_user_dir($userid);
         }
 
         $extensionsPermises = ['pdf', 'doc', 'docx', 'odt', 'rtf', 'tex'];
@@ -94,25 +112,7 @@
 
 
 
-    function get_statut_classname_from_status($statut)
-    {
-        $s = "";
-        switch (strtolower($statut)) {
-            case 'non envoyé':
-                $s = "non-envoye";
-                break;
-            case 'attente':
-                $s = "attente";
-                break;
+    
 
-            case 'validé':
-                $s = "validé";
-                break;
-            default:
-                # code...
-                break;
-        }
-        return $s;
-    }
 
 ?>

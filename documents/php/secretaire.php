@@ -56,12 +56,12 @@
             {
                 if ($last_doc_id < intval($row["id_Document"]))
                 {
-                    echo $last_doc_id . "and".intval($row["id_Document"]);
+                    // echo $last_doc_id . "and".intval($row["id_Document"]);
                     $last_doc_id = $row["id_Document"];
                     $grouped[$id]['documents'][$index] = [
                         'id_Document' => $row['id_Document'],
                         'type_document' => $row['type_document'],
-                        'chemin_fichier' => $row['chemin_fichier'],
+                        'chemin_fichier' => $index == 0 ? get_bordereau_filepath_from_student($id) : get_convention_filepath_from_student($id),
                         'statut' => $row['statut'],
                         'date_derniere_action' => $row['date_derniere_action'],
                         'commentaire' => $row['commentaire'],
@@ -72,14 +72,13 @@
                 $grouped[$id]['documents'][$index] = [
                     'id_Document' => $row['id_Document'],
                     'type_document' => $row['type_document'],
-                    'chemin_fichier' => $row['chemin_fichier'],
+                    'chemin_fichier' => $index == 0 ? get_bordereau_filepath_from_student($id) : get_convention_filepath_from_student($id),
                     'statut' => $row['statut'],
                     'date_derniere_action' => $row['date_derniere_action'],
                     'commentaire' => $row['commentaire'],
                 ];
             }
         } 
-
     }
 
     $students = $grouped;
@@ -124,7 +123,7 @@
                     <?= get_sec_status_from_student_status($info_student["documents"][0]["statut"]) ?>
                 </span></td>
                <td><span class="status <?= get_statut_classname_from_status($info_student["documents"][1]["statut"]) ?>">
-                    <?= $info_student["documents"][1]["statut"] ?>
+                    <?= get_sec_status_from_student_status($info_student["documents"][1]["statut"]) ?>
                 </span></td>
                 <td><a href="<?= L_DOCUMENTS_FOLDER."/etudiant/index.php?id=".$info_student["student"]["id"] ?>" class="btn-link">Gérer</a></td>
             </tr>

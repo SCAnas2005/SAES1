@@ -14,10 +14,10 @@
     
     if ($_SESSION["usertype"] == "student")
     {
-        $ret = send_bordereau_to_secretaire($_FILES["bordereau"], $_SESSION["data"]["userinfo"]["id"]);
+        $ret = send_convention_to_secretaire($_FILES["convention"], $_SESSION["data"]["userinfo"]["id"]);
         if ($ret)
         {
-            Database::add_stage_document($_SESSION["data"]["userinfo"]["id"], $_SESSION["data"]["stages"][0]["infostage"]["id_Stage"], "bordereau", "", "attente", "");
+            Database::add_stage_document($_SESSION["data"]["userinfo"]["id"], $_SESSION["data"]["stages"][0]["infostage"]["id_Stage"], "convention", "", "attente", "");
         }
         header("Location: ".L_DOCUMENTS_FOLDER);
     }
@@ -25,10 +25,10 @@
     {
         $id_student = $_POST["id_student"];
         $id_stage = $_POST["id_stage"];
-        $ret = send_bordereau_to_secretaire($_FILES["bordereau"], $id_student);
+        $ret = send_convention_to_secretaire($_FILES["convention"], $id_student);
         if ($ret)
         {
-            Database::add_stage_document($id_student, $id_stage, "bordereau", "", "recu", "");
+            Database::add_stage_document($id_student, $id_stage, "convention", "", "recu", "");
         }
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);//retour sur l'url précédente

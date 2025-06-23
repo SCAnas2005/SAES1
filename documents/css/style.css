@@ -119,19 +119,15 @@ header h1 {
     background-color: #f39c12; /* jaune */
 }
 
-.status.reçu {
+.status.recu {
     background-color: #3498db; /* bleu clair */
 }
 
-.status.envoyé {
-    background-color: #9b59b6; /* violet */
-}
-
-.status.validé {
+.status.valide {
     background-color: #27ae60; /* vert */
 }
 
-.status.non-envoyé {
+.status.non-recu {
     background-color: #e74c3c; /* rouge */
 }
 

@@ -9,4 +9,9 @@
     {
         download_file($_SESSION["download_bordereau"]);
     }   
+
+    if (isset($_SESSION["download_convention"]))
+    {
+        download_file($_SESSION["download_convention"]);
+    }
 ?>
