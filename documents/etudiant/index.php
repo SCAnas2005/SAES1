@@ -115,6 +115,18 @@
         }
     }
 
+
+    if (isset($_POST["validate_stage"]))
+    {
+        validate_stage($id_student, $student_info["stage"]["id_Stage"], 1);
+        header("Location: ./");
+    }
+    else if (isset($_POST["unvalidate_stage"]))
+    {
+        validate_stage($id_student, $student_info["stage"]["id_Stage"], 0);
+        header("Location: ./");
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -191,7 +203,13 @@
 
     <!-- Validation Finale -->
     <div class="validation">
-        <button>🎓 Valider le Stage</button>
+        <form method="post">
+            <?php if($student_info["stage"]["valide"] == 0): ?>
+                <button name="validate_stage" type="submit">🎓 Valider le Stage</button>
+            <?php else: ?>
+                <button name="unvalidate_stage" type="submit">🎓 Invalider le Stage</button>
+            <?php endif; ?>
+        </form>            
     </div>
     </main>
 

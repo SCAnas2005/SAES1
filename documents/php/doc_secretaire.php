@@ -245,6 +245,10 @@
     }
 
 
-    
+    function validate_stage($id_student, $id_stage, $value=1)
+    {
+        $sql = "UPDATE Stage SET valide = $value WHERE id_Stage=$id_stage AND id=$id_student;";
+        Database::execute_sql($sql);
+    }
 
 ?>

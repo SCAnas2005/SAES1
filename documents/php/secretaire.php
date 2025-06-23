@@ -56,7 +56,7 @@
             {
                 if ($last_doc_id < intval($row["id_Document"]))
                 {
-                    // echo $last_doc_id . "and".intval($row["id_Document"]);
+                    // echo $last_doc_id . "and".i ntval($row["id_Document"]);
                     $last_doc_id = $row["id_Document"];
                     $grouped[$id]['documents'][$index] = [
                         'id_Document' => $row['id_Document'],

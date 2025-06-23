@@ -1,6 +1,8 @@
 
 <?php 
     $docs = $_SESSION["user_docs"];
+
+    
     if (isset($_POST["download"]))
     {
         $_SESSION["download_file"] = $_POST["download"];
@@ -13,10 +15,16 @@
         header("Location: ". L_DOCUMENTS_FOLDER."/php/remove.php");
     }
 
+    unset($_SESSION["download_bordereau"]);
+    unset($_SESSION["download_convention"]);
     if (isset($_POST["download_bordereau"]))
     {
-        echo "test";exit;
         $_SESSION["download_bordereau"] = $_POST["download_bordereau"];
+        header("Location: ". L_DOCUMENTS_FOLDER."/php/download_sec.php");
+    }
+    if (isset($_POST["download_convention"]))
+    {
+        $_SESSION["download_convention"] = $_POST["download_convention"];
         header("Location: ". L_DOCUMENTS_FOLDER."/php/download_sec.php");
     }
 
@@ -90,8 +98,8 @@
                 <td><span class="status <?= $doc["statut"] ?>"><?= $doc ? $doc['statut'] : 'non-recu' ?></span></td>
                 <td><?= $doc && isset($doc['chemin_fichier']) ? basename($doc['chemin_fichier']) : '-' ?></td>
                 <td>
-                    <form action="<?= L_DOCUMENTS_FOLDER.($doc["statut"]=="bordereau"?"/php/upload_bordereau.php" : "/php/upload_convention.php")?>" method="post" enctype="multipart/form-data">
-                        <input type="file" name="<?= ($doc["statut"]=="bordereau"? "bordereau" : "convention")?>" accept=".pdf,.docx" required>
+                    <form action="<?= L_DOCUMENTS_FOLDER.($doc["type_document"]=="bordereau"?"/php/upload_bordereau.php" : "/php/upload_convention.php")?>" method="post" enctype="multipart/form-data">
+                        <input type="file" name="<?= ($doc["type_document"]=="bordereau"? "bordereau" : "convention")?>" accept=".pdf,.docx" required>
                         <input type="hidden" name="type_document" value="<?= $type ?>">
                         <button type="submit">Envoyer</button>
                     </form>
@@ -99,11 +107,13 @@
                 <td>
                     <?php if ($doc && isset($doc['chemin_fichier'])): ?>
                         <form method="post">
-                            <button type="submit" name="<?= ($doc["statut"]=="bordereau" ? "download_bordereau":"download_convention") ?>" value="<?= $doc["chemin_fichier"] ?>" class="form-button">Télécharger</button>
+                            <input type="hidden" name="<?= ($doc["type_document"]=="bordereau" ? "download_bordereau" : "download_convention") ?>" value="<?= $doc["chemin_fichier"] ?>">
+                            <button type="submit" class="form-button">Télécharger</button>
                         </form>
                     <?php else: ?>
                         <em>—</em>
                     <?php endif; ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>
