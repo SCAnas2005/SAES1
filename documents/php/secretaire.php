@@ -109,27 +109,42 @@
     <main>
         <h2>Étudiants</h2>
         <table>
-        <tr>
-            <th>Nom</th>
-            <th>Bordereau</th>
-            <th>Convention</th>
-            <th>Actions</th>
-        </tr>
-
-        <?php foreach ($students as $info_student): ?>
             <tr>
-                <td><?= $info_student["student"]["prenom"]." ".$info_student["student"]["nom"] ?></td>
-                <td><span class="status <?= get_statut_classname_from_status($info_student["documents"][0]["statut"]) ?>">
-                    <?= get_sec_status_from_student_status($info_student["documents"][0]["statut"]) ?>
-                </span></td>
-               <td><span class="status <?= get_statut_classname_from_status($info_student["documents"][1]["statut"]) ?>">
-                    <?= get_sec_status_from_student_status($info_student["documents"][1]["statut"]) ?>
-                </span></td>
-                <td><a href="<?= L_DOCUMENTS_FOLDER."/etudiant/index.php?id=".$info_student["student"]["id"] ?>" class="btn-link">Gérer</a></td>
+                <th>Nom</th>
+                <th>Bordereau</th>
+                <th>Convention</th>
+                <th>Stage validé</th> <!-- 👈 Nouvelle colonne -->
+                <th>Actions</th>
             </tr>
-        <?php endforeach; ?>
+
+            <?php foreach ($students as $info_student): ?>
+                <tr>
+                    <td><?= $info_student["student"]["prenom"] . " " . $info_student["student"]["nom"] ?></td>
+                    
+                    <td>
+                        <span class="status <?= get_statut_classname_from_status($info_student["documents"][0]["statut"]) ?>">
+                            <?= get_sec_status_from_student_status($info_student["documents"][0]["statut"]) ?>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status <?= get_statut_classname_from_status($info_student["documents"][1]["statut"]) ?>">
+                            <?= get_sec_status_from_student_status($info_student["documents"][1]["statut"]) ?>
+                        </span>
+                    </td>
+
+                    <td>
+                        <?= $info_student["stage"]["valide"] ? "✅" : "❌" ?>
+                    </td>
+
+                    <td>
+                        <a href="<?= L_DOCUMENTS_FOLDER . "/etudiant/index.php?id=" . $info_student["student"]["id"] ?>" class="btn-link">Gérer</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </main>
+
 
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
