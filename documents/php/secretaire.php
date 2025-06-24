@@ -119,7 +119,7 @@
 
             <?php foreach ($students as $info_student): ?>
                 <tr>
-                    <td><?= $info_student["student"]["prenom"] . " " . $info_student["student"]["nom"] ?></td>
+                    <td><?= htmlspecialchars($info_student["student"]["prenom"] . " " . $info_student["student"]["nom"]) ?></td>
                     
                     <td>
                         <span class="status <?= get_statut_classname_from_status($info_student["documents"][0]["statut"]) ?>">
