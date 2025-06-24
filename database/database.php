@@ -391,17 +391,17 @@
         public static function get_stage_from_tuteur_ens($id)
         {
             $sql = "SELECT 
-                s.*
-            FROM 
-                Stage s
-            JOIN 
-                Enseignant e ON s.id_1 = e.id
-            WHERE 
-                e.id = $id;  ";
-
+                    s.*
+                FROM 
+                    Stage s
+                JOIN 
+                    Enseignant e ON s.id_1 = e.id
+                WHERE 
+                    e.id = $id;  
+            ";
             $req = self::execute_sql_all($sql);
 
-            // print_r($req);
+            // print_r($req);exit;
             return $req;
         }
 

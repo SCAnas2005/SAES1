@@ -6,7 +6,7 @@
 
     Database::init_database();
 
-    if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
+    if (!is_logged() or $_SESSION["usertype"] != "secretaire")
     {
         header("Location: /");
     }
@@ -19,7 +19,6 @@
 
     foreach ($profs as &$prof) {
         $prof["stages"] = Database::get_stage_from_tuteur_ens($prof["id"]);
-
     }
 ?>
 
@@ -56,7 +55,13 @@
                             <td><?= $prof["prenom"] ?></td>
                             <td><?= count($prof["stages"]) > 0 ? "Oui" : "Non" ?></td>
                             <td><?= count($prof["stages"]) ?></td>
-                            <!-- <td><a href="" class="details-button">Détails stage</a></td> -->
+                            <td>
+                                <form method="post" action="<?= L_TEACHERS_FOLDER . "/stage/index.php" ?>">
+                                    <input type="hidden" name="id_ens" value="<?= $prof["id"] ?>"> 
+                                    <input type="submit" class="details-button" value="📄 Détails">
+                                </form>
+                            </td>
+                            
                         </tr>
                     <?php endforeach; ?>
                     <!-- Ajouter d'autres étudiants ici -->
