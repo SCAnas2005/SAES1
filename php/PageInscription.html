@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suivi des Stages - Accueil</title>
+    <meta charset="UTF-8"> <!-- Définit le codage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rend la page responsive selon la largeur de l'écran -->
+    <title>Suivi des Stages - Accueil</title> <!-- Titre affiché dans l'onglet du navigateur -->
     <style>
+        /* Style général du corps de la page */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,24 +13,28 @@
             background-color: #f4f4f4;
         }
 
+        /* Style de l'en-tête */
         header {
-            background-color: #002060;
-            color: #fff;
+            background-color: #002060; /* Bleu foncé */
+            color: #fff; /* Texte blanc */
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
+            justify-content: space-between; /* Espace entre les éléments (titre et logo) */
+            align-items: center; /* Alignement vertical centré */
+            position: relative; /* Pour positionner le logo en absolu */
         }
 
+        /* Suppression de la marge par défaut du titre */
         header h1 {
             margin: 0;
         }
 
+        /* Style de la barre de navigation (non utilisée ici mais prête à l'emploi) */
         nav {
             display: flex;
         }
 
+        /* Style des liens dans la navigation */
         nav a {
             color: #fff;
             text-decoration: none;
@@ -38,100 +43,111 @@
             border-radius: 5px;
         }
 
+        /* Effet au survol des liens */
         nav a:hover {
-            background-color: #ffcc00;
-            color: #002060;
+            background-color: #ffcc00; /* Jaune */
+            color: #002060; /* Bleu foncé */
         }
 
+        /* Positionnement et taille du logo dans l'en-tête */
         .header-logo {
             position: absolute;
             right: 20px;
             top: 10px;
-            width: 50px; /* Ajuste la taille du logo selon tes préférences */
+            width: 50px; /* Largeur fixe */
         }
 
+        /* Style du contenu principal */
         .main-content {
             padding: 20px ;
-            background-color: #ffffff;
+            background-color: #ffffff; /* Fond blanc */
             margin: 20px auto;
-            margin-bottom: 10%;
-            max-width: 1200px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            margin-bottom: 10%; /* Espace en bas */
+            max-width: 1200px; /* Largeur maximale */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre portée */
+            border-radius: 8px; /* Bords arrondis */
         }
 
+        /* Style des sections principales */
         .section {
             margin-bottom: 20px;
         }
 
+        /* Style des titres de sections */
         .section h2 {
-            background-color: #ffcc00;
-            color: #002060;
+            background-color: #ffcc00; /* Jaune */
+            color: #002060; /* Bleu foncé */
             padding: 10px;
             border-radius: 5px;
         }
 
+        /* Centrage du contenu dans la classe connexion */
         .connexion{
             text-align: center;
-            
-          }
-
-        .connexion h2 {
-            background-color: #ad947e;      
-            color: #293358;
-            padding: 4px;
-            border-radius: 55px;
         }
 
-        #insc{
-            text-align: center;
-          }
+        /* Style des titres dans connexion */
+        .connexion h2 {
+            background-color: #ad947e; /* Couleur marron clair */
+            color: #293358; /* Couleur bleu foncé */
+            padding: 4px;
+            border-radius: 55px; /* Forme arrondie */
+        }
 
-          #insc2{
+        /* Centrage pour les div avec id insc, insc2, insc3 */
+        #insc, #insc2, #insc3 {
             text-align: center;
-          }
-          #insc3{
-            text-align: center;
-          }
+        }
 
+        /* Centrage de la section inscription */
         .Inscription{
             text-align: center;
-          }
-          
-	.Inscription input{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin-left: 43.5%;
-    }
-    .Inscription button{
-        background-color: #ad947e;      
-        color: #293358;
-        padding: 0.4px;
-        border-radius: 5px;
-    }
-    .choix{
-        text-align: center;    
-    }
+        }
+        
+        /* Style des inputs dans Inscription */
+        .Inscription input{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            margin-left: 43.5%; /* Décalage à gauche */
+        }
 
-    li.choix{      
-        color: #293358;
-        padding: 4px;
-        border-radius: 5px;
-    }
+        /* Style des boutons dans Inscription */
+        .Inscription button{
+            background-color: #ad947e; /* Marron clair */
+            color: #293358; /* Bleu foncé */
+            padding: 0.4px;
+            border-radius: 5px;
+        }
 
+        /* Centrage pour choix */
+        .choix{
+            text-align: center;    
+        }
+
+        /* Style pour les éléments li de la classe choix */
+        li.choix{      
+            color: #293358;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        /* Style des titres h2 dans Inscription */
         .Inscription h2 {
             color: #ad947e;      
             background-color: #293358;
             padding: 4px;
             border-radius: 55px;
         }
+
+        /* Style des labels dans Inscription */
         .Inscription label {      
             color: #293358;
             padding: 0.4px;
             border-radius: 5px;
         }
 
+        /* Barre d'informations utilisateur */
         .user-info {
             display: flex;
             justify-content: space-between;
@@ -139,11 +155,13 @@
             margin-bottom: 20px;
         }
 
+        /* Bloc profil utilisateur */
         .user-info .profile {
             display: flex;
             align-items: center;
         }
 
+        /* Image de profil arrondie */
         .user-info .profile img {
             border-radius: 50%;
             width: 50px;
@@ -151,27 +169,31 @@
             margin-right: 10px;
         }
 
+        /* Nom utilisateur stylisé */
         .user-info .profile span {
             font-size: 1.2em;
             color: #002060;
         }
 
+        /* Pied de page */
         footer {
             background-color: #002060;
             color: #fff;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
+            position: fixed; /* Toujours visible en bas */
             bottom: 0;
             width: 100%;
         }
 
+        /* Style des formulaires */
         form {
             display: flex;
             flex-direction: column;
             margin-top: 10px;
         }
 
+        /* Style des champs input et textarea */
         form input, form textarea {
             padding: 10px;
             margin-bottom: 10px;
@@ -179,41 +201,50 @@
             border: 1px solid #ccc;
         }
 
+        /* Style des boutons dans les formulaires */
         form button {
-            
             padding: 10px;
-            background-color: #ffcc00;
+            background-color: #ffcc00; /* Jaune */
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+
+        /* Centrage du formulaire */
         #form{
-          text-align: center;
+            text-align: center;
         }
+
+        /* Conteneur centré pour le bouton */
         div.button
         {   
             display: flex;
             justify-content:center 
         }
+
+        /* Style général des boutons */
         button {
             padding: 20px;
             font-size: 20px;
-            background-color: #ad947e; 
-            color:#002060 ;
+            background-color: #ad947e; /* Marron clair */
+            color:#002060 ; /* Bleu foncé */
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        
+
+        /* Effet hover sur bouton */
         form button:hover {
             background-color: #ff9900;
         }
 
+        /* Suppression des puces dans les listes */
         ul {
             list-style-type: none;
             padding-left: 0;
         }
 
+        /* Marge entre éléments de liste */
         ul li {
             margin: 10px 0;
         }
@@ -222,18 +253,21 @@
 </head>
 <body>
     <header>
-        <h1>Suivi des Stages</h1>
+        <h1>Suivi des Stages</h1> <!-- Titre principal affiché dans l'en-tête -->
         <!-- Logo de l'IUT -->
         <img src="https://iutv.univ-paris13.fr/wp-content/uploads/2016/01/IUT-villetaneuse-mobile.png" alt="Logo IUT" class="header-logo">
     </header>
     <main class="main-content">
         <section class="Inscription">
+            <!-- Formulaire d'inscription avec méthode POST vers la page de connexion -->
             <form action="../PageConnexion.html" method="post">
                 <section class="choix">
                     <h2>Qui êtes vous?</h2>
                     <label for="role-selection">Choisisez votre role:</label>
+                    <!-- Liste déroulante pour choisir le rôle -->
                     <select name="select">
                             <option value="" selected>--Choisisez votre role--</option>
+                            <!-- Chaque option déclenche une fonction JS pour afficher le formulaire adapté -->
                             <option value="tuteur"   onclick="MontreTuteur()">tuteur</option>
                             <option value="etudiant" onclick="MontreEtudiant()">étudiant</option>
                             <option value="directeur"onclick="MontreProf()">directeur d'étude</option>
@@ -241,7 +275,7 @@
                             <option value="chef"     onclick="MontreProf()">Chef Département</option>
                       </select>
                     <div id="form">
-                      
+                        <!-- Formulaire pour tuteur (visible par défaut) -->
                         <form action="/SAES1-main/php/PageConnexion.html" method="post">
                           <ul  id = "insc" style ="display : block;">
                               <li>
@@ -262,13 +296,15 @@
                             </li>
                             <li>
                               <label for="mdp">Mot de passe&nbsp;:</label>
-                              <input type="password   " id="mdp" name="motdepasse" />
+                              <input type="password" id="mdp" name="motdepasse" />
                             </li>
                             <li>
                               <label for="cmdp">Confirmer Mot de passe&nbsp;:</label>
                               <input type="password" id="cmdp" name="cmotdepasse" />
-                            </ul>
-                            <ul id = "insc2" style ="display : none;">
+                            </li>
+                          </ul>
+                          <!-- Formulaire pour étudiant (initialement masqué) -->
+                          <ul id = "insc2" style ="display : none;">
                                 <li>
                                   <label for="name">Nom&nbsp;:</label>
                                   <input type="text" id="name" name="user_name" />
@@ -277,18 +313,21 @@
                                   <label for="pname">Prénom&nbsp;:</label>
                                   <input type="text" id="pname" name="user_pname" />
                                 </li>
-                                <label for="INE">INE&nbsp;:</label>
-                                <input type="text" id="ename" name="user_ename" />
-                              </li>
+                                <li>
+                                  <label for="INE">INE&nbsp;:</label>
+                                  <input type="text" id="ename" name="user_ename" />
+                                </li>
                               <li>
                                 <label for="mdp">Mot de passe&nbsp;:</label>
-                                <input type="password   " id="mdp" name="motdepasse" />
+                                <input type="password" id="mdp" name="motdepasse" />
                               </li>
                               <li>
                                 <label for="cmdp">Confirmer Mot de passe&nbsp;:</label>
                                 <input type="password" id="cmdp" name="cmotdepasse" />
-                              </ul>
-                                <ul  id = "insc3" style ="display : none;">
+                              </li>
+                          </ul>
+                          <!-- Formulaire pour directeur/responsable/chef (initialement masqué) -->
+                          <ul  id = "insc3" style ="display : none;">
                                 <li>
                                   <label for="name">Nom&nbsp;:</label>
                                   <input type="text" id="name" name="user_name" />
@@ -303,46 +342,53 @@
                               </li>
                               <li>
                                 <label for="mdp">Mot de passe&nbsp;:</label>
-                                <input type="password   " id="mdp" name="motdepasse" />
+                                <input type="password" id="mdp" name="motdepasse" />
                               </li>
                               <li>
                                 <label for="cmdp">Confirmer Mot de passe&nbsp;:</label>
                                 <input type="password" id="cmdp" name="cmotdepasse" />
-                              </ul>
+                              </li>
+                          </ul>
                     </div>
-                </ul>
-                <h2>Inscrivez vous</h2>
                 </section>
-              <div class="button">
-                <button type="submit">M'inscrire</button>
-              </div>
+                <h2>Inscrivez vous</h2>
+                <div class="button">
+                    <button type="submit">M'inscrire</button> <!-- Bouton pour envoyer le formulaire -->
+                </div>
             </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
+        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p> <!-- Pied de page fixe -->
     </footer>
 
 </body>
 </html>
+
 <script>
-const t = document.getElementById("insc");
-const e = document.getElementById("insc2");
-const d = document.getElementById("insc3");
-  function MontreTuteur() {
-    t.style.display ='block' ;
-    e.style.display = 'none';
-    d.style.display = 'none';
-  }
-            
-      function MontreEtudiant() {
+    // Récupération des trois formulaires pour les rôles
+    const t = document.getElementById("insc");  // formulaire tuteur
+    const e = document.getElementById("insc2"); // formulaire étudiant
+    const d = document.getElementById("insc3"); // formulaire directeur/responsable/chef
+
+    // Affiche uniquement le formulaire tuteur
+    function MontreTuteur() {
+        t.style.display ='block' ;
+        e.style.display = 'none';
+        d.style.display = 'none';
+    }
+    
+    // Affiche uniquement le formulaire étudiant
+    function MontreEtudiant() {
         t.style.display ='none' ;
         e.style.display = 'block';
         d.style.display = 'none';
-      }
-      function MontreProf() {
+    }
+    
+    // Affiche uniquement le formulaire directeur/responsable/chef
+    function MontreProf() {
         t.style.display ='none' ;
         e.style.display = 'none';
         d.style.display = 'block';
-      }
+    }
 </script>
