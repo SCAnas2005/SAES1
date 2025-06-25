@@ -3,14 +3,14 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
-    if (!is_logged())
+    if (!is_logged())  // Vérifie que l'utilisateur est connecté, sinon redirige vers la page d'accueil
     {
         header("Location: /");
     }
 
     include_once "php/doc_secretaire.php";
 
-    $data = Database::get_stage_and_docs_from_all_students();
+    $data = Database::get_stage_and_docs_from_all_students();  // Récupération des données des stages et documents de tous les étudiants via la base de données
 
     $grouped = [];
 
@@ -25,7 +25,7 @@
         $type = $row['type_document'] ?? null;
         $doc_id = isset($row['id_Document']) ? intval($row['id_Document']) : null;
 
-        if (!isset($grouped[$id])) {
+        if (!isset($grouped[$id])) { // Si l'étudiant n'a pas encore été ajouté dans le tableau groupé, on l'initialise
             $grouped[$id] = [
                 'student' => [
                     'id' => $row['id'],
@@ -41,7 +41,7 @@
                     'date_fin' => $row['date_fin'],
                     'valide' => $row['valide'],
                 ],
-                'documents' => [
+                'documents' => [ // initialisation des documents à "non envoyé"
                     0 => [
                         "type_document" => "bordereau",
                         "statut" => "Non envoyé"
@@ -54,10 +54,10 @@
             ];
         }
 
-        if ($doc_id && in_array($type, ['bordereau', 'convention'])) {
+        if ($doc_id && in_array($type, ['bordereau', 'convention'])) { // Si un document existe et son type est bordereau ou convention
             $index = $type === 'bordereau' ? 0 : 1;
 
-            if (
+            if (  // Si on n'a pas encore mémorisé cet id de document ou si l'id actuel est plus récent (plus grand)
                 !isset($last_doc_ids[$id][$type]) ||
                 $doc_id > $last_doc_ids[$id][$type]
             ) {
