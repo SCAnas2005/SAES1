@@ -13,6 +13,7 @@
     <link href=<?= L_HOME_FOLDER."/css/other.css" ?> rel="stylesheet">
 </head>
 <body>
+    <!-- Inclusion du header (barre de navigation, logo, etc.) depuis un fichier externe -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
     
     <div class="container">
@@ -40,6 +41,7 @@
         <section>
             <h2>Mes Etudiants</h2>
             <p>Vous avez <?= $student_count ?> etudiants dans votre promotions.</p>
+             <!-- Lien vers la page de gestion/visualisation des étudiants -->
             <a href=<?= L_STUDENTS_FOLDER ?>>Voir ma promotion</a>
         </section>
 
@@ -72,6 +74,7 @@
 
     
         </main>
+        <!-- Inclusion du footer depuis un fichier externe -->
         <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>
