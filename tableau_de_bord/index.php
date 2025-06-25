@@ -3,7 +3,7 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session(); // Démarrage ou récupération de la session PHP
  
-+// Vérification que l'utilisateur est connecté
+    // Vérification que l'utilisateur est connecté
     // Si la variable de session "logged" n'existe pas ou vaut false,
     // on redirige vers la page d'accueil (ou page de connexion)
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
