@@ -20,6 +20,7 @@
         
 </head>
 <body>
+    <!-- Inclusion du header (barre de navigation, logo, etc.) depuis un fichier externe -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <div class="container">
