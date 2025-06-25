@@ -89,7 +89,6 @@
                 <?php endif; ?>
 
                 <p><strong>Validé :</strong> <?= $stage["infostage"]["valide"] ? "Oui" : "Non" ?></p>
-                <!-- <p><strong>Évaluations :</strong> Note globale : 18/20</p> -->
             </div>
             <?php if ($_SESSION["usertype"] == "student"):?>
                 <a href=<?= L_MES_STAGES_FOLDER ?> class="back-button">Retour à la liste des stages</a>

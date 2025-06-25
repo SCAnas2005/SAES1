@@ -700,6 +700,9 @@
 
                 DELETE FROM Inscription
                 WHERE id = $id_etudiant;
+
+                DELETE FROM StageCompetence
+                WHERE id_Stage = $id_Stage;
             ";
             self::execute_sql($sql);
         }
