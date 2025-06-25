@@ -1,5 +1,5 @@
 <?php 
-    $user = $data["userinfo"];
+    $user = $data["userinfo"]; // Récupération des informations de l'utilisateur depuis la variable $data (souvent initialisée en session)
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,7 +11,7 @@
    
 </head>
 <body>
-    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
+    <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?> <!-- Inclusion de l'en-tête commun à toutes les pages -->
 
     <main class="main-content">
 
@@ -19,7 +19,7 @@
      
             <div class="menu">
                 <h2>Espace Utilisateur</h2>
-                <ul>
+                <ul> <!-- Menu simple avec un seul lien affichant la section "Mes Informations" -->
                     <li ><a href="javascript:void(0)" onclick="showSection('info')" id="exemple" >Mes Informations</a></li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
             
             <div class="main-content">
                 
-                <section id="info" class="infoperso">
+                <section id="info" class="infoperso"> <!-- Section contenant les informations personnelles de l'utilisateur -->
                 <h1>Mes Informations</h1>
                     <p><strong>Nom :</strong> <?= $user["nom"] ?></p>
                     <p><strong>Prénom :</strong> <?= $user["prenom"] ?></p>
@@ -61,7 +61,7 @@
     
  
     <script src="../js/userspace.js"></script>
-
+ <!-- Inclusion du pied de page commun -->
 <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>
