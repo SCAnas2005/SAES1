@@ -18,8 +18,8 @@
     
     $stage = Database::get_stage_from_id($id);
 
-    $competences = $stage["competences"];
-    $competence_id_array = explode(",", $stage["infostage"]["competences"]);
+    $competences = Database::get_competences_from_stage($id)["competences"];
+    $competence_id_array = explode(",", $competences);
 
         // Vérifie que le tableau n'est pas vide
         if (!empty($competence_id_array)) {
@@ -72,6 +72,17 @@
                         <li><?= $task ?></li> 
                     <?php endforeach; ?>
                 </ul>
+                <p><strong>Compétences liées :</strong></p>
+
+                <?php if (isset($competences_name_array) && !empty($competences_name_array)): ?>
+                    <ul>
+                        <?php foreach ($competences_name_array as $competence): ?>
+                            <li><?= htmlspecialchars($competence["titre"]) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>Aucune compétence renseignée.</p>
+                <?php endif; ?>
                 <p><strong>Validé :</strong> <?= $stage["valide"] ? "Oui" : "Non" ?></p>
                 <!-- <p><strong>Évaluations :</strong> Note globale : 18/20</p> -->
             </div>

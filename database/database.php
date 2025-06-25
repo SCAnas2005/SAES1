@@ -450,7 +450,6 @@
                     ep.ville AS 'entreprise_ville',
                     ep.indicationVisite AS 'entreprise_indication_visite',
                     ep.tel AS 'entreprise_tel'
-
                 FROM Stage s
 
                 JOIN Utilisateur u ON s.id = u.id
@@ -470,6 +469,16 @@
             ";
 
 
+            return self::execute_sql($sql);
+        }
+
+        public static function get_competences_from_stage($id_stage)
+        {
+            $sql = "SELECT GROUP_CONCAT(sc.id_Competence) AS competences 
+                FROM StageCompetence sc 
+                WHERE id_Stage = $id_stage
+                GROUP BY id_Stage;
+            ";
             return self::execute_sql($sql);
         }
 
