@@ -41,10 +41,10 @@
     
                 $tab = ["infostage"=>$stage, "tuteur_entreprise"=>$tuteur_stage, "student"=> $student,"tuteur_pedagogique"=>$tuteur_pedagogique, "entreprise"=>$entreprise, "jury"=>$jury, "actions"=>$actions];
                 $_SESSION["data"]["stages"][$i] = $tab;
+                // echo "<pre>"; print_r($student); echo "</pre>";exit;
             }
     
             $_SESSION["data"]["current_stage"] = end($_SESSION["data"]["stages"]);
-            // echo "<pre>"; print_r($_SESSION["data"]["current_stage"]); echo "</pre>";exit;
         }else{
             $_SESSION["has_stage"] = false;
         }

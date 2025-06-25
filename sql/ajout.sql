@@ -306,3 +306,8 @@ INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 4);
 INSERT INTO utilisateur (nom, prenom, email, telephone, login, motdepasse)
 VALUES ('Fabre', 'Lina', 'lina.fabre@example.com', '0622342122', 'lina.fabre', 'lina');
 INSERT INTO Etudiant (id, id_Departement) VALUES (LAST_INSERT_ID(), 3);
+
+
+
+INSERT INTO Entreprise (adresse, code_postal, ville, tel, nom)
+VALUES ("16 Boulevart Oussmane", 92340, "La défense", "0102030405", "Enablon");

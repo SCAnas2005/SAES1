@@ -480,8 +480,6 @@
                 FROM 
                     Stage s
                 JOIN 
-                    Tuteur_entreprise te ON s.id_3 = te.id_Entreprise
-                JOIN 
                     Inscription i ON s.id = i.id
                 JOIN 
                     Etudiant e ON i.id = e.id
@@ -489,11 +487,9 @@
                     Utilisateur u ON e.id = u.id
                 WHERE 
                     s.id_Stage = $stageid;  
-                ";
-
+                "; 
+            
             $req = self::execute_sql($sql);
-
-            // print_r($req);
             return $req;
         }
 

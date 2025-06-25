@@ -20,7 +20,7 @@
 
             $sql = "SELECT * FROM Competence WHERE id_Competence IN ($ids_string)";
             $competences_name_array = Database::execute_sql_all($sql);
-            // echo "<pre>";print_r($competences_name_array);exit;
+            // echo "<pre>";print_r($stage);exit;
         } else {
             $competences_name_array = [];
         }

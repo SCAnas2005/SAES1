@@ -40,7 +40,7 @@
         $departement = $_SESSION["data"]["my_departement"]["id_Departement"];
 
         $competences = $_POST["competences"];
-        print_r($competences);exit;
+        // print_r($competences);exit;
 
         $infos = ["titre"=>$stagename, "entreprise"=>$entreprise_nom, "entreprise_adresse"=>$entreprise_adresse, "entreprise_ville"=>$entreprise_ville, "entreprise_codepostal"=>$entreprise_codepostal, "entreprise_email"=>$entreprise_email,
             "entreprise_tel"=>$entreprise_tel, "date_debut"=>$date_debut, "date_fin"=>$date_fin, "salle_soutenance"=>$salle_soutenance, "date_soutenance"=>$date_soutenance, "tuteur_stage"=>$tuteur_stage, "tuteur_pedagogique"=>$tuteur_pedagogique,
