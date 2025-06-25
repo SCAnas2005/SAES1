@@ -1,10 +1,22 @@
 <?php
+
+    /**
+     * Page d'accueil principale
+     * 
+     * Ce fichier charge les constantes de configuration, les données, initialise la session,
+     * connecte à la base de données, vérifie la connexion utilisateur
+     * et redirige vers la page de connexion si nécessaire.
+     * 
+     * Redirige vers la page d'acceuil.
+     */
+
+
     require "config/config.php";
     require DATABASE_FOLDER."/database.php";
     require "php/util.php";
     init_php_session(); // Initialise la session
     Database::init_database();
-  
+
     $_SESSION["PATHS"] = ["ROOTPATH" => ROOTPATH, "AUTH_FOLDER" => AUTH_FOLDER, "CONFIG_FOLDER" => CONFIG_FOLDER, "DATABASE_FOLDER" => DATABASE_FOLDER];
 
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
