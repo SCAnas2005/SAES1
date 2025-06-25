@@ -83,7 +83,7 @@
         </form>
     </section>
 
-
+    <!-- Inclusion du footer depuis un fichier externe -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>
