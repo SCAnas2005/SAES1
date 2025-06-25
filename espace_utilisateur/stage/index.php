@@ -5,8 +5,8 @@
     init_php_session();
     Database::init_database();
 
-    $data = $_SESSION["data"];
-    if ($_SESSION["usertype"] == "student")
+    $data = $_SESSION["data"]; // Récupération des données utilisateurs/stage stockées en session
+    if ($_SESSION["usertype"] == "student")  // Si l'utilisateur est un étudiant
     {
         $user = $data["userinfo"];
         $stage = $data["current_stage"];
@@ -29,18 +29,18 @@
     }else if ($_SESSION["usertype"] == "tuteur")
     {
         $id = $_GET["id"];
-        foreach($data["stages"] as $stage)
+        foreach($data["stages"] as $stage) // Parcourt les stages du tuteur pour trouver celui qui correspond à l'ID choisi
         {
             if ($stage["infostage"]["id"] == $id)
             {
-                $choosen_stage = $stage;
+                $choosen_stage = $stage; // Stocke le stage choisi et quitte la boucle
                 break;
             }
         }
 
         $stage = $choosen_stage;
         $user = $choosen_stage["student"];
-    }
+    }    // Formatage des dates de début et fin du stage pour affichage lisible
     $dateDebut = (new DateTime($stage["infostage"]["date_debut"]))->format("d F Y");
     $dateFin = (new DateTime($stage["infostage"]["date_fin"]))->format("d F Y");
     

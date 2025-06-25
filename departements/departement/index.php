@@ -5,19 +5,19 @@
     init_php_session();
 
     Database::init_database();
-
+     // Vérification que l'utilisateur est connecté
     if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
     {
-        header("Location: /");
+        header("Location: /"); // Redirection vers la page d'accueil si non connecté
     }
     $data = $_SESSION["data"];
-    $departement_id = $_GET["id"];
+    $departement_id = $_GET["id"];  // Récupération de l'identifiant du département passé en paramètre GET
     if ($data["my_departement"]["id_Departement"] == $departement_id)
     {
         header("Location: ".L_STUDENTS_FOLDER);
     }
 
-    $dep = Database::get_departement_from_id($departement_id);
+    $dep = Database::get_departement_from_id($departement_id);  // Récupération des informations du département via la base
     $students = Database::get_students_from_departement($departement_id);
 ?>
 
@@ -46,7 +46,7 @@
             </thead>
             <tbody>
                 
-                    <?php foreach ($students as $student): ?>
+                    <?php foreach ($students as $student): ?>  <!-- Boucle affichant chaque étudiant dans une ligne -->
                         <tr>
                             <td><?= $student["nom"] ?></td>
                             <td><?= $student["prenom"] ?></td>
@@ -56,7 +56,7 @@
                     <!-- Ajouter d'autres étudiants ici -->
                 </tbody>
             </table>
-        <?php else: ?>
+        <?php else: ?> <!-- Sinon, affichage d'un message si aucun étudiant -->
             <h3>Il n'y a aucun étudiant dans cette promotion</h3>
         <?php endif; ?>
         <a href=<?= L_DEPARTMENTS_FOLDER ?>>Retour à la liste des départements</a>

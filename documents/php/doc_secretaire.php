@@ -74,7 +74,7 @@
 
         $files = array_diff(scandir($bordereau_dir), ['.', '..']);
 
-        if (count($files) === 1) {
+        if (count($files) === 1) { // récupérer le nom du fichier
             $file = array_values($files)[0]; // récupérer le nom du fichier
             $filepath = $bordereau_dir . '/' . $file;
             // echo "Chemin complet du fichier : " . $filepath;
@@ -104,7 +104,7 @@
 
         $files = array_diff(scandir($convention_dir), ['.', '..']);
 
-        if (count($files) === 1) {
+        if (count($files) === 1) { // récupérer le nom du fichier
             $file = array_values($files)[0]; // récupérer le nom du fichier
             $filepath = $convention_dir . '/' . $file;
             // echo "Chemin complet du fichier : " . $filepath;

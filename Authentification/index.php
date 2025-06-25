@@ -1,12 +1,13 @@
 <?php 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
     require_once ROOTPATH."/php/util.php";
+// Inclusion de la classe pour la base de données
     require DATABASE_FOLDER."/database.php";
-    
+      // Démarre une session PHP
     init_php_session();
     Database::init_database();
 
-    if (isset($_SESSION["logged"]) and $_SESSION["logged"] == true)
+    if (isset($_SESSION["logged"]) and $_SESSION["logged"] == true) // Si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
     {
         header("Location: /");
     }
@@ -21,11 +22,11 @@
         $role = $_POST["role"];
         $user = Database::search_user($login, $role);
         // print_r($user);exit;
-        if ($user == null or count($user) == 0 or !password_verify($password, $user["motdepasse"]))
+        if ($user == null or count($user) == 0 or !password_verify($password, $user["motdepasse"]))  // Vérification des identifiants
         {
             $incorect_password = "Le login ou le mot de passe sont incorrect";
             $_SESSION["logged"] = false;
-        }else{
+        }else{ // Connexion réussie : on initialise la session
             $_SESSION["usertype"] = $role;
             $_SESSION["real_usertype"] = $role;
             $_SESSION["logged"] = true;
@@ -86,6 +87,7 @@
     <?php require ROOTPATH."/php/footer.php";?>
 
     <script>
+        // Affiche le formulaire de connexion pour le rôle sélectionné
         function connexion(role) {
             event.preventDefault();
             document.getElementById('role-selection').classList.add('hidden');

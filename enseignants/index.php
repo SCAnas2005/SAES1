@@ -4,18 +4,18 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
-    Database::init_database();
-
+    Database::init_database();  // Initialisation de la connexion à la base de données
+// Vérifie que l'utilisateur est connecté ET que son type est "secretaire"
     if (!is_logged() or $_SESSION["usertype"] != "secretaire")
     {
         header("Location: /");
     }
     $data = $_SESSION["data"];
-
+ // Récupère l'id du département de l'utilisateur (secrétaire)
     $departement_id = $data["userinfo"]["id_Departement"];
 
     $dep = Database::get_departement_from_id($departement_id);
-    $profs = Database::get_profs_from_dep($departement_id); 
+    $profs = Database::get_profs_from_dep($departement_id); // Récupère la liste des professeurs (enseignants) du département
 
     foreach ($profs as &$prof) {
         $prof["stages"] = Database::get_stage_from_tuteur_ens($prof["id"]);
@@ -36,7 +36,7 @@
 
     <main>
         <h2>Liste des Enseignants du département <?= $dep["libelle"] ?></h2>
-        <?php if (count($profs) > 0): ?>
+        <?php if (count($profs) > 0): ?> <!-- Vérifie s'il y a des profs -->
         <table>
             <thead>
                 <tr>
@@ -49,7 +49,7 @@
             </thead>
             <tbody>
                 
-                    <?php foreach ($profs as $prof): ?>
+                    <?php foreach ($profs as $prof): ?> <!-- Boucle sur chaque professeur -->
                         <tr>
                             <td><?= $prof["nom"] ?></td>
                             <td><?= $prof["prenom"] ?></td>

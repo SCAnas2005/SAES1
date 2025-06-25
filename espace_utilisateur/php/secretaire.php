@@ -1,5 +1,5 @@
 <?php 
-    $user = $data["userinfo"];
+    $user = $data["userinfo"]; // Récupère les informations utilisateur stockées dans la variable $data (probablement issue de la session)
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,7 +10,7 @@
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
    
 </head>
-<body>
+<body> <!-- Inclusion du header commun (barre de navigation, logo...) -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <main class="main-content">

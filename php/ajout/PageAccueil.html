@@ -1,185 +1,189 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suivi des Stages - Accueil</title>
+    <meta charset="UTF-8"><!-- Définition de l'encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Règle d'affichage pour les mobiles (responsive design) -->
+    <title>Suivi des Stages - Accueil</title><!-- Titre de la page affiché dans l'onglet du navigateur -->
     <style>
+        /* Style global du corps de la page */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; /* Police générale */
+            margin: 0; /* Suppression des marges par défaut */
+            padding: 0; /* Suppression des paddings par défaut */
+            background-color: #f4f4f4; /* Couleur de fond gris clair */
         }
 
+        /* Style du header principal */
         header {
-            background-color: #293358;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
+            background-color: #293358; /* Couleur de fond bleu foncé */
+            color: #fff; /* Couleur du texte blanche */
+            padding: 10px 20px; /* Espacement intérieur */
+            display: flex; /* Utilisation de flexbox pour aligner les éléments */
+            justify-content: space-between; /* Espacement entre les éléments */
+            align-items: center; /* Alignement vertical centré */
+            position: relative; /* Position relative pour le positionnement interne */
         }
 
+        /* Style spécifique au header avec id "premier" */
         #premier {
-
-        background-color: #ad947e;
+            background-color: #ad947e; /* Couleur de fond beige clair */
         }
 
+        /* Style du titre h1 dans le header */
         header h1 {
-            margin: 0;
+            margin: 0; /* Suppression de la marge par défaut */
         }
 
+        /* Style de la navigation */
         nav {
-            display: flex;
+            display: flex; /* Navigation en ligne avec flexbox */
         }
 
+        /* Style des liens dans la navigation */
         nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
+            color: #fff; /* Texte blanc */
+            text-decoration: none; /* Suppression du soulignement */
+            margin: 0 10px; /* Marges horizontales */
+            padding: 5px 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bords arrondis */
         }
 
+        /* Effet au survol des liens */
         nav a:hover {
-            background-color: #ad947e;
-            color: #293358;
+            background-color: #ad947e; /* Changement de fond beige clair */
+            color: #293358; /* Changement de couleur texte bleu foncé */
         }
 
+        /* Positionnement du logo dans le header */
         .header-logo {
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            width: 50px; /* Ajuste la taille du logo selon tes préférences */
+            position: absolute; /* Position absolue par rapport au header */
+            right: 20px; /* Décalage à droite */
+            top: 10px; /* Décalage en haut */
+            width: 50px; /* Largeur fixe du logo */
         }
 
-         /**.main-content {
-            padding: 20px;
-            background-color: #ffffff;
-            margin: 20px auto;
-            max-width: 1800px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            display: flex;
-            gap: 20px; 
-            
-        } **/
-
+        /* Style des sections principales */
         section {
-            margin-bottom: 20px;
-            flex: 1; /* Les sections occupent chacune un espace égal */
-            padding: 20px;
-            margin: 20px auto;
-            background-color: #ffffff;
-            border: 2px solid #ccc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            max-width: 1200px; /* Largeur maximale du conteneur */
+            margin-bottom: 20px; /* Marge en bas */
+            flex: 1; /* Occupation égale de l'espace en flexbox */
+            padding: 20px; /* Espacement intérieur */
+            margin: 20px auto; /* Marges verticales et centrage horizontal */
+            background-color: #ffffff; /* Fond blanc */
+            border: 2px solid #ccc; /* Bordure grise claire */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            border-radius: 8px; /* Bords arrondis */
+            max-width: 1200px; /* Largeur maximale */
         }
-            
-            
-        
 
+        /* Conteneur principal avec flexbox */
         .container {
-            display: flex; /* Utilisation de Flexbox */
-            justify-content: space-between; /* Ajout d'un espace visible entre les éléments */
-            gap: 20px; /* Espace entre les deux éléments */
-            padding: 20px;
-            margin: 20px auto;
+            display: flex; /* Utilisation de flexbox */
+            justify-content: space-between; /* Espacement entre les éléments */
+            gap: 20px; /* Espace entre les éléments */
+            padding: 20px; /* Espacement intérieur */
+            margin: 20px auto; /* Marges verticales et centrage */
             max-width: 1800px; /* Largeur maximale du conteneur */
         }
 
-       
-        
-
+        /* Style des titres h2 dans les sections */
         section h2 {
-            background-color: #293358;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+            background-color: #293358; /* Fond bleu foncé */
+            color: white; /* Texte blanc */
+            padding: 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bords arrondis */
         }
 
+        /* Conteneur d'information utilisateur */
         .user-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            display: flex; /* Flexbox */
+            justify-content: space-between; /* Espacement */
+            align-items: center; /* Alignement vertical */
+            margin-bottom: 20px; /* Marge en bas */
         }
 
+        /* Style du profil utilisateur */
         .user-info .profile {
-            display: flex;
-            align-items: center;
+            display: flex; /* Flexbox */
+            align-items: center; /* Alignement vertical */
         }
 
+        /* Image de profil */
         .user-info .profile img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
+            border-radius: 50%; /* Cercle */
+            width: 50px; /* Largeur */
+            height: 50px; /* Hauteur */
+            margin-right: 10px; /* Marge à droite */
         }
 
+        /* Nom d'utilisateur */
         .user-info .profile span {
-            font-size: 1.2em;
-            color: #293358;
+            font-size: 1.2em; /* Taille de police */
+            color: #293358; /* Couleur bleu foncé */
         }
 
+        /* Style du footer */
         footer {
-            background-color: #293358;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            background-color: #293358; /* Fond bleu foncé */
+            color: #fff; /* Texte blanc */
+            text-align: center; /* Centrage du texte */
+            padding: 10px 0; /* Espacement vertical */
+            position: fixed; /* Position fixe en bas */
+            bottom: 0; /* En bas de la page */
+            width: 100%; /* Largeur pleine */
         }
 
+        /* Style des formulaires */
         form {
-            display: flex;
-            flex-direction: column;
-            margin-top: 10px;
+            display: flex; /* Flexbox */
+            flex-direction: column; /* Colonne */
+            margin-top: 10px; /* Marge au dessus */
         }
 
+        /* Champs input et textarea dans les formulaires */
         form input, form textarea {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            padding: 10px; /* Espacement intérieur */
+            margin-bottom: 10px; /* Marge en bas */
+            border-radius: 5px; /* Bords arrondis */
+            border: 1px solid #ccc; /* Bordure grise claire */
         }
 
+        /* Bouton dans le formulaire */
         form button {
-            padding: 10px;
-            background-color: #293358;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
+            padding: 10px; /* Espacement */
+            background-color: #293358; /* Fond bleu foncé */
+            border: none; /* Pas de bordure */
+            border-radius: 5px; /* Bords arrondis */
+            cursor: pointer; /* Curseur pointeur */
+            color: white; /* Texte blanc */
         }
 
+        /* Effet au survol du bouton */
         form button:hover {
-            background-color: #ad947e;
+            background-color: #ad947e; /* Fond beige clair */
         }
 
+        /* Style des listes non ordonnées */
         ul {
-            list-style-type: none;
-            padding-left: 0;
+            list-style-type: none; /* Suppression des puces */
+            padding-left: 0; /* Suppression du padding à gauche */
         }
 
+        /* Items des listes */
         ul li {
-            margin: 10px 0;
+            margin: 10px 0; /* Marge verticale */
         }
     </style>
 </head>
 <body>
+    <!-- Premier header avec id "premier" (actuellement vide) -->
     <header id="premier">
-        
-
     </header>
 
+    <!-- Header principal avec titre, navigation, info utilisateur et logo -->
     <header>
         <h1>Suivi des Stages</h1>
         <nav>
+            <!-- Liens de navigation vers différentes pages -->
             <a href="PageAccueil (1).html">Accueil</a>
             <a href="Tableau_Bord.html">Tableau de bord</a>
             <a href="stagaires.html">Mes stagaires</a>
@@ -188,70 +192,66 @@
         </nav>
         <div class="user-info">
             <div class="profile">
+                <!-- Image et nom de l'utilisateur connecté -->
                 <img src="profile-placeholder.png" alt="Profil utilisateur">
                 <span>Nom Utilisateur</span>
             </div>
         </div>
-        <!-- Logo de l'IUT -->
+        <!-- Logo de l'IUT positionné à droite -->
         <img src="https://iutv.univ-paris13.fr/wp-content/uploads/logotype-iutv-2023.png²" alt="Logo IUT" class="header-logo">
     </header>
 
-    
+    <!-- Conteneur principal regroupant deux sections côte à côte -->
     <div class="container">
-        
         <section>
             <h2>Bienvenue sur la plateforme de suivi des stages</h2>
-            <p>Cette plateforme vous permet de gérer efficacement les informations liées aux stages des étudiants. <br>
+            <p>
+                Cette plateforme vous permet de gérer efficacement les informations liées aux stages des étudiants. <br>
                 Vous pourrez retrouver les documents rendus pas les étudiants dans l'espace "Document rendus".
             </p>
         </section>
 
-       
         <section>
             <h2>Vos Notifications</h2>
+            <!-- Liste des notifications pour l'utilisateur -->
             <ul>
                 <li>NOM PRENOM a rendu son rapport</li>
                 <li>Un nouveau message vous attend dans votre espace.</li>
             </ul>
-            
         </section>
     </div>
       
-
-
-
+    <!-- Deuxième conteneur principal avec deux sections -->
     <div class="container">
-        
         <section>
             <h2>Mes Stagiaires</h2>
+            <!-- Information sur le nombre de stages en cours -->
             <p>Vous avez 2 stages en cours. Dernière mise à jour : <span id="last-update">15 septembre 2024</span></p>
+            <!-- Bouton lien vers la page des stagiaires -->
             <button><a href="Espace_UsersV2.html">Voir mes Stagiaires</a></button>
         </section>
 
-       
         <section>
             <h2>Contactez-nous</h2>
+            <!-- Formulaire de contact -->
             <form action="contact.php" method="post">
                 <label for="name">Votre nom :</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required><!-- Champ obligatoire pour le nom -->
                 
                 <label for="email">Votre email :</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required><!-- Champ obligatoire pour l'email -->
                 
                 <label for="message">Votre message :</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" name="message" required></textarea><!-- Zone de texte obligatoire pour le message -->
                 
-                <button type="submit">Envoyer</button>
+                <button type="submit">Envoyer</button><!-- Bouton pour soumettre le formulaire -->
             </form>
-            
         </section>
     </div>
 
-
-    
+    <!-- Pied de page fixe en bas -->
     <footer>
         <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
-    
-</main>
+    </footer>
 </body>
 </html>

@@ -2,15 +2,16 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/config.php";
     require_once ROOTPATH."/php/util.php";
     require_once DATABASE_FOLDER."/database.php";
-    init_php_session();
+    init_php_session(); // Démarrage ou reprise de session
     Database::init_database();
 
-    if (!is_logged() or $_SESSION["usertype"] != "secretaire" or !isset($_POST["id_ens"]))
+    if (!is_logged() or $_SESSION["usertype"] != "secretaire" or !isset($_POST["id_ens"]))    // Vérifie que l'utilisateur est connecté, est secrétaire et que l'id du prof est fourni via POST
     {
         header("Location: /");
     }
-
-    $prof_id = $_POST["id_ens"];
+// Requête SQL personnalisée pour récupérer tous les stages liés à cet enseignant
+    // On récupère aussi les infos de l'entreprise liée au stage, ainsi que les infos de l'étudiant
+    $prof_id = $_POST["id_ens"]; // Récupération de l'id de l'enseignant transmis via POST
     $sql = "SELECT 
             s.*,
             Entreprise.nom AS entreprise_nom,
@@ -40,7 +41,7 @@
     <link href=<?= L_GLOBAL_CSS_FOLDER."/style.css" ?> rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body> <!-- Inclusion du header commun -->
 <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <main class="main-content">
@@ -70,7 +71,7 @@
         </section>
     </main>
 
-
+<!-- Inclusion du footer commun -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
 </body>
 </html>
