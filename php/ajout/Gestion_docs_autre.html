@@ -1,144 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suivi des Stages - Gestion des Documents</title>
+    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuration responsive -->
+    <title>Suivi des Stages - Gestion des Documents</title> <!-- Titre de la page -->
     <style>
+        /* Style général du corps de page */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; /* Police sans-serif */
+            margin: 0; /* Pas de marge extérieure */
+            padding: 0; /* Pas de marge intérieure */
+            background-color: #f4f4f4; /* Couleur de fond gris clair */
         }
 
+        /* Style du header principal */
         header {
-            background-color: #293358;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
+            background-color: #293358; /* Couleur bleu foncé */
+            color: #fff; /* Texte blanc */
+            padding: 10px 20px; /* Espacement intérieur */
+            display: flex; /* Utilisation de flexbox */
+            justify-content: space-between; /* Espace entre éléments */
+            align-items: center; /* Alignement vertical centré */
+            position: relative; /* Positionnement relatif pour le logo */
         }
 
+        /* Style spécifique à l'en-tête avec id premier */
         #premier{
-
-            background-color: #ad947e;
-           
-            
+            background-color: #ad947e; /* Couleur marron clair */
         }
 
+        /* Style du titre dans le header */
         header h1 {
-            margin: 0;
+            margin: 0; /* Suppression des marges par défaut */
         }
 
+        /* Style de la navigation */
         nav {
-            display: flex;
+            display: flex; /* Affichage en ligne */
         }
 
+        /* Style des liens de navigation */
         nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
+            color: #fff; /* Couleur blanche */
+            text-decoration: none; /* Suppression du soulignement */
+            margin: 0 10px; /* Espacement horizontal */
+            padding: 5px 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bords arrondis */
         }
 
+        /* Effet au survol des liens */
         nav a:hover {
-            background-color: #ad947e;
-            color: #293358;
+            background-color: #ad947e; /* Fond marron clair */
+            color: #293358; /* Texte bleu foncé */
         }
 
+        /* Style du logo dans l'en-tête */
         .header-logo {
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            width: 50px;
+            position: absolute; /* Positionnement absolu */
+            right: 20px; /* À 20px du bord droit */
+            top: 10px; /* À 10px du haut */
+            width: 50px; /* Largeur fixée */
         }
 
+        /* Style du contenu principal */
         .main-content {
-            padding: 20px;
-            background-color: #ffffff;
-            margin: 20px auto;
-            max-width: 1200px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 20px; /* Espacement intérieur */
+            background-color: #ffffff; /* Fond blanc */
+            margin: 20px auto; /* Marge verticale et centrage horizontal */
+            max-width: 1200px; /* Largeur max du contenu */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            border-radius: 8px; /* Bords arrondis */
         }
 
+        /* Style des sections */
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Marge inférieure */
         }
 
+        /* Style des titres de section */
         .section h2 {
-            background-color: #293358; 
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+            background-color: #293358; /* Fond bleu foncé */
+            color: white; /* Texte blanc */
+            padding: 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bords arrondis */
         }
 
+        /* Liste des documents */
         .document-list {
-            margin-top: 20px;
+            margin-top: 20px; /* Marge supérieure */
         }
 
+        /* Style des éléments de documents */
         .document-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-bottom: 10px;
+            display: flex; /* Flexbox horizontal */
+            justify-content: space-between; /* Espacement entre titre et boutons */
+            padding: 10px; /* Espacement intérieur */
+            background-color: #f9f9f9; /* Fond gris très clair */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            border-radius: 8px; /* Bords arrondis */
+            margin-bottom: 10px; /* Marge inférieure */
         }
 
+        /* Style du texte dans les éléments de documents */
         .document-item span {
-            font-size: 1.1em;
-            color: #293358;
+            font-size: 1.1em; /* Taille de police légèrement plus grande */
+            color: #293358; /* Couleur bleu foncé */
         }
 
+        /* Style des champs de formulaire (non utilisés dans ce code mais définis) */
         .form-input {
-            width: 50%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            width: 50%; /* Largeur à 50% */
+            padding: 10px; /* Espacement intérieur */
+            margin: 10px 0; /* Marges verticale */
+            border-radius: 5px; /* Bords arrondis */
+            border: 1px solid #ccc; /* Bord gris clair */
         }
 
+        /* Style des boutons */
         .form-button {
-            background-color: #293358;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            background-color: #293358; /* Fond bleu foncé */
+            color: white; /* Texte blanc */
+            padding: 10px 20px; /* Espacement intérieur */
+            border: none; /* Pas de bordure */
+            border-radius: 5px; /* Bords arrondis */
+            cursor: pointer; /* Curseur pointeur */
         }
 
+        /* Effet au survol des boutons */
         .form-button:hover {
-            background-color: #ad947e;
-            color: #293358;
+            background-color: #ad947e; /* Fond marron clair */
+            color: #293358; /* Texte bleu foncé */
         }
 
+        /* Style du pied de page */
         footer {
-            background-color: #293358;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            background-color: #293358; /* Fond bleu foncé */
+            color: #fff; /* Texte blanc */
+            text-align: center; /* Centrage du texte */
+            padding: 10px 0; /* Espacement vertical */
+            position: fixed; /* Fixé en bas de page */
+            bottom: 0; /* Positionné au bas */
+            width: 100%; /* Largeur 100% */
         }
     </style>
 </head>
 <body>
     <header id="premier">
-        
-
+        <!-- En-tête avec fond marron clair, vide ici -->
     </header>
 
-
     <header>
-        <h1>Suivi des Stages</h1>
+        <h1>Suivi des Stages</h1> <!-- Titre principal de la page -->
         <nav>
+            <!-- Menu de navigation principal -->
             <a href="PageAccueil (1).html">Accueil</a>
             <a href="Tableau_Bord.html">Tableau de bord</a>
             <a href="stagaires.html">Mes stagaires</a>
@@ -147,36 +161,37 @@
         </nav>
         <div class="user-info">
             <div class="profile">
-                <img src="profile-placeholder.png" alt="Profil utilisateur">
-                <span>Nom Utilisateur</span>
+                <img src="profile-placeholder.png" alt="Profil utilisateur"> <!-- Image de profil utilisateur -->
+                <span>Nom Utilisateur</span> <!-- Nom utilisateur affiché -->
             </div>
         </div>
-        <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
+        <img src="logo-iut.png" alt="Logo IUT" class="header-logo"> <!-- Logo IUT positionné à droite -->
     </header>
 
     <main class="main-content">
         <section class="section">
-            <h2>Gestion des Documents</h2>
+            <h2>Gestion des Documents</h2> <!-- Titre de la section principale -->
             
             <div class="document-item">
-            
-                <p>Dans cet espace vous pouvez consultez et gérez les documents associés aux stagiaires. 
-               </p>
-            
+                <p>Dans cet espace vous pouvez consultez et gérez les documents associés aux stagiaires.</p> <!-- Explication de la fonctionnalité -->
             </div>
-        
         </section>
 
-
         <section class="section document-list">
-            <h3>Documents Rendus</h3>
+            <h3>Documents Rendus</h3> <!-- Sous-titre pour la liste des documents -->
+            
+            <!-- Élément document avec nom et actions -->
             <div class="document-item">
-                <span>Rapport de Stage - Juin 2024</span>
+                <span>Rapport de Stage - Juin 2024</span> <!-- Nom du document -->
                 <div>
+                    <!-- Bouton pour télécharger le document (lien à définir) -->
                     <button class="form-button" onclick="window.location.href='download-link'">Télécharger</button>
+                    <!-- Bouton pour supprimer le document (alerte simple ici) -->
                     <button class="form-button" onclick="alert('Document supprimé')">Supprimer</button>
                 </div>
             </div>
+
+            <!-- Deuxième document avec mêmes actions -->
             <div class="document-item">
                 <span>Convention de Stage - Décembre 2023</span>
                 <div>
@@ -188,7 +203,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
+        <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p> <!-- Pied de page -->
     </footer>
 </body>
 </html>
