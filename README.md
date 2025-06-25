@@ -16,7 +16,7 @@ Ce projet est une application web permettant de gérer et suivre les stages des 
 
 - Backend : PHP
 - Frontend : JS / HTML-CSS
-- Base de données : PostgreSQL / MySQL
+- Base de données : MySQL
 - Autres outils : Git
 
 ---
