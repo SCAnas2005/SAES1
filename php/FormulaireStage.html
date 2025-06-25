@@ -1,168 +1,200 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un Stage - Suivi des Stages</title>
+    <meta charset="UTF-8"><!-- Définit l'encodage des caractères en UTF-8 pour supporter les caractères spéciaux français -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Assure que la mise en page est adaptée aux écrans mobiles -->
+    <title>Ajouter un Stage - Suivi des Stages</title><!-- Titre affiché dans l'onglet du navigateur -->
     <style>
+        /* Style global du corps de la page */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; /* Police sans-serif lisible */
+            margin: 0; /* Suppression des marges par défaut */
+            padding: 0; /* Suppression des paddings par défaut */
+            background-color: #f4f4f4; /* Couleur de fond gris clair */
         }
 
+        /* Style pour l'en-tête (header) */
         header {
-            background-color: #293358;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #293358; /* Couleur de fond bleu foncé */
+            color: #fff; /* Texte blanc */
+            padding: 10px 20px; /* Espacement intérieur */
+            display: flex; /* Mise en page en flexbox */
+            justify-content: space-between; /* Espacement entre les éléments */
+            align-items: center; /* Alignement vertical centré */
         }
 
+        /* Titre principal dans l'en-tête */
         header h1 {
-            margin: 0;
+            margin: 0; /* Supprime la marge autour du titre */
         }
 
+        /* Menu de navigation */
         nav {
-            display: flex;
-            flex-grow: 1;
-            justify-content: center;
+            display: flex; /* Menu horizontal en flexbox */
+            flex-grow: 1; /* Prend tout l'espace disponible entre logo et titre */
+            justify-content: center; /* Centre les liens dans le menu */
         }
 
+        /* Style des liens dans la navigation */
         nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
+            color: #fff; /* Texte blanc */
+            text-decoration: none; /* Supprime le soulignement */
+            margin: 0 10px; /* Espacement horizontal entre les liens */
+            padding: 5px 10px; /* Espacement intérieur des liens */
+            border-radius: 5px; /* Bords arrondis */
         }
 
+        /* Effet au survol des liens */
         nav a:hover {
-            background-color: #ad947e;
-            color: #293358;
+            background-color: #ad947e; /* Fond beige clair */
+            color: #293358; /* Texte bleu foncé */
         }
 
+        /* Style pour le logo dans l'en-tête */
         .header-logo {
-            width: 50px;
-            height: auto;
+            width: 50px; /* Largeur fixe */
+            height: auto; /* Hauteur proportionnelle */
         }
 
+        /* Contenu principal */
         .main-content {
-            padding: 20px;
-            background-color: #ffffff;
-            margin: 20px auto;
-            max-width: 800px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 20px; /* Espacement intérieur */
+            background-color: #ffffff; /* Fond blanc */
+            margin: 20px auto; /* Marge verticale et centrage horizontal */
+            max-width: 800px; /* Largeur maximale */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre portée subtile */
+            border-radius: 8px; /* Bords arrondis */
         }
 
+        /* Sections dans le contenu principal */
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Marge inférieure */
         }
 
+        /* Titre des sections */
         .section h2 {
-            background-color: #293358;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
+            background-color: #293358; /* Fond bleu foncé */
+            color: white; /* Texte blanc */
+            padding: 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bords arrondis */
+            text-align: center; /* Centrage du texte */
         }
 
+        /* Formulaire - disposition verticale */
         form {
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Les éléments du formulaire sont empilés verticalement */
         }
 
+        /* Style des labels des champs du formulaire */
         form label {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #293358;
+            margin-top: 10px; /* Marge au-dessus du label */
+            font-weight: bold; /* Texte en gras */
+            color: #293358; /* Couleur bleu foncé */
         }
 
+        /* Style des champs de saisie, textarea et select */
         form input, form textarea, form select {
-            margin-top: 5px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
+            margin-top: 5px; /* Marge au-dessus du champ */
+            padding: 10px; /* Espacement intérieur */
+            border: 1px solid #ccc; /* Bord gris clair */
+            border-radius: 5px; /* Bords arrondis */
+            font-size: 1em; /* Taille de police standard */
         }
 
+        /* Bouton d'envoi du formulaire */
         form button {
-            margin-top: 20px;
-            background-color: #293358;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            margin-top: 20px; /* Marge au-dessus du bouton */
+            background-color: #293358; /* Fond bleu foncé */
+            color: white; /* Texte blanc */
+            padding: 10px 20px; /* Espacement intérieur */
+            border: none; /* Suppression de la bordure */
+            border-radius: 5px; /* Bords arrondis */
+            cursor: pointer; /* Curseur en main */
         }
 
+        /* Effet au survol du bouton */
         form button:hover {
-            background-color: #ad947e;
+            background-color: #ad947e; /* Fond beige clair */
         }
 
+        /* Pied de page fixé en bas */
         footer {
-            background-color: #293358;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            background-color: #293358; /* Fond bleu foncé */
+            color: #fff; /* Texte blanc */
+            text-align: center; /* Texte centré */
+            padding: 10px 0; /* Espacement vertical */
+            position: fixed; /* Pied de page toujours visible */
+            bottom: 0; /* Positionné en bas */
+            width: 100%; /* Largeur complète */
         }
     </style>
 </head>
 <body>
     <header>
+        <!-- Logo IUT dans l'en-tête -->
         <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
+        <!-- Titre principal de la page -->
         <h1>Suivi des Stages</h1>
+        <!-- Menu de navigation principal -->
         <nav>
-            <a href="accueil.html">Accueil</a>
-            <a href="tableau_de_bord.html">Tableau de bord</a>
-            <a href="mon_espace.html">Mon espace</a>
-            <a href="gestion_documents.html">Documents</a>
+            <a href="accueil.html">Accueil</a><!-- Lien vers la page d'accueil -->
+            <a href="tableau_de_bord.html">Tableau de bord</a><!-- Lien vers le tableau de bord -->
+            <a href="mon_espace.html">Mon espace</a><!-- Lien vers l'espace utilisateur -->
+            <a href="gestion_documents.html">Documents</a><!-- Lien vers la gestion des documents -->
         </nav>
     </header>
 
     <main class="main-content">
         <section class="section">
+            <!-- Titre de la section -->
             <h2>Ajouter un Stage</h2>
+            <!-- Formulaire pour ajouter un nouveau stage -->
             <form action="ajouter_stage_process.php" method="POST">
+                <!-- Champ texte pour le titre du stage -->
                 <label for="titre">Titre du stage :</label>
                 <input type="text" id="titre" name="titre" placeholder="Entrez le titre du stage" required>
 
+                <!-- Champ texte pour le nom de l'entreprise -->
                 <label for="entreprise">Entreprise :</label>
                 <input type="text" id="entreprise" name="entreprise" placeholder="Nom de l'entreprise" required>
 
+                <!-- Champ texte pour la durée du stage -->
                 <label for="duree">Durée :</label>
                 <input type="text" id="duree" name="duree" placeholder="Ex : 1er Juin 2024 - 30 Août 2024" required>
 
+                <!-- Champ texte pour le lieu du stage -->
                 <label for="lieu">Lieu :</label>
                 <input type="text" id="lieu" name="lieu" placeholder="Ex : Paris, France" required>
 
+                <!-- Champ date pour la date de soutenance -->
                 <label for="date-soutenance">Date de soutenance :</label>
                 <input type="date" id="date-soutenance" name="date-soutenance" required>
 
+                <!-- Champ texte pour le nom du tuteur de stage -->
                 <label for="tuteur-stage">Tuteur de stage :</label>
                 <input type="text" id="tuteur-stage" name="tuteur-stage" placeholder="Nom du tuteur de stage" required>
 
+                <!-- Champ texte pour le nom du tuteur pédagogique -->
                 <label for="tuteur-pedagogique">Tuteur pédagogique :</label>
                 <input type="text" id="tuteur-pedagogique" name="tuteur-pedagogique" placeholder="Nom du tuteur pédagogique" required>
 
+                <!-- Zone de texte pour décrire les objectifs du stage -->
                 <label for="description">Description :</label>
                 <textarea id="description" name="description" placeholder="Décrivez les objectifs du stage" rows="5" required></textarea>
 
+                <!-- Zone de texte pour lister les tâches effectuées -->
                 <label for="taches">Tâches effectuées :</label>
                 <textarea id="taches" name="taches" placeholder="Listez les tâches principales" rows="5" required></textarea>
 
+                <!-- Bouton pour soumettre le formulaire -->
                 <button type="submit">Ajouter le Stage</button>
             </form>
         </section>
     </main>
 
     <footer>
+        <!-- Pied de page avec copyright -->
         <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
     </footer>
 </body>
