@@ -4,18 +4,18 @@
     require_once DATABASE_FOLDER."/database.php";
     init_php_session();
 
-    if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false)
+    if (!isset($_SESSION["logged"]) or $_SESSION["logged"] == false) // Vérification que l'utilisateur est bien connecté (variable de session 'logged' à true)
     {
         header("Location: /");
     }
 
-    $data = $_SESSION["data"];
+    $data = $_SESSION["data"];  // Récupération des données stockées en session, notamment infos utilisateur, stages, etc.
 
-    if ($_SESSION["usertype"] == "student")
+    if ($_SESSION["usertype"] == "student") // Si c'est un étudiant, on inclut les fonctionnalités spécifiques aux étudiants
     {
         require_once "php/student.php";
     }
-    else if ($_SESSION["usertype"] == "tuteur")
+    else if ($_SESSION["usertype"] == "tuteur") // Si c'est un tuteur (encadrant), on inclut le script dédié aux tuteurs
     {
         require_once "php/tuteur.php";
     }
