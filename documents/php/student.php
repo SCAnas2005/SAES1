@@ -1,4 +1,3 @@
-
 <?php 
     $docs = $_SESSION["user_docs"];
 
@@ -28,6 +27,7 @@
         header("Location: ". L_DOCUMENTS_FOLDER."/php/download_sec.php");
     }
 
+    $has_stage = $_SESSION["has_stage"];
 
     include_once "doc_secretaire.php";
 
@@ -55,7 +55,10 @@
             ];
         }
     }
-    // echo "<pre>"; print_r($docs_secretaire);exit;
+
+    if ($has_stage)
+        $stage_valide = $data[0]["valide"];
+    // echo "<pre>"; print_r($data);exit;
 
 ?>
 <!DOCTYPE html>
@@ -71,6 +74,7 @@
 <?php require ROOTPATH."/php/header.php"; ?>
 
 <main class="main-content">
+    <?php if ($has_stage): ?>   
     <section class="section">
         <h2>Documents échangés avec la secrétaire</h2>
         <table class="document-table">
@@ -98,22 +102,25 @@
                 <td><span class="status <?= $doc["statut"] ?>"><?= $doc ? $doc['statut'] : 'non-recu' ?></span></td>
                 <td><?= $doc && isset($doc['chemin_fichier']) ? basename($doc['chemin_fichier']) : '-' ?></td>
                 <td>
-                    <form action="<?= L_DOCUMENTS_FOLDER.($doc["type_document"]=="bordereau"?"/php/upload_bordereau.php" : "/php/upload_convention.php")?>" method="post" enctype="multipart/form-data">
-                        <input type="file" name="<?= ($doc["type_document"]=="bordereau"? "bordereau" : "convention")?>" accept=".pdf,.docx" required>
-                        <input type="hidden" name="type_document" value="<?= $type ?>">
-                        <button type="submit">Envoyer</button>
-                    </form>
+                    <?php if (!$stage_valide): ?>
+                        <form action="<?= L_DOCUMENTS_FOLDER . ($doc["type_document"] == "bordereau" ? "/php/upload_bordereau.php" : "/php/upload_convention.php") ?>" method="post" enctype="multipart/form-data">
+                            <input type="file" name="<?= ($doc["type_document"] == "bordereau" ? "bordereau" : "convention") ?>" accept=".pdf,.docx" required>
+                            <input type="hidden" name="type_document" value="<?= $type ?>">
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    <?php else: ?>
+                        <em>Envoi désactivé (stage validé)</em>
+                    <?php endif; ?>
                 </td>
                 <td>
                     <?php if ($doc && isset($doc['chemin_fichier'])): ?>
                         <form method="post">
-                            <input type="hidden" name="<?= ($doc["type_document"]=="bordereau" ? "download_bordereau" : "download_convention") ?>" value="<?= $doc["chemin_fichier"] ?>">
+                            <input type="hidden" name="<?= ($doc["type_document"] == "bordereau" ? "download_bordereau" : "download_convention") ?>" value="<?= $doc["chemin_fichier"] ?>">
                             <button type="submit" class="form-button">Télécharger</button>
                         </form>
                     <?php else: ?>
                         <em>—</em>
                     <?php endif; ?>
-
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -152,8 +159,14 @@
             <?php endif; ?>
         </div>
     </section>
-
+<?php else: ?>
+    <div class="no-stage-message" style="padding: 1.5em; text-align:center; background-color:#f8f8f8; border:1px solid #ddd; border-radius:8px; margin: 2em;">
+        <h2>Aucun stage en cours</h2>
+        <p>Vous n'avez actuellement aucun stage enregistré. <a href="<?= L_MES_STAGES_FOLDER ?>">Ajouter un nouveau stage</a></p>
+    </div>
+<?php endif; ?>
 </main>
+
 
 <?php require ROOTPATH."/php/footer.php"; ?>
 </body>
