@@ -5,7 +5,8 @@
         private static $DSN;
         private static $USERNAME;
         private static $PASSWORD;
-
+        
+        // Initialise la connexion à la base de donnée
         public static function init_database()
         {
             self::$USERNAME = "root";
