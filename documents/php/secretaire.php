@@ -17,9 +17,13 @@
     // echo "<pre>"; print_r($data); exit;
 
 
-    $last_doc_id = null;
+
+    $last_doc_ids = []; 
+
     foreach ($data as $row) {
         $id = $row['id'];
+        $type = $row['type_document'] ?? null;
+        $doc_id = isset($row['id_Document']) ? intval($row['id_Document']) : null;
 
         if (!isset($grouped[$id])) {
             $grouped[$id] = [
@@ -38,50 +42,43 @@
                     'valide' => $row['valide'],
                 ],
                 'documents' => [
-                    [
-                    "type_document" => "bordereau",
-                    "statut" => "Non envoyé"
+                    0 => [
+                        "type_document" => "bordereau",
+                        "statut" => "Non envoyé"
                     ],
-                    [
+                    1 => [
                         "type_document" => "convention",
                         "statut" => "Non envoyé"
-                    ]
+                    ],
                 ],
             ];
         }
 
-        if ($row['id_Document']) {
-            $index = $row["type_document"] == "bordereau" ? 0 : 1;
-            if ($last_doc_id != null)
-            {
-                if ($last_doc_id < intval($row["id_Document"]))
-                {
-                    // echo $last_doc_id . "and".i ntval($row["id_Document"]);
-                    $last_doc_id = $row["id_Document"];
-                    $grouped[$id]['documents'][$index] = [
-                        'id_Document' => $row['id_Document'],
-                        'type_document' => $row['type_document'],
-                        'chemin_fichier' => $index == 0 ? get_bordereau_filepath_from_student($id) : get_convention_filepath_from_student($id),
-                        'statut' => $row['statut'],
-                        'date_derniere_action' => $row['date_derniere_action'],
-                        'commentaire' => $row['commentaire'],
-                    ];
-                }   
-            } else {
-                $last_doc_id = $row["id_Document"];
+        if ($doc_id && in_array($type, ['bordereau', 'convention'])) {
+            $index = $type === 'bordereau' ? 0 : 1;
+
+            if (
+                !isset($last_doc_ids[$id][$type]) ||
+                $doc_id > $last_doc_ids[$id][$type]
+            ) {
+                $last_doc_ids[$id][$type] = $doc_id;
+
                 $grouped[$id]['documents'][$index] = [
-                    'id_Document' => $row['id_Document'],
-                    'type_document' => $row['type_document'],
-                    'chemin_fichier' => $index == 0 ? get_bordereau_filepath_from_student($id) : get_convention_filepath_from_student($id),
+                    'id_Document' => $doc_id,
+                    'type_document' => $type,
+                    'chemin_fichier' => $index === 0
+                        ? get_bordereau_filepath_from_student($id)
+                        : get_convention_filepath_from_student($id),
                     'statut' => $row['statut'],
                     'date_derniere_action' => $row['date_derniere_action'],
                     'commentaire' => $row['commentaire'],
                 ];
             }
-        } 
+        }
     }
 
     $students = $grouped;
+
 
     // echo "<pre>"; print_r($students); exit;
 
@@ -119,7 +116,7 @@
 
             <?php foreach ($students as $info_student): ?>
                 <tr>
-                    <td><?= $info_student["student"]["prenom"] . " " . $info_student["student"]["nom"] ?></td>
+                    <td><?= htmlspecialchars($info_student["student"]["prenom"] . " " . $info_student["student"]["nom"]) ?></td>
                     
                     <td>
                         <span class="status <?= get_statut_classname_from_status($info_student["documents"][0]["statut"]) ?>">
