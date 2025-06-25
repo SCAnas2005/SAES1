@@ -1,6 +1,7 @@
 <?php 
     $stages = [];
     $data = $_SESSION["data"];
+ // Si l'utilisateur a au moins un stage
     if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"])
     {
         $stages = $data["stages"];
@@ -24,6 +25,7 @@
     
 </head>
 <body>
+    <!-- Inclusion du header (barre de navigation, logo, etc.) depuis un fichier externe -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     
@@ -40,7 +42,7 @@
         <section>
             <h2>Vos Notifications</h2>
             <ul>
-                <?php if($_SESSION["has_stage"] and $notifications_number > 0): ?>
+                <?php if($_SESSION["has_stage"] and $notifications_number > 0): ?> <!-- Si l'utilisateur a des stages et au moins une action à faire -->
                     <li>Vous avez <?= $notifications_number ?> actions à faire</li>
                 <?php else: ?>
                     <li>AUCUNE NOTIFICATION POUR LE MOMENT</li>
@@ -56,7 +58,7 @@
     <div class="container">
         
         <section>
-            <h2>Mes Stagiaires</h2>
+            <h2>Mes Stagiaires</h2> <!-- Affichage des stagiaires gérés par l'utilisateur -->
             <p>Vous avez <?= $n_stages ?> stages en cours</p>
             <button><a href=<?= L_DASHBOARD_FOLDER ?>>Voir mes Stagiaires</a></button>
         </section>
@@ -81,6 +83,7 @@
     </div>
 
     </main>
+    <!-- Inclusion du footer depuis un fichier externe -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
     
 </body>
