@@ -6,7 +6,7 @@
     Database::init_database();
     
     
-    if (!is_logged() || $_SESSION["usertype"] != "secretaire" || !isset($_GET["id"]))
+    if (!is_logged() || $_SESSION["usertype"] != "secretaire" || !isset($_GET["id"]))  // Vérification des droits d'accès : doit être connecté, secrétaire, et avoir un paramètre "id" en GET
     {
         header("Location: /");
     }
@@ -14,7 +14,8 @@
     include_once "../php/doc_secretaire.php";
     $id_student = $_GET["id"];
 
-    $data = Database::get_stage_and_docs_from_student($id_student);
+
+    $data = Database::get_stage_and_docs_from_student($id_student);   // Récupération des infos stage + documents pour cet étudiant
     // echo "<pre>";print_r($data);exit;
 
     $last_doc_id_bor = null;
