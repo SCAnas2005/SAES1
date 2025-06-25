@@ -5,21 +5,21 @@
 
     require_once "doc_secretaire.php";
 
-    if (!is_logged())
+    if (!is_logged())  // Vérifie si l'utilisateur est connecté
     {
         header("Location: /");
         exit;
     }
     
-    if (isset($_SESSION["download_bordereau"]))
+    if (isset($_SESSION["download_bordereau"]))  // Vérifie si une demande de téléchargement du bordereau est présente en session
     {
-        download_file($_SESSION["download_bordereau"]);
+        download_file($_SESSION["download_bordereau"]); // Lance le téléchargement du fichier dont le chemin est stocké en session
         unset($_SESSION["download_bordereau"]);
         exit;
     } 
-    if (isset($_SESSION["download_convention"]))
+    if (isset($_SESSION["download_convention"])) // Vérifie si une demande de téléchargement de la convention est présente en session
     {
-        download_file($_SESSION["download_convention"]);
+        download_file($_SESSION["download_convention"]);  // Lance le téléchargement du fichier dont le chemin est stocké en session
         unset($_SESSION["download_convention"]);
         exit;
     }
