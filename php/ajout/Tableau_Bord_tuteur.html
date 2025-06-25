@@ -5,126 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi des Stages - Tableau de Bord</title>
     <style>
+        /* Style général du corps de la page */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f4f4f4; /* Fond gris clair */
         }
 
+        /* Style de l'en-tête principal */
         header {
-            background-color: #293358;
-            color: #fff;
+            background-color: #293358; /* Bleu foncé */
+            color: #fff; /* Texte blanc */
             padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
+            display: flex; /* Affichage en flexbox pour alignement horizontal */
+            justify-content: space-between; /* Espacement entre éléments */
+            align-items: center; /* Centrage vertical */
+            position: relative; /* Permet le positionnement absolu d'éléments enfants */
         }
 
-        #premier{
-
-            background-color: #ad947e;
-
-
+        /* Style pour l'élément avec l'id premier (vide ici mais stylisé) */
+        #premier {
+            background-color: #ad947e; /* Couleur beige */
         }
 
+        /* Suppression de la marge par défaut pour le titre dans header */
         header h1 {
             margin: 0;
         }
 
+        /* Style de la barre de navigation */
         nav {
-            display: flex;
+            display: flex; /* Affiche les liens en ligne */
         }
 
+        /* Style des liens de navigation */
         nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
+            color: #fff; /* Texte blanc */
+            text-decoration: none; /* Supprime le soulignement */
+            margin: 0 10px; /* Marges horizontales */
+            padding: 5px 10px; /* Padding pour cliquer facilement */
+            border-radius: 5px; /* Coins arrondis */
         }
 
+        /* Effet au survol des liens de navigation */
         nav a:hover {
-            background-color: #ad947e;
-            color: #293358;
+            background-color: #ad947e; /* Fond beige */
+            color: #293358; /* Texte bleu foncé */
         }
 
+        /* Style du logo dans l'en-tête */
         .header-logo {
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            width: 50px;
+            position: absolute; /* Positionné par rapport à l'en-tête */
+            right: 20px; /* Décalage à droite */
+            top: 10px; /* Décalage en haut */
+            width: 50px; /* Largeur fixe */
         }
 
+        /* Style du conteneur principal */
         .main-content {
             padding: 20px;
-            background-color: #ffffff;
-            margin: 20px auto;
-            max-width: 1200px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-color: #ffffff; /* Fond blanc */
+            margin: 20px auto; /* Centré avec marge verticale */
+            max-width: 1200px; /* Largeur maximale */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+            border-radius: 8px; /* Coins arrondis */
         }
 
+        /* Style des sections */
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Espace sous chaque section */
         }
 
+        /* Style des titres des sections */
         .section h2 {
-            background-color: #293358;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+            background-color: #293358; /* Fond bleu foncé */
+            color: white; /* Texte blanc */
+            padding: 10px; /* Espacement interne */
+            border-radius: 5px; /* Coins arrondis */
         }
 
+        /* Conteneur pour résumé / tableau de bord */
         .dashboard-summary {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            display: flex; /* Flexbox pour alignement */
+            justify-content: space-between; /* Espacement entre éléments */
+            flex-wrap: wrap; /* Retour à la ligne si besoin */
         }
 
+        /* Style des boîtes de résumé */
         .summary-box {
-            background-color: #f9f9f9;
+            background-color: #f9f9f9; /* Fond gris très clair */
             padding: 20px;
-            width: 48%;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            text-align: center;
+            width: 48%; /* Presque moitié largeur */
+            margin-bottom: 20px; /* Marge basse */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            border-radius: 8px; /* Coins arrondis */
+            text-align: center; /* Texte centré */
         }
 
+        /* Style des titres dans les boîtes résumé */
         .summary-box h3 {
-            color: #293358;
+            color: #293358; /* Texte bleu foncé */
         }
 
+        /* Style du texte principal dans les boîtes résumé */
         .summary-box p {
-            color: #ad947e;
-            font-size: 1.5em;
+            color: #ad947e; /* Texte beige */
+            font-size: 1.5em; /* Taille du texte augmentée */
         }
 
+        /* Style du statut affiché dans les boîtes résumé */
         .summary-box .status {
-            color: #28a745;
+            color: #28a745; /* Texte vert */
         }
 
+        /* Style du pied de page */
         footer {
-            background-color: #293358;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
+            background-color: #293358; /* Fond bleu foncé */
+            color: #fff; /* Texte blanc */
+            text-align: center; /* Centré */
+            padding: 10px 0; /* Espacement vertical */
+            position: fixed; /* Pied de page fixé en bas */
             bottom: 0;
-            width: 100%;
+            width: 100%; /* Largeur pleine */
         }
     </style>
 </head>
 <body>
 
+    <!-- En-tête vide avec id premier, utilisé pour style ou script -->
     <header id="premier">
         
-
     </header>
 
-    
+    <!-- En-tête principal avec titre, navigation, profil utilisateur et logo -->
     <header>
         
         <h1>Suivi des Stages</h1>
@@ -137,19 +151,25 @@
         </nav>
         <div class="user-info">
             <div class="profile">
+                <!-- Image de profil utilisateur -->
                 <img src="profile-placeholder.png" alt="Profil utilisateur">
+                <!-- Nom de l'utilisateur connecté -->
                 <span>Nom Utilisateur</span>
             </div>
         </div>
+        <!-- Logo IUT affiché en haut à droite -->
         <img src="logo-iut.png" alt="Logo IUT" class="header-logo">
     </header>
 
+    <!-- Contenu principal -->
     <main class="main-content">
+        <!-- Section introduction -->
         <section class="section">
             <h2>Tableau de Bord</h2>
             <p>Bienvenue sur votre tableau de bord, où vous pouvez consulter les informations importantes concernant vos stages.</p>
         </section>
 
+        <!-- Section des résumés / statistiques -->
         <section class="section dashboard-summary">
             <div class="summary-box">
                 <h3>Stages en cours</h3>
@@ -172,10 +192,9 @@
                 <span class="status">12 janvier 2025</span>
             </div>
         </section>
-
-        
     </main>
 
+    <!-- Pied de page fixe -->
     <footer>
         <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
     </footer>
