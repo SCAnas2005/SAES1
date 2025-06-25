@@ -1,4 +1,13 @@
 <?php
+    /**
+     * Page d'accueil principale
+     * 
+     * Ce fichier charge les constantes de configuration, les données, initialise la session,
+     * connecte à la base de données, vérifie la connexion utilisateur
+     * et redirige vers la page de connexion si nécessaire.
+     * 
+     * Redirige vers la page d'acceuil.
+     */
     require "config/config.php";
     require DATABASE_FOLDER."/database.php";
     require "php/util.php";
@@ -183,4 +192,3 @@
     
     header("Location: ".L_HOME_FOLDER);
 ?>
-
