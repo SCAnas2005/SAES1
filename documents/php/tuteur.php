@@ -3,25 +3,25 @@
     require_once ROOTPATH."/php/util.php";
     init_php_session();
 
-    $data = $_SESSION["data"];
+    $data = $_SESSION["data"];  // Récupération des données stockées en session (informations utilisateur, stages, etc.)
     $stages = [];
-    if (isset($_SESSION["has_stage"]))
+    if (isset($_SESSION["has_stage"]))   // Vérification si l'utilisateur a des stages associés
     {
-        $stages = $data["stages"];
+        $stages = $data["stages"]; // Récupération des stages
     
         $output_tab = [];
-        foreach ($stages as $stage) {
-            $student_id = $stage["student"]["id"];
+        foreach ($stages as $stage) {  // Parcours de tous les stages
+            $student_id = $stage["student"]["id"];  // Récupération de l'id de l'étudiant associé au stage
             array_push($output_tab, [$stage, get_user_docs($student_id)]);
         }
     
-        if (isset($_POST["download"]))
+        if (isset($_POST["download"]))  // Si un téléchargement est demandé via POST
         {
             $_SESSION["download_file"] = $_POST["download"];
             header("Location: ". L_DOCUMENTS_FOLDER."/php/download.php");
         }
     
-        if (isset($_POST["remove"]))
+        if (isset($_POST["remove"]))  // Si une suppression est demandée via POST
         {
             $_SESSION["remove_file"] = $_POST["remove"];
             header("Location: ". L_DOCUMENTS_FOLDER."/php/remove.php");
