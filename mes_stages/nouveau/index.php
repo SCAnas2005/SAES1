@@ -39,14 +39,20 @@
         $taches = $_POST["taches"];
         $departement = $_SESSION["data"]["my_departement"]["id_Departement"];
 
+        $competences = $_POST["competences"];
+        print_r($competences);exit;
+
         $infos = ["titre"=>$stagename, "entreprise"=>$entreprise_nom, "entreprise_adresse"=>$entreprise_adresse, "entreprise_ville"=>$entreprise_ville, "entreprise_codepostal"=>$entreprise_codepostal, "entreprise_email"=>$entreprise_email,
             "entreprise_tel"=>$entreprise_tel, "date_debut"=>$date_debut, "date_fin"=>$date_fin, "salle_soutenance"=>$salle_soutenance, "date_soutenance"=>$date_soutenance, "tuteur_stage"=>$tuteur_stage, "tuteur_pedagogique"=>$tuteur_pedagogique,
-            "description"=>$description, "taches"=>$taches, "jury2"=>$jury2, "departement"=>$departement
+            "description"=>$description, "taches"=>$taches, "jury2"=>$jury2, "departement"=>$departement, "competences"=>$competences
         ];
         
         Database::add_stage($user["userinfo"], $infos);
         header("Location: /");
     }
+
+
+    $competences = Database::execute_sql_all("SELECT * FROM Competence");
     
 ?>
 
@@ -119,8 +125,18 @@
 
                 <label for="taches">Tâches effectuées :</label>
                 <textarea id="taches" name="taches" placeholder="Listez les tâches principales" rows="5" required></textarea>
-
+                
+                <label for="competences">Compétences associées au stage :</label>
+                <div class="checkbox-group">
+                    <?php foreach ($competences as $comp): ?>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comp-<?= $comp["id_Competence"] ?>" name="competences[]" value="<?= $comp["id_Competence"] ?>">
+                            <label for="comp-<?= $comp["id_Competence"] ?>"><?= htmlspecialchars($comp["titre"]) ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
                 <button type="submit" name="submit_form">Ajouter le Stage</button>
+
             </form>
         </section>
     </main>

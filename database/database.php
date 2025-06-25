@@ -184,13 +184,32 @@
         public static function get_stage_from_user($userid)
         {
             $sql = "SELECT 
-                s.*
-            FROM 
-                Stage s
-            JOIN 
-                Inscription i ON s.id_Departement = i.id_Departement AND s.numSemestre = i.numSemestre AND s.id = i.id AND s.annee = i.annee
-            WHERE 
-                i.id = $userid; ";
+                    s.id_Stage,
+                    s.titre,
+                    s.date_debut,
+                    s.date_fin,
+                    s.date_soutenance,
+                    s.salle_soutenance,
+                    s.valide,
+                    s.taches,
+                    s.description,
+                    GROUP_CONCAT(sc.id_Competence) AS competences
+                FROM 
+                    Stage s
+                JOIN 
+                    Inscription i 
+                    ON s.id_Departement = i.id_Departement 
+                    AND s.numSemestre = i.numSemestre 
+                    AND s.id = i.id 
+                    AND s.annee = i.annee
+                JOIN 
+                    StageCompetence sc ON s.id_Stage = sc.id_Stage
+                WHERE 
+                    i.id = $userid
+                GROUP BY 
+                    s.id_Stage, s.titre, s.date_debut, s.date_fin, s.date_soutenance, s.salle_soutenance, s.valide, s.taches, s.description;
+   
+            ";
 
             $req = self::execute_sql_all($sql);
 
@@ -641,11 +660,15 @@
 
             INSERT INTO Stage (id_Departement, numSemestre, id, annee, date_debut, date_fin, titre, description, taches, date_soutenance, salle_soutenance, id_1, id_2, id_3)
             VALUES ($departement, 1, $id, 2025, $date_debut, $date_fin, $titre, $description, $taches, $date_soutenance, $salle_soutenance, $tuteur_pedagogique, $jury2, $tuteur_stage);";
-            
             // echo $sql;exit;
             self::execute_sql($sql);
 
             $id_stage = self::$PDO->lastInsertId();
+        
+            foreach ($infos["competences"] as $competence) {
+                $competence_id = (int)$competence;
+                self::execute_sql("INSERT INTO StageCompetence (id_Stage, id_Competence) VALUES ($id_stage, $competence_id);");
+            }
 
             for ($i = 1; $i < 5; $i++)
             {

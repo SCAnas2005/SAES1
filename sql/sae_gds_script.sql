@@ -176,7 +176,7 @@ CREATE TABLE StageCompetence (
    PRIMARY KEY(id_Stage, id_Competence),
    FOREIGN KEY(id_Stage) REFERENCES Stage(id_Stage),
    FOREIGN KEY(id_Competence) REFERENCES Competence(id_Competence)
-);
+):
 
 
 CREATE TABLE Competence (

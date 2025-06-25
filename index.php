@@ -19,6 +19,7 @@
     {
         // $user = Database::load_all_info($user["id"]);
         $stages = Database::get_stage_from_user($user["id"]);
+        
         $_SESSION["data"]["my_departement"] = Database::get_departement_from_etudiant($user["id"]);
         $_SESSION["data"]["stages"] = [];
 

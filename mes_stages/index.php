@@ -42,7 +42,7 @@
                                 </span>
                             </div>
                             <div class="stage-actions">
-                                <a href="<?= L_USERAREA_FOLDER . "/stage?id=" . $stage["infostage"]["id"] ?>">Voir Détails</a>
+                                <a href="<?= L_USERAREA_FOLDER . "/stage?id=" . $stage["infostage"]["id_Stage"] ?>">Voir Détails</a>
 
                                 <form method="POST" action="<?= L_MES_STAGES_FOLDER . "/php/delete_stage.php" ?>" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce stage ?');">
                                     <input type="hidden" name="stage_id" value="<?= $stage["infostage"]["id_Stage"] ?>">

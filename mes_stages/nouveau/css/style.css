@@ -51,3 +51,16 @@ form button {
 form button:hover {
     background-color: #ad947e;
 }
+
+.checkbox-group {
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}

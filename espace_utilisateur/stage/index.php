@@ -3,12 +3,28 @@
     require_once ROOTPATH."/php/util.php";
     require_once DATABASE_FOLDER."/database.php";
     init_php_session();
+    Database::init_database();
 
     $data = $_SESSION["data"];
     if ($_SESSION["usertype"] == "student")
     {
         $user = $data["userinfo"];
         $stage = $data["current_stage"];
+
+        $competence_id_array = explode(",", $stage["infostage"]["competences"]);
+
+        // Vérifie que le tableau n'est pas vide
+        if (!empty($competence_id_array)) {
+            // Convertit le tableau en une chaîne de type "1,2,3"
+            $ids_string = implode(",", array_map("intval", $competence_id_array)); // sécurise chaque valeur
+
+            $sql = "SELECT * FROM Competence WHERE id_Competence IN ($ids_string)";
+            $competences_name_array = Database::execute_sql_all($sql);
+            // echo "<pre>";print_r($competences_name_array);exit;
+        } else {
+            $competences_name_array = [];
+        }
+
         
     }else if ($_SESSION["usertype"] == "tuteur")
     {
@@ -28,7 +44,6 @@
     $dateDebut = (new DateTime($stage["infostage"]["date_debut"]))->format("d F Y");
     $dateFin = (new DateTime($stage["infostage"]["date_fin"]))->format("d F Y");
     
-
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +77,17 @@
                         <li><?= $task ?></li> 
                     <?php endforeach; ?>
                 </ul>
+                <p><strong>Compétences liées :</strong></p>
+                <?php if (isset($competences_name_array) && !empty($competences_name_array)): ?>
+                    <ul>
+                        <?php foreach ($competences_name_array as $competence): ?>
+                            <li><?= htmlspecialchars($competence["titre"]) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>Aucune compétence renseignée.</p>
+                <?php endif; ?>
+
                 <p><strong>Validé :</strong> <?= $stage["infostage"]["valide"] ? "Oui" : "Non" ?></p>
                 <!-- <p><strong>Évaluations :</strong> Note globale : 18/20</p> -->
             </div>
