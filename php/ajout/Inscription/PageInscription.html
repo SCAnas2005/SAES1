@@ -7,144 +7,167 @@
 <body>
     <header>
         <h1>Suivi des Stages</h1>
-        <!-- Logo de l'IUT -->
+        <!-- Logo de l'IUT affiché dans l'en-tête -->
         <img src="assets\iut_logo.png" alt="Logo IUT" class="header-logo">
+        <!-- Inclusion du fichier CSS pour la page d'inscription -->
         <link href="style_inscription.css" rel="stylesheet">
     </header>
     <main class="main-content">
         <section class="Inscription">
+            <!-- Formulaire d'inscription avec méthode POST redirigeant vers PageConnexion.html -->
             <form action="PageConnexion.html" method="post">
                 <section class="choix">
                     <h2>Qui êtes vous?</h2>
+                    <!-- Liste déroulante pour sélectionner le rôle de l'utilisateur -->
                     <label for="role-selection">Choisisez votre role:</label>
                     <select name="select">
-                            <option value="" selected>--Choisisez votre role--</option>
-                            <option value="tuteur"   onclick="MontreTuteur()">tuteur</option>
-                            <option value="etudiant" onclick="MontreEtudiant()">étudiant</option>
-                            <option value="Enseignant"     onclick="MontreSecretaire()">Enseignant</option>
-                            <option value="secretaire"     onclick="MontreSecretaire()">Secretaire</option>
-                            <option value="chef"     onclick="MontreAutre()">Chef Département</option>
-                      </select>
+                        <!-- Options disponibles avec des événements onclick pour afficher le formulaire correspondant -->
+                        <option value="" selected>--Choisisez votre role--</option>
+                        <option value="tuteur"   onclick="MontreTuteur()">tuteur</option>
+                        <option value="etudiant" onclick="MontreEtudiant()">étudiant</option>
+                        <option value="Enseignant"     onclick="MontreSecretaire()">Enseignant</option>
+                        <option value="secretaire"     onclick="MontreSecretaire()">Secretaire</option>
+                        <option value="chef"     onclick="MontreAutre()">Chef Département</option>
+                    </select>
+
                     <div>
-                          <ul  id = "insc" style ="display : block;">
-                              <li>
+                        <!-- Bloc de champs de saisie affiché par défaut : formulaire type "tuteur" -->
+                        <ul  id="insc" style="display : block;">
+                            <li>
                                 <input type="text" id="name"  placeholder="Nom" />
-                              </li>
-                              <li>
+                            </li>
+                            <li>
                                 <input type="text" id="pname"  placeholder="Prénom" />
-                              </li>
-                              <li>
-                              <input type="text" id="ename" placeholder="Entreprise" />
                             </li>
                             <li>
-                              <input type="email" id="mail" placeholder = "E-mail" />
+                                <input type="text" id="ename" placeholder="Entreprise" />
                             </li>
                             <li>
-                              <input type="password   " id="mdp" placeholder = "Mot de passe" />
+                                <input type="email" id="mail" placeholder="E-mail" />
                             </li>
                             <li>
-                              <input type="password" id="cmdp" placeholder = "Confirmation de mot de passe" />
-                            </ul>
-                            <ul id = "insc2" style ="display : none;">
-                                <li>
-                                  <input type="text" id="name" placeholder="Nom" />
-                                </li>
-                                <li>
-                                  <input type="text" id="pname" placeholder="Prénom" />
-                                </li>
+                                <input type="password" id="mdp" placeholder="Mot de passe" />
+                            </li>
+                            <li>
+                                <input type="password" id="cmdp" placeholder="Confirmation de mot de passe" />
+                            </li>
+                        </ul>
+
+                        <!-- Bloc de champs de saisie pour le formulaire "étudiant" (masqué par défaut) -->
+                        <ul id="insc2" style="display : none;">
+                            <li>
+                                <input type="text" id="name" placeholder="Nom" />
+                            </li>
+                            <li>
+                                <input type="text" id="pname" placeholder="Prénom" />
+                            </li>
+                            <li>
                                 <input type="text" id="ename" placeholder="INE" />
-                              </li>
-                              <li>
-                                <input type="password   " id="mdp" placeholder="Mot de passe" />
-                              </li>
-                              <li>
-                                <input type="password" id="cmdp" placeholder="Confiramtion mot de passe" />
-                              </ul>
-                                <ul  id = "insc3" style ="display : none;">
-                                <li>
-                                  <input type="text" id="name" placeholder="Nom" />
-                                </li>
-                                <li>
-                                  <input type="text" id="pname" placeholder="Prénom" />
-                                </li>
-                              <li>
-                                <input type="email" id="mail" placeholder="E-mail" />
-                              </li>
-                              <li>
-                                <input type="password   " id="mdp" placeholder="Mot de passe" />
-                              </li>
-                              <li>
+                            </li>
+                            <li>
+                                <input type="password" id="mdp" placeholder="Mot de passe" />
+                            </li>
+                            <li>
                                 <input type="password" id="cmdp" placeholder="Confirmation mot de passe" />
-                              </ul>
+                            </li>
+                        </ul>
 
-                              <ul  id = "insc4" style ="display : none;">
-                                <li>
-                                  <input type="text" id="name" placeholder="Nom" />
-                                </li>
-                                <li>
-                                  <input type="text" id="pname" placeholder="Prénom" />
-                                </li>
-                                <li>
-                                  <input type="text" id="pname" placeholder="Bureau" />
-                                </li>
-                              <li>
+                        <!-- Bloc de champs de saisie pour "Enseignant" (masqué par défaut) -->
+                        <ul id="insc3" style="display : none;">
+                            <li>
+                                <input type="text" id="name" placeholder="Nom" />
+                            </li>
+                            <li>
+                                <input type="text" id="pname" placeholder="Prénom" />
+                            </li>
+                            <li>
                                 <input type="email" id="mail" placeholder="E-mail" />
-                              </li>
-                              <li>
-                                <input type="password   " id="mdp" placeholder="Mot de passe" />
-                              </li>
-                              <li>
+                            </li>
+                            <li>
+                                <input type="password" id="mdp" placeholder="Mot de passe" />
+                            </li>
+                            <li>
                                 <input type="password" id="cmdp" placeholder="Confirmation mot de passe" />
-                              </ul>
+                            </li>
+                        </ul>
 
+                        <!-- Bloc de champs de saisie pour "Secrétaire" (masqué par défaut) -->
+                        <ul id="insc4" style="display : none;">
+                            <li>
+                                <input type="text" id="name" placeholder="Nom" />
+                            </li>
+                            <li>
+                                <input type="text" id="pname" placeholder="Prénom" />
+                            </li>
+                            <li>
+                                <input type="text" id="pname" placeholder="Bureau" />
+                            </li>
+                            <li>
+                                <input type="email" id="mail" placeholder="E-mail" />
+                            </li>
+                            <li>
+                                <input type="password" id="mdp" placeholder="Mot de passe" />
+                            </li>
+                            <li>
+                                <input type="password" id="cmdp" placeholder="Confirmation mot de passe" />
+                            </li>
+                        </ul>
                     </div>
-                </ul>
-                <h2>Inscrivez vous</h2>
                 </section>
-              <div class="button">
-                <button type="submit">M'inscrire</button>
-              </div>
+
+                <h2>Inscrivez vous</h2>
+
+                <div class="button">
+                    <!-- Bouton de soumission du formulaire -->
+                    <button type="submit">M'inscrire</button>
+                </div>
             </form>
         </section>
     </main>
+
     <footer>
+        <!-- Pied de page avec copyright -->
         <p>&copy; 2025 - Département Informatique, IUT Villetaneuse</p>
     </footer>
-
 </body>
 </html>
-<script>
-const t = document.getElementById("insc");
-const e = document.getElementById("insc2");
-const d = document.getElementById("insc3");
-const s = document.getElementById("insc4");
 
-  function MontreTuteur() {
-    t.style.display ='block' ;
-    e.style.display = 'none';
-    d.style.display = 'none';
-    s.style.display = 'none';
-  }
-            
-      function MontreEtudiant() {
-        t.style.display ='none' ;
+<script>
+    // Récupération des éléments UL correspondant à chaque formulaire selon le rôle
+    const t = document.getElementById("insc");   // Formulaire Tuteur
+    const e = document.getElementById("insc2");  // Formulaire Étudiant
+    const d = document.getElementById("insc3");  // Formulaire Enseignant
+    const s = document.getElementById("insc4");  // Formulaire Secrétaire
+
+    // Fonction pour afficher le formulaire "Tuteur" et masquer les autres
+    function MontreTuteur() {
+        t.style.display ='block';
+        e.style.display = 'none';
+        d.style.display = 'none';
+        s.style.display = 'none';
+    }
+
+    // Fonction pour afficher le formulaire "Étudiant" et masquer les autres
+    function MontreEtudiant() {
+        t.style.display ='none';
         e.style.display = 'block';
         d.style.display = 'none';
         s.style.display = 'none';
+    }
 
-      }
-      function MontreAutre() {
-        t.style.display ='none' ;
+    // Fonction pour afficher le formulaire "Chef Département" et masquer les autres
+    function MontreAutre() {
+        t.style.display ='none';
         e.style.display = 'none';
         d.style.display = 'block';
         s.style.display = 'none';
+    }
 
-      }
-      function MontreSecretaire() {
-        t.style.display ='none' ;
+    // Fonction pour afficher le formulaire "Secrétaire" et masquer les autres
+    function MontreSecretaire() {
+        t.style.display ='none';
         e.style.display = 'none';
         d.style.display = 'none';
         s.style.display = 'block';
-
-      }
+    }
 </script>
