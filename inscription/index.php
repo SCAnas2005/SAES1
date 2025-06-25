@@ -32,7 +32,7 @@
             $choix_departement = $_POST["choix_departement"];
             $infos["choix_departement"] = $choix_departement;
         }
-        if ($role == "prof")
+        if ($role == "prof" || $role == "tuteur_pedagogique")
         {
             $bureau = $_POST["bureau"];
             $infos["bureau"] = $bureau;
@@ -65,12 +65,12 @@
 </head>
 
 
+
+<body>
     <header>
         <h1>Suivi des Stages</h1>
         <img src=<?= L_ASSETS_FOLDER."/iut_logo.png" ?> alt="Logo IUT" class="logo"> <!-- Logo IUT ajouté ici -->
     </header>
-
-<body>
     <div class="containerinscription">
         <?php if (!$inscription_reussi): ?>
             <form method="post">
@@ -81,7 +81,7 @@
                     <button name="prof" class="bouton-teacher" type="button" onclick="connexion('prof')">Enseignant</button>
                     <!-- <button name="chef_dep" class="bouton-chef" type="button" onclick="connexion('chef_dep')">Chef de Département</button> -->
                     <button name="tuteur_entreprise" class="bouton-tuteurent" type="button" onclick="connexion('tuteur_entreprise')">Tuteur entreprise</button>
-                    <button name="tuteur_pedagogique" class="bouton-tuteurpeda" type="button" onclick="connexion('tuteur_pedagogique')">Tuteur pédagogique</button>
+                    <!-- <button name="tuteur_pedagogique" class="bouton-tuteurpeda" type="button" onclick="connexion('tuteur_pedagogique')">Tuteur pédagogique</button> -->
                     <p><a href=<?= L_LOGIN_FOLDER ?>>Se connecter</a></p> 
                 </div>
 

@@ -18,6 +18,20 @@
     
     $stage = Database::get_stage_from_id($id);
 
+    $competences = $stage["competences"];
+    $competence_id_array = explode(",", $stage["infostage"]["competences"]);
+
+        // Vérifie que le tableau n'est pas vide
+        if (!empty($competence_id_array)) {
+            // Convertit le tableau en une chaîne de type "1,2,3"
+            $ids_string = implode(",", array_map("intval", $competence_id_array)); // sécurise chaque valeur
+
+            $sql = "SELECT * FROM Competence WHERE id_Competence IN ($ids_string)";
+            $competences_name_array = Database::execute_sql_all($sql);
+            // echo "<pre>";print_r($stage);exit;
+        } else {
+            $competences_name_array = [];
+        }
     // echo $id;
     // echo "<pre>"; print_r($stage); echo "</pre>"; exit;
 
