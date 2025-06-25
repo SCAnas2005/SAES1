@@ -1,8 +1,8 @@
 <?php 
     
-    $user = $data["userinfo"];
+    $user = $data["userinfo"];  // Récupération des informations utilisateur stockées dans $data
     
-    if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"])
+    if (isset($_SESSION["has_stage"]) and $_SESSION["has_stage"]) // Vérifie si l'utilisateur a des stages enregistrés dans la session
     {
         $stages = $data["stages"];
         $tuteur_entreprise = $data["current_stage"]["tuteur_entreprise"];
@@ -23,7 +23,7 @@
     <link href=<?= L_USERAREA_FOLDER."/css/style.css" ?> rel="stylesheet">
    
 </head>
-<body>
+<body> <!-- Inclusion de l'en-tête commun -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/header.php";?>
 
     <main class="main-content">
@@ -56,7 +56,7 @@
                     <p><strong>Statut :</strong> <?= get_userstatut($_SESSION["real_usertype"])  ?></p>
                 </section>
         
-                <section id="stages" class="infostage">
+                <section id="stages" class="infostage"> <!-- Section listant les stages de l'utilisateur -->
                     <h1>Mes Stages</h1>
                     <?php if($_SESSION["has_stage"]):?>
                         <?php foreach ($stages as $stage): ?>
@@ -70,7 +70,7 @@
 
                 </section>
 
-                <section id="infotuteur" class="infotuteur">
+                <section id="infotuteur" class="infotuteur"> <!-- Section affichant les informations du tuteur en entreprise -->
                     <h1>Mon tuteur</h1>
                     <?php if($_SESSION["has_stage"]):?>
                         <p><strong>Nom :</strong> <?= $tuteur_entreprise["tuteur_nom"] ?></p>
@@ -82,7 +82,7 @@
                     <?php endif;?>
                 </section>
 
-                <section id="infotuteurpeda" class="infotuteurpeda">
+                <section id="infotuteurpeda" class="infotuteurpeda"> <!-- Section affichant les informations du tuteur pédagogique -->
                     <h1>Mon tuteur pédagogique</h1>
                     <?php if($_SESSION["has_stage"]):?>
                         <p><strong>Nom :</strong> <?= $tuteur_peda["tuteur_pedagogique_nom"] ?></p>
@@ -94,7 +94,7 @@
                     <?php endif;?>
                 </section>
 
-                <section id="infoentreprise" class="infoentreprise">
+                <section id="infoentreprise" class="infoentreprise">  <!-- Section affichant les informations de l’entreprise du stage -->
                     <h1>Mon Entreprise</h1>
                     <?php if($_SESSION["has_stage"]):?>
                         <p><strong>Nom :</strong> <?= $entreprise["entreprise_nom"] ?></p>
@@ -127,7 +127,7 @@
 
     </main>
 
-
+    <!-- Inclusion du pied de page commun -->
     <?php require $_SESSION["PATHS"]["ROOTPATH"]."/php/footer.php";?>
     
     
