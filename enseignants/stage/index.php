@@ -58,12 +58,7 @@
                                 </span>
                             </div>
                             <div class="stage-actions">
-                                <!-- <a href="<?= L_USERAREA_FOLDER . "/stage?id=" . $stage["id"] ?>">Voir Détails</a> -->
-
-                                <form method="POST" action="<?= L_MES_STAGES_FOLDER . "/php/delete_stage.php" ?>" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce stage ?');">
-                                    <input type="hidden" name="stage_id" value="<?= $stage["id_Stage"] ?>">
-                                    <input type="hidden" name="student_id" value="<?= $stage["id"] ?>">
-                                </form>
+                                <p><?= $stage["prenom"]." ".$stage["nom"] ?></p>
                             </div>
                         </li>
                     <?php endforeach; ?>

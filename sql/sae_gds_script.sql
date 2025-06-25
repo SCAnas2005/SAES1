@@ -169,3 +169,17 @@ CREATE TABLE Gere (
    FOREIGN KEY (id) REFERENCES Secretaire(id),
    FOREIGN KEY (id_Departement, numSemestre) REFERENCES Semestre(id_Departement, numSemestre)
 );
+
+CREATE TABLE StageCompetence (
+   id_Stage INT,
+   id_Competence INT,
+   PRIMARY KEY(id_Stage, id_Competence),
+   FOREIGN KEY(id_Stage) REFERENCES Stage(id_Stage),
+   FOREIGN KEY(id_Competence) REFERENCES Competence(id_Competence)
+);
+
+
+CREATE TABLE Competence (
+   id_Competence INT PRIMARY KEY AUTO_INCREMENT,
+   titre VARCHAR(255)
+);
