@@ -1,6 +1,4 @@
 <?php 
-    // Déclaration des constantes de chemin
-
     define("ROOTPATH", $_SERVER['DOCUMENT_ROOT']);
     define("AUTH_FOLDER", ROOTPATH."/Authentification");
     define("CONFIG_FOLDER", ROOTPATH."/config");
