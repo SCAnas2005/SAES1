@@ -3,26 +3,26 @@
     $docs = $_SESSION["user_docs"];
 
     
-    if (isset($_POST["download"]))
+    if (isset($_POST["download"])) // Si un téléchargement est demandé via le formulaire POST
     {
-        $_SESSION["download_file"] = $_POST["download"];
+        $_SESSION["download_file"] = $_POST["download"];  // On stocke le chemin du fichier à télécharger en session
         header("Location: ". L_DOCUMENTS_FOLDER."/php/download.php");
     }
 
-    if (isset($_POST["remove"]))
+    if (isset($_POST["remove"]))  // Si une suppression est demandée via POST
     {
-        $_SESSION["remove_file"] = $_POST["remove"];
+        $_SESSION["remove_file"] = $_POST["remove"];  // On stocke le chemin du fichier à supprimer en session
         header("Location: ". L_DOCUMENTS_FOLDER."/php/remove.php");
     }
 
     unset($_SESSION["download_bordereau"]);
     unset($_SESSION["download_convention"]);
-    if (isset($_POST["download_bordereau"]))
+    if (isset($_POST["download_bordereau"])) // Si téléchargement du bordereau demandé
     {
         $_SESSION["download_bordereau"] = $_POST["download_bordereau"];
         header("Location: ". L_DOCUMENTS_FOLDER."/php/download_sec.php");
     }
-    if (isset($_POST["download_convention"]))
+    if (isset($_POST["download_convention"]))   // Si téléchargement de la convention demandé
     {
         $_SESSION["download_convention"] = $_POST["download_convention"];
         header("Location: ". L_DOCUMENTS_FOLDER."/php/download_sec.php");
@@ -32,7 +32,7 @@
     include_once "doc_secretaire.php";
 
     $data = Database::get_stage_and_docs_from_student($_SESSION["data"]["userinfo"]["id"]);
-    $docs_secretaire = [
+    $docs_secretaire = [ // Initialisation des documents de la secrétaire avec statut "non-reçu"
         [
             'type_document' => 'bordereau',
             'statut' => 'non-recu'
